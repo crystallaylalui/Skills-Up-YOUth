@@ -1,4 +1,4 @@
-# Skills-Up-Youth
+# Skills-Up-YOUth!
 Overview
 Welcome to Skills-Up YOUth!, a web-based application designed to break down barriers and empower underprivileged youths (aged 15-35) by providing accessible technology-related educational resources and connecting them with lucrative job opportunities. In many communities, financial instability and fractured family environments limit access to quality education, perpetuating social and income inequality. Skills-Up YOUth! aims to address this issue head-on by leveraging technology as a social leveller.
 
