@@ -1,0 +1,15 @@
+.confirm-button {
+    color: white;
+    background-color: #5f46f0;
+    border-radius: 50px;
+}
+
+.confirm-button:hover {
+    color: white;
+    background-color: #4935bd;
+}
+
+.signup {
+    font-size: 14px;
+    color: grey;
+}
