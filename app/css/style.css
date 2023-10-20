@@ -35,3 +35,11 @@ body {
     float: right;
     margin-right: 12px;
 }
+
+.custom-silver {
+    background-color: #d5cfcf;
+}
+
+.custom-bronze {
+    background-color: #c79665; 
+}
