@@ -13,3 +13,25 @@
     font-size: 14px;
     color: grey;
 }
+
+#achievements {
+    color: white;
+    background-color: black;
+}
+
+.main {
+    padding: 50px;
+}
+
+.lesson {
+    margin: 20px 0px;
+}
+
+body {
+    background-color: rgb(250, 246, 246);
+}
+
+.next {
+    float: right;
+    margin-right: 12px;
+}

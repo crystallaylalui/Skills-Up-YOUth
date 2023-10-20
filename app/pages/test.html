@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-black">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <button class="btn btn-warning" v-on:click="logOut">Logout</button>
+              </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container-fluid" style="padding: 0px;">
+        <div id="achievements" class="row">
+            <div class="main col-8" style="padding-right: 0px;">
+                <div class="row">
+                    <h1>Achievements</h1>
+                </div>
+                <div class="row">
+                    <div class="profile col-4">
+                        <img src="../images/profile.png" alt="Achievements Image" class="img-fluid">
+                        <h2>beginner</h2>
+                    </div>
+                    <div class="col-6 row">
+                        <p class="col-6">ranking</p>
+                        <p class="col-6">days</p>
+                        <p class="col-6">courses</p>
+                        <p class="col-6">badges</p>
+                    </div>
+                    <div class="stats">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div id="activity" class="col-4 main">
+                <h1>Activity</h1>
+                <img src="../images/screentime.jpg" alt="Screen Time" class="img-fluid">
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" style="padding: 0px;">
+        <div id="lessons" class="row">
+            <div class="main col-8" >
+                <div class="row">
+                    <h1 class="col-8">Lessons</h1>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-outline-dark next">More</button>
+                    </div>
+                </div>
+                <div class="row lesson">
+                    <div class="col-6">
+                        <!-- <h3>course 1</h3> -->
+                        <div class="card" style="width: auto;">
+                            <div class="card-body">
+                              <h5 class="card-title">Intro to Python</h5>
+                              <h6 class="card-subtitle mb-2 text-muted">Duration: 10 hours</h6>
+                              <p class="card-text">Explore the basics of Python programming in this introductory course, gaining essential skills for coding and problem-solving.</p>
+                              <a href="#" class="card-link">Card link</a>
+                              <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <!-- <h3>course 2</h3> -->
+                        <div class="card" style="width: auto;">
+                            <div class="card-body">
+                              <h5 class="card-title">Intro to Python</h5>
+                              <h6 class="card-subtitle mb-2 text-muted">Duration: 10 hours</h6>
+                              <p class="card-text">Explore the basics of Python programming in this introductory course, gaining essential skills for coding and problem-solving.</p>
+                              <a href="#" class="card-link">Card link</a>
+                              <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row lesson">
+                    <div class="col-6">
+                        <!-- <h3>course 3</h3> -->
+                        <div class="card" style="width: auto;">
+                            <div class="card-body">
+                              <h5 class="card-title">Intro to Python</h5>
+                              <h6 class="card-subtitle mb-2 text-muted">Duration: 10 hours</h6>
+                              <p class="card-text">Explore the basics of Python programming in this introductory course, gaining essential skills for coding and problem-solving.</p>
+                              <a href="#" class="card-link">Card link</a>
+                              <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <!-- <h3>course 4</h3> -->
+                        <div class="card" style="width: auto;">
+                            <div class="card-body">
+                              <h5 class="card-title">Intro to Python</h5>
+                              <h6 class="card-subtitle mb-2 text-muted">Duration: 10 hours</h6>
+                              <p class="card-text">Explore the basics of Python programming in this introductory course, gaining essential skills for coding and problem-solving.</p>
+                              <a href="#" class="card-link">Card link</a>
+                              <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="leaderboard" class="col-4 main">
+                <div class="row">
+                    <h1 class="col-md-8">Leaderboard</h1>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-outline-dark next">View All</button>
+                    </div>
+                </div>                
+                <div class="card" style="width: auto; margin-top: 20px;">
+                    <div class="card-body">
+                      <h5 class="card-title">Intro to Python</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Duration: 10 hours</h6>
+                    </div>
+                </div>
+                <div class="card" style="width: auto;">
+                    <div class="card-body">
+                      <h5 class="card-title">Intro to Python</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Duration: 10 hours</h6>
+                    </div>
+                </div>
+                <div class="card" style="width: auto;">
+                    <div class="card-body">
+                      <h5 class="card-title">Intro to Python</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Duration: 10 hours</h6>
+                    </div>
+                </div>
+                <div class="card" style="width: auto;">
+                    <div class="card-body">
+                      <h5 class="card-title">Intro to Python</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Duration: 10 hours</h6>
+                    </div>
+                </div>
+                <div class="card" style="width: auto;">
+                    <div class="card-body">
+                      <h5 class="card-title">Intro to Python</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Duration: 10 hours</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+    </html>
