@@ -116,19 +116,15 @@ body {
     background-color: #007bff;
     transition: 0.3s; 
 }
-
-.search-container {
-    width: 90%;
-    height: 60px;
+.calendar {
+    display: flex;
+    flex-direction: row;
 }
 
-.search-container input {
-    width: 100%;
-    height: 100%;
+.day {
+    width: 14.28%; /* 100% divided by 7 days */
+    text-align: center;
     padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid white;
-    border-radius: 20px;
 }
 
 .filter-container {
@@ -153,3 +149,86 @@ body {
 #filter-container {
     margin: 50px;
 }
+       .highlight {
+    position: relative;
+}
+
+.highlight::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    border: 2px solid rgb(255, 99, 88);
+    border-radius: 50%;
+    top: 1;
+    left: 0;
+    box-sizing: border-box;
+}
+
+.module{
+    border-radius: 10px;
+    background-color: rgb(233, 231, 231);
+    padding: 20px;
+}
+.progress-container {
+    width: 100%;
+    background-color: white;
+    border-radius:20px;
+    border: 1px solid black
+}
+
+.progress-bar {
+
+    height: 20px;
+    background-color: rgb(178, 244, 178); /* Green color for the progress */
+    border-radius:20px;
+}
+.module-progress-percent{
+    padding-left: 10px;
+    font-size: small;
+    font-style: italic;
+
+}
+.card-custom {
+    overflow: hidden;
+    min-height: 450px;
+
+  }
+  
+  .card-custom-img {
+    height: 200px;
+    min-height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-color: inherit;
+  }
+  
+  /* First border-left-width setting is a fallback */
+  .card-custom-img::after {
+    position: absolute;
+    content: '';
+    top: 161px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-top-width: 40px;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 545px;
+    border-left-width: calc(575px - 5vw);
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: inherit;
+  }
+  
+  .card-custom-avatar img {
+    border-radius: 50%;
+    position: absolute;
+    top: 100px;
+    left: 1.25rem;
+    width: 100px;
+    height: 100px;
+  }
