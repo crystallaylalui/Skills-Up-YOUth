@@ -116,3 +116,17 @@ body {
     background-color: #007bff;
     transition: 0.3s; 
 }
+
+.search-container {
+    width: 90%;
+    height: 60px;
+}
+
+.search-container input {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid white;
+    border-radius: 20px;
+}
