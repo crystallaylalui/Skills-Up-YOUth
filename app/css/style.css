@@ -130,3 +130,26 @@ body {
     border: 1px solid white;
     border-radius: 20px;
 }
+
+.filter-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.filter-option input {
+    margin-right: 5px;
+}
+
+#filter-container {
+    margin: 50px;
+}
