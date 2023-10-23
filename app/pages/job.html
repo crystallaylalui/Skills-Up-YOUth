@@ -1,19 +1,9 @@
-<?php
-    session_start();
-    // No session variable "user" => no login
-    if ( !isset($_SESSION["user"]) ) {
-         // redirect to login page
-         header("Location: ../index.php"); 
-         exit;
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Job Search</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -21,9 +11,10 @@
 
     <link href="../css/style.css" rel="stylesheet">
 </head>
+
 <body>
     <div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-black">
             <div class="container-fluid">
                 <!-- Left Logo -->
                 <a class="navbar-brand" href="#" style="font-size: 30px; flex: 0;">
@@ -63,24 +54,39 @@
             </div>
             <div id="indicator"></div>
         </nav>
-
-        <h1>Homepage</h1>
-
     </div>
 
-    <script>
-        Vue.createApp({
-            methods: {
-                logOut() {
-                    axios.post("../../server/api/logout.php")
-                    .then(r => {
-                        alert("Logout successfully");
-                        window.location.href = "../index.php";
-                    })
-                }
-            }
-        }).mount('body');
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <div id="job-search-container" style="background-color: black; color: white; padding: 50px;">
+        <div class="row">
+            <!-- Search Bar -->
+            <div id="search-bar" class="col-md-6">
+                <div class="search-container">
+                    <input type="text" placeholder="Search jobs...">
+                    <!-- Add other search-related elements here -->
+                </div>
+            </div>
+    
+            <!-- Employer Reviews -->
+            <div id="employer-reviews" class="col-md-2">
+                <h3>Employer Reviews</h3>
+                <!-- Add content specific to employer reviews -->
+            </div>
+    
+            <!-- Project Duration -->
+            <div id="project-duration" class="col-md-2">
+                <h3>Project Duration</h3>
+                <!-- Add content specific to project duration -->
+            </div>
+    
+            <!-- For Employers -->
+            <div id="for-employers" class="col-md-2">
+                <h3>For Employers</h3>
+                <!-- Add content specific to employers -->
+            </div>
+        </div>
+    </div>
+    
+
+
 </body>
 </html>
