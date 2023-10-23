@@ -12,44 +12,54 @@
 </head>
 <body>
     <div>
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-black">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <!-- Left Logo -->
+                <a class="navbar-brand" href="#" style="font-size: 30px; flex: 0;">
+                    <img src="../images/logo.jpg" alt="Logo" style="width: 150px;">
+                </a>
+        
+                <!-- Navbar Toggler Button -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Courses</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>
-                </ul>
-                <button class="btn btn-warning" v-on:click="logOut">Logout</button>
-              </div>
+        
+                <!-- Navbar Links -->
+                <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" style="font-size: 28px;">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" style="font-size: 28px;">Courses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" style="font-size: 28px;">Jobs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" style="font-size: 28px;">Leaderboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" style="font-size: 28px;">Profile</a>
+                        </li>
+                    </ul>
+                </div>
+        
+                <!-- Right Logo (Duplicated) -->
+                <a class="navbar-brand" href="#" style="font-size: 30px; flex: 0;">
+                    <img src="../images/filler.jpg" alt="Logo" style="width: 150px;">
+                </a>
             </div>
+            <div id="indicator"></div>
         </nav>
+        
+        
     </div>
+    
 
     <div class="container-fluid" style="padding: 0px;">
         <div id="achievements" class="row">
-            <div class="main col-8" style="padding-right: 0px;">
+            <div class="body col-8" style="padding-right: 0px;">
                 <div class="row">
                     <h1>Achievements</h1>
                 </div>
@@ -59,10 +69,38 @@
                         <h2>beginner</h2>
                     </div>
                     <div class="col-6 row">
-                        <p class="col-6">ranking</p>
-                        <p class="col-6">days</p>
-                        <p class="col-6">courses</p>
-                        <p class="col-6">badges</p>
+                        <div class="col-6 category">
+                            <img src="../images/ranking.png" alt="Rank Icon" style="width: 100px;">
+                            <div class="category-text">
+                                <span class="number">#159</span>
+                                <br>
+                                Ranking
+                            </div>
+                        </div>
+                        <div class="col-6 category">
+                            <img src="../images/days.png" alt="Days Icon" style="width: 100px;">
+                            <div class="category-text">
+                                <span class="number">122</span>
+                                <br>
+                                Days
+                            </div>
+                        </div>
+                        <div class="col-6 category">
+                            <img src="../images/course.png" alt="Courses Icon" style="width: 100px;">
+                            <div class="category-text">
+                                <span class="number">7</span>
+                                <br>
+                                Courses
+                            </div>
+                        </div>
+                        <div class="col-6 category">
+                            <img src="../images/badges.png" alt="Badges Icon" style="width: 100px;">
+                            <div class="category-text">
+                                <span class="number">7</span>
+                                <br>
+                                Badges
+                            </div>
+                        </div>
                     </div>
                     <div class="stats">
                         
@@ -250,4 +288,39 @@
     </div>
 
     </body>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const navbar = document.getElementById('navbar');
+        const indicator = document.getElementById('indicator');
+
+        // Function to update the indicator position based on the active link
+        function updateIndicator() {
+            const activeLink = document.querySelector('.nav-link.active');
+            if (activeLink) {
+                const offsetLeft = activeLink.offsetLeft;
+                const width = activeLink.offsetWidth;
+                indicator.style.width = `${width}px`;
+                indicator.style.transform = `translateX(${offsetLeft}px)`;
+            }
+        }
+
+        // Add click event listeners to each link
+        const links = document.querySelectorAll('.nav-link');
+        links.forEach(link => {
+            link.addEventListener('click', function () {
+                // Remove 'active' class from all links
+                links.forEach(link => link.classList.remove('active'));
+                // Add 'active' class to the clicked link
+                this.classList.add('active');
+                // Update the indicator position
+                updateIndicator();
+            });
+        });
+
+            // Initial positioning of the indicator
+            updateIndicator();
+        });
+
+    </script>
     </html>

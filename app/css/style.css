@@ -19,6 +19,10 @@
     background-color: black;
 }
 
+.body {
+    padding: 10px 50px;
+}
+
 .main {
     padding: 50px;
 }
@@ -51,8 +55,8 @@ body {
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-    height: 150px;
-    font-size: 25px;
+    height: 200px;
+    font-size: 20px;
 }
 
 .reminder-count {
@@ -62,11 +66,53 @@ body {
     background-color: #ff6347; 
     color: #fff;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 12px;
-    font-size: 35px;
+    font-size: 25px;
+}
+
+.category {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.category-text {
+    margin-left: 10px;
+}
+
+.number {
+    /* background-color: #aaaaaa; */
+    color: #fff;
+    /* border-radius: 10%; */
+    padding: 5px;
+    font-size: 50px;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding-bottom: 5px; 
+}
+
+.nav-link {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.691); 
+    margin: 0 10px;
+    position: relative;
+}
+
+#indicator {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: #007bff;
+    transition: 0.3s; 
 }
