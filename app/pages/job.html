@@ -168,6 +168,7 @@
                         </div>
                         <div class="card-footer" style="background: inherit; border-color: inherit;">
                         <a href="#" class="btn btn-dark">Apply</a>
+                        <button id="saveButton" onclick="saveFilters()">Save</button>
                         </div>
                         
                     </div>
@@ -184,6 +185,7 @@
                         </div>
                         <div class="card-footer" style="background: inherit; border-color: inherit;">
                         <a href="#" class="btn btn-dark">Apply</a>
+                        <button id="saveButton" onclick="saveFilters()">Save</button>
                         </div>
                         
                     </div>
@@ -200,6 +202,7 @@
                         </div>
                         <div class="card-footer" style="background: inherit; border-color: inherit;">
                         <a href="#" class="btn btn-dark">Apply</a>
+                        <button id="saveButton" onclick="saveFilters()">Save</button>
                         </div>
                         
                     </div>
@@ -209,7 +212,43 @@
 
     </div>
 
+    <script>
+        // Function to save filters to local storage
+        function saveFilters() {
+            // Get selected filters (you need to adapt this part based on your actual filters)
+            var selectedFilters = {
+                employmentType: getSelectedFilters('employment-type'),
+                eligibility: getSelectedFilters('eligibility'),
+                workLocation: getSelectedFilters('work-location')
+            };
 
+        // Save to local storage
+        localStorage.setItem('savedFilters', JSON.stringify(selectedFilters));
+
+        alert('Job saved!');
+        }
+
+        // Function to get selected filters by name
+        function getSelectedFilters(filterName) {
+            var checkboxes = document.querySelectorAll('input[name="' + filterName + '"]:checked');
+            return Array.from(checkboxes, checkbox => checkbox.value);
+        }
+
+        // Function to load saved filters from local storage
+        function loadSavedFilters() {
+            var savedFiltersJSON = localStorage.getItem('savedFilters');
+            if (savedFiltersJSON) {
+                var savedFilters = JSON.parse(savedFiltersJSON);
+
+                // Apply saved filters to your UI (you need to implement this part)
+                applyFilters(savedFilters);
+            }
+        }
+
+        // Call this function when the page is loaded to load saved filters
+        loadSavedFilters();
+
+    </script>
 
 </body>
 </html>
