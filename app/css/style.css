@@ -116,6 +116,21 @@ body {
     background-color: #007bff;
     transition: 0.3s; 
 }
+
+.search-container {
+    width: 90%;
+    height: 60px;
+}
+
+.search-container input {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid white;
+    border-radius: 20px;
+}
+
 .calendar {
     display: flex;
     flex-direction: row;
@@ -204,8 +219,7 @@ body {
     border-color: inherit;
   }
   
-  /* First border-left-width setting is a fallback */
-  .card-custom-img::after {
+.card-custom-img::after {
     position: absolute;
     content: '';
     top: 161px;
@@ -224,7 +238,7 @@ body {
     border-left-color: inherit;
   }
   
-  .card-custom-avatar img {
+.card-custom-avatar img {
     border-radius: 50%;
     position: absolute;
     top: 100px;
@@ -232,3 +246,5 @@ body {
     width: 100px;
     height: 100px;
   }
+
+
