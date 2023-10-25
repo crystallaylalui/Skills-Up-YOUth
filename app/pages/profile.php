@@ -1,124 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF=8">
-    <title>Skills For Youth</title>
-    <link rel="stylesheet" href="styles.css"> 
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="styles.css">
+
+	<title>AdminHub</title>
 </head>
 <body>
-    <div id = "container">
-        <!-- <Navbar> -->
-        <div id = "nav">
-            <div id = "logo"><p>SFY</p></div>
-            <a href="#"><img src = "../images/filter.png" alt="filter" class = "btn"></a>
-            <a href="#"><img src = "../images/dashboard.png" alt="dashboard" class = "btn active"></a>
-            <a href="#"><img src = "../images/profile9.png" alt="profile" class = "btn"></a>
-            <a href="#"><img src = "../images/stats.png" alt="stats" class = "btn"></a>
 
 
-        </div>
-        <!-- <--Main>  --> 
-    <div id = "main">
-        <h2>Progress Dashboard</h2>
-        <section class="top">
-            <div class="quiz">
-                <p><span class = "subTitle">Deadline </span>12:00</p>
-                <p class = "largeTitle">Quiz - Unit 3</p>
-                <p class = "subTitle">Introduction to Python</p>
-                <div class="test">
-                    <img src = "../images/profile-imgs.png" alt = "profile-imgs">
-                    <a href = "#">Start Testing</a>
-                </div>
-            </div>
-            <div class="homework todo">
-                <i class="far fa-check-circle"></i>
-                <p class="todoTitle">Homework</p>
-                <p class="todoSub">Exercise 1</p>
-            </div>
-
-            <div class="todaylesson todo">
-                <i class="far fa-check-circle"></i>
-                <p class="todoTitle">Today's Topic</p>
-                <p class="todoSub">Dictionaries</p>
-            </div>
-        </section>
-
-
-        <section class="middle">
-                <div class = "flagProgress">
-                    <div class = "flagProgressTitle">
-                        <img src ="../images/coding.jpg" alt="Coding">
-                        <p class="largeTitle">Introduction to Python</p>
-                    </div>
-                    <div class ="flagProgressAmount">
-                        <p>75%</p>
-                        <progress value="75" max = "100"></progress>
-                    </div>
-                </div>
-        </section>
-        <section class="bottom">
-                <div class ="botPython bot">
-                    <div>
-                        <i class = "fas fa-pencil-alt icon-circle"></i>
-                        <p class="title">Python</p>
-                        <span class = "subTitle">Python Tutorial</span>
-                        <i class="fas fa-angle-right"></i>	
-                    </div>
-                </div>
-                
-                <div class ="botJavascript bot">
-                    <div>
-                        <i class = "fas fa-spell-check icon-circle"></i>
-                        <p class="title">Javascript</p>
-                        <span class = "subTitle">Javascript Tutorial</span>
-                        <i class="fas fa-angle-right"></i>	
-                    </div>
-                </div>
-        </section>
-    </div>
-<!-- <-- Profile --> 
-                <div id = "profile">
-                    <div class ="pic">
-                        <img width = "200px"src = "../images/youth.png" alt = "Youth">	
-                        <p class = "largeTitle name">Skills For Youth</p>
-                        <p class = "subTitle">Learn new skills</p>
-                    </div>
-
-                    <div class ="ad">	
-                        <div class = "adBox">
-                            <p class = "title">Apply for this new job now!</p>
-                            <span>For Python Badges</span>
-                            <i class="fas fa-angle-right"></i>	
-                    </div>
-
-                    <div class ="progress">
-                        <p class = "largeTitle">Course Progress</p>
-                        <div class = "progressBox python">
-                            <p class="percent">70%</p>
-                            <i class = "fas fa-pencil-alt"></i>	
-                            <p class="title">Python 101</p>
-                            <span class = "subTitle">Dive deeper into the Python language</span>
-                        </div>
-
-                        <div class = "progressBox java">
-                            <p class="percent">50%</p>
-                            <i class = "fas fa-pencil-alt"></i>	
-                            <p class="title">Javascript 101</p>
-                            <span class = "subTitle">Introduction to Java</span>
-                        </div>
-
-                        <div class = "progressBox css">
-                            <p class="percent">20%</p>
-                            <i class = "fas fa-pencil-alt"></i>	
-                            <p class="title">CSS 101</p>
-                            <span class = "subTitle">Introduction to CSS</span>
-                        </div>
-                    </div>	
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-smile'></i>
+			<span class="text">Skills For Youth</span>
+		</a>
+		<ul class="side-menu top">
+			<li class="active">
+				<a href="#">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">My Store</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Analytics</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-message-dots' ></i>
+					<span class="text">Message</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Team</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="#">
+					<i class='bx bxs-cog' ></i>
+					<span class="text">Settings</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
 
 
-                </div>
-    </div>
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu' ></i>
+			<a href="#" class="nav-link">Categories</a>
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<a href="#" class="notification">
+				<i class='bx bxs-bell' ></i>
+				<span class="num">8</span>
+			</a>
+			<a href="#" class="profile">
+				<img src="images/youth.png">
+			</a>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Welcome back!</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">Home</a>
+						</li>
+					</ul>
+				</div>
+				<a href="#" class="btn-download">
+					<i class='bx bxs-cloud-download' ></i>
+					<span class="text">Download PDF</span>
+				</a>
+			</div>
+
+			<ul class="box-info">
+				<li>
+					<i class='bx bxs-calendar-check' ></i>
+					<span class="text">
+						<h3>5</h3>
+						<p>Courses in progress</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-group' ></i>
+					<span class="text">
+						<h3>24</h3>
+						<p>Badges earned</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-dollar-circle' ></i>
+					<span class="text">
+						<h3>7</h3>
+						<p>Projects completed</p>
+					</span>
+				</li>
+			</ul>
 
 
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Course List</h3>
+						<i class='bx bx-search' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>Course Name</th>
+								<th>Start Date</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<img src="images/python.jpg">
+									<p>Intro to Python</p>
+								</td>
+								<td>29-10-2023</td>
+								<td><span class="status completed">Completed</span></td>
+							</tr>
+							<tr>
+								<td>
+									<img src="images/javascript.jpg">
+									<p>Intro to Javascript</p>
+								</td>
+								<td>30-10-2023</td>
+								<td><span class="status completed">Completed</span></td>
+							</tr>
+							<tr>
+								<td>
+									<img src="images/c.png">
+									<p>Intro to C</p>
+								</td>
+								<td>01-11-2023</td>
+								<td><span class="status completed">Completed</span></td>
+							</tr>
+							<tr>
+								<td>
+									<img src="images/vue.png">
+									<p>Vue 101</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status pending">In Progress</span></td>
+							</tr>
+							<tr>
+								<td>
+									<img src="images/webdev.jpg">
+									<p>Web Design 101</p>
+								</td>
+								<td>2-11-2023</td>
+								<td><span class="status pending">In Progress</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="todo">
+					<div class="head">
+						<h3>To Do List</h3>
+						<i class='bx bx-plus' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<ul class="todo-list">
+						<li class="completed">
+							<p>Intro to Python: Exercise 1</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="completed">
+							<p>Intro to Javascript: Quiz 1</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+                        <li class="completed">
+							<p>Intro to C: Quiz 2</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="not-completed">
+							<p>Vue 101: Exercise 2</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="not-completed">
+							<p>Web Design 101: Exercise 3</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+
+	<script src="script.js"></script>
 </body>
 </html>
