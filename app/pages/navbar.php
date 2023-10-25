@@ -1,3 +1,5 @@
+<?php
+echo '
 <nav class="navbar navbar-expand-lg navbar-dark bg-black">
     <div class="container-fluid">
         <!-- Left Logo -->
@@ -14,19 +16,19 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="font-size: 28px;">Home</a>
+                    <a class="nav-link" href="homepage.php" style="font-size: 28px;">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="font-size: 28px;">Courses</a>
+                    <a class="nav-link" href="courses.php" style="font-size: 28px;">Courses</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="font-size: 28px;">Jobs</a>
+                    <a class="nav-link" href="job.php" style="font-size: 28px;">Jobs</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="font-size: 28px;">Leaderboard</a>
+                    <a class="nav-link" href="leaderboard.php" style="font-size: 28px;">Leaderboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="font-size: 28px;">Profile</a>
+                    <a class="nav-link" href="profile.php" style="font-size: 28px;">Profile</a>
                 </li>
             </ul>
         </div>
@@ -37,4 +39,7 @@
         </a>
     </div>
     <div id="indicator"></div>
-</nav>
+    </nav>
+'
+?>
+
