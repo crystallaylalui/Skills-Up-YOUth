@@ -238,3 +238,30 @@ body {
     width: 100px;
     height: 100px;
   }
+
+.video {
+    width: 100%;
+    height: 600px;
+    background-color: gray;
+}
+
+.video-course-title{
+    margin-top: 10px;
+}
+.no-spacing {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    margin: 0;
+    padding: 0;
+    /* Add additional styling here */
+}
+
+
+
+
+

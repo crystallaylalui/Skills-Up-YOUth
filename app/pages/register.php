@@ -3,7 +3,7 @@ session_start();
 // No session variable "user" => no login
 if ( isset($_SESSION["user"]) ) {
      // redirect to login page
-     header("Location: job.php");
+     header("Location: homepage.php");
      exit;
 }
 ?>
@@ -72,7 +72,7 @@ if ( isset($_SESSION["user"]) ) {
                         username: this.username,
                         password: this.password,
                     }
-                    axios.post('../../server/api/register', user)
+                    axios.post('../../server/api/register.php', user)
                     .then((res) => {
                         if (res.data) {
                             console.log(res.data);
