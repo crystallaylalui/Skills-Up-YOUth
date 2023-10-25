@@ -71,11 +71,11 @@ if ( isset($_SESSION["user"]) ) {
                         username: this.username,
                         password: this.password,
                     }
-                    axios.post('../server/api/login', user)
+                    axios.post('../server/api/login.php', user)
                     .then((res) => {
                         if (res.data) {
                             alert("Login Successful");
-                            window.location.href = "pages/home.php";
+                            window.location.href = "pages/homepage.php";
                         } else {
                             alert("Login fail");
                         }
