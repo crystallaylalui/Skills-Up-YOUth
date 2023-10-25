@@ -10,10 +10,10 @@
         <!-- <Navbar> -->
         <div id = "nav">
             <div id = "logo"><p>SFY</p></div>
-            <a href="#"><img src = "imgs/filter.png" alt="filter" class = "btn"></a>
-            <a href="#"><img src = "imgs/dashboard.png" alt="dashboard" class = "btn active"></a>
-            <a href="#"><img src = "imgs/profile9.png" alt="profile" class = "btn"></a>
-            <a href="#"><img src = "imgs/stats.png" alt="stats" class = "btn"></a>
+            <a href="#"><img src = "../images/filter.png" alt="filter" class = "btn"></a>
+            <a href="#"><img src = "../images/dashboard.png" alt="dashboard" class = "btn active"></a>
+            <a href="#"><img src = "../images/profile9.png" alt="profile" class = "btn"></a>
+            <a href="#"><img src = "../images/stats.png" alt="stats" class = "btn"></a>
 
 
         </div>
@@ -26,7 +26,7 @@
                 <p class = "largeTitle">Quiz - Unit 3</p>
                 <p class = "subTitle">Introduction to Python</p>
                 <div class="test">
-                    <img src = "imgs/profile-imgs.png" alt = "profile-imgs">
+                    <img src = "../images/profile-imgs.png" alt = "profile-imgs">
                     <a href = "#">Start Testing</a>
                 </div>
             </div>
@@ -47,7 +47,7 @@
         <section class="middle">
                 <div class = "flagProgress">
                     <div class = "flagProgressTitle">
-                        <img src ="imgs/coding.jpg" alt="Coding">
+                        <img src ="../images/coding.jpg" alt="Coding">
                         <p class="largeTitle">Introduction to Python</p>
                     </div>
                     <div class ="flagProgressAmount">
@@ -79,7 +79,7 @@
 <!-- <-- Profile --> 
                 <div id = "profile">
                     <div class ="pic">
-                        <img width = "200px"src = "imgs/youth.png" alt = "Youth">	
+                        <img width = "200px"src = "../images/youth.png" alt = "Youth">	
                         <p class = "largeTitle name">Skills For Youth</p>
                         <p class = "subTitle">Learn new skills</p>
                     </div>
