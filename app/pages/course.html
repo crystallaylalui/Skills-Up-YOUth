@@ -68,50 +68,62 @@
                 <h4>
                     course content
                 </h4>
-                <ul class="list-group">
-                    <li class="list-group-item">
-                      <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
-                      <label class="form-check-label video-name" for="firstCheckbox">video 1</label>
-                      <p style="font-size: small;"> 1 min</p>
-                    </li>
-                    <li class="list-group-item">
-                      <input class="form-check-input me-1" type="checkbox" value="" id="secondCheckbox">
-                      <label class="form-check-label video-name" for="secondCheckbox">video 2</label>
-                      <p style="font-size: small;"> 1 min</p>
-                    </li>
-                    <li class="list-group-item">
-                      <input class="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox">
-                      <label class="form-check-label video-name" for="thirdCheckbox">video 3</label>
-                      <p style="font-size: small;"> 1 min</p>
-                    </li>
-                    <li class="list-group-item">
-                        <input class="form-check-input me-1" type="checkbox" value="" id="secondCheckbox">
-                        <label class="form-check-label video-name" for="secondCheckbox">video 4</label>
-                        <p style="font-size: small;"> 1 min</p>
-                    </li>
-                    <li class="list-group-item">
-                        <input class="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox">
-                        <label class="form-check-label video-name" for="thirdCheckbox">video 5</label>
-                        <p style="font-size: small;"> 1 min</p>
-                    </li>
-                  </ul>
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action content-item active" aria-current="true"> 
+                        <h5>video 1</h5>
+                        <p style="font-size: small;"> duration: 1min</p>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action content-item">
+                        <h5>video 2</h5>
+                        <p style="font-size: small;"> duration: 1min</p>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action content-item">
+                        <h5>video 3</h5>
+                        <p style="font-size: small;"> duration: 1min</p>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action content-item">
+                        <h5>video 4</h5>
+                        <p style="font-size: small;"> duration: 1min</p>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action content-item">
+                        <h5>video 5</h5>
+                        <p style="font-size: small;"> duration: 1min</p>
+                    </a>
+                </div>
 
-                  <h4 class="pt-5"> checkpoints </h4>
-                  <ul class="list-group">
-                    <li class="list-group-item">
-                        <input class="form-check-input me-1" type="checkbox" value="" id="secondCheckbox">
-                        <label class="form-check-label video-name" for="secondCheckbox">mid-course quiz</label>
-                    </li>
-                    <li class="list-group-item">
-                        <input class="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox">
-                        <label class="form-check-label video-name" for="thirdCheckbox">final quiz</label>
-                    </li>
-                  </ul>
+                  <h4 class="pt-5"> quizzes to be completed </h4>
+                  <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action quiz-item" aria-current="true"> 
+                        <h5>mid-course quiz</h5>
+                        <p style="font-size: small;"> 3 questions </p>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action quiz-item">
+                        <h5>final quiz</h5>
+                        <p style="font-size: small;">10 questions</p>
+                    </a>
+                </div>
                   
 
             </div>
         </div>
 
     </div>
+    <script>
+        const listGroupItems = document.querySelectorAll('.content-item');
+
+        listGroupItems.forEach(item => {
+            item.addEventListener('click', function () {
+                // Remove the 'active' class from all items
+                listGroupItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Add the 'active' class to the clicked item
+                this.classList.add('active');
+            });
+        });
+        const listQuizItems = document.querySelectorAll('.quiz-item');
+
+    </script>
 
 </body>
