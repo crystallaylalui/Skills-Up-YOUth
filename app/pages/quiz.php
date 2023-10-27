@@ -134,9 +134,9 @@
                     return {
                         quiz: '',
                         tags: 'javascript', // set the topic
-                        limit: 10, // set number of questions
+                        limit: 3, // set number of questions
                         currentIndex: 0,
-                        selectedAnswers: [], // Initialize as an empty array
+                        selectedAnswers: {}, // Initialize as an empty array
                         quizSubmitted: false,
                         quizResults: [],
                     };
@@ -147,12 +147,9 @@
                 methods: {
                     getQuiz() {
                         let url = `https://quizapi.io/api/v1/questions?tags=${this.tags}&limit=${this.limit}&apiKey=mEBcY3BKOXPQCSBfEM8OrDhUPJB43ALBjAKdw9dI`;
-
                         axios.get(url)
                             .then(r => {
                                 this.quiz = r.data;
-                                // Initialize selectedAnswers array based on the number of questions
-                                this.selectedAnswers = Array(this.quiz.length).fill(null);
                             })
                     },
 
@@ -178,7 +175,11 @@
 
 
                 submitQuiz() {
-                    if (!Array.isArray(this.selectedAnswers) || this.selectedAnswers.length !== this.quiz.length) {
+                    const numberOfAnswers = Object.keys(this.selectedAnswers).length;
+                    console.log(this.selectedAnswers)
+                    console.log(this.quiz)
+
+                    if (numberOfAnswers !== this.quiz.length) {
                         console.error('Invalid selectedAnswers array.');
                         return;
                     }
