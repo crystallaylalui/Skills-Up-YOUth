@@ -1,6 +1,6 @@
 <?php
 echo '
-<nav class="navbar navbar-expand-lg navbar-dark bg-black">
+<nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-black">
     <div class="container-fluid">
         <!-- Left Logo -->
         <a class="navbar-brand" href="#" style="font-size: 30px; flex: 0;">
@@ -37,9 +37,28 @@ echo '
         <a class="navbar-brand" href="#" style="font-size: 30px; flex: 0;">
             <img src="../images/filler.jpg" alt="Logo" style="width: 150px;">
         </a>
+
+        <button class="btn btn-warning" v-on:click="logoutUser">Logout</button>
     </div>
     <div id="indicator"></div>
     </nav>
+
+    <!-- navbar -->
+    <script>
+        // nav bar
+        const navbar = Vue.createApp({
+            methods: {
+                logoutUser() {
+                    axios.post("../../server/api/logout.php")
+                    .then(r => {
+                        alert("Logout successfully");
+                        window.location.href = "../index.php";
+                    })
+                }
+            }
+        })
+        const logout = navbar.mount("#navbar");
+    </script>
 '
 ?>
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 // No session variable "user" => no login
-if ( isset($_SESSION["user"]) ) {
+if (isset($_SESSION["user_id"]) ) {
      // redirect to login page
      header("Location: homepage.php");
      exit;
@@ -41,9 +41,13 @@ if ( isset($_SESSION["user"]) ) {
                 <div class="input-group mb-4">
                     <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" v-model="username">
                 </div>
+                <div class="h6">Email</div>
+                <div class="input-group mb-4">
+                    <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" v-model="email">
+                </div>
                 <div class="h6">Password</div>
                 <div class="input-group mb-4">
-                    <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" v-model="password">
+                    <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" v-model="password">
                 </div>
                 <br>
                 <div class="d-flex justify-content-end">
@@ -63,14 +67,16 @@ if ( isset($_SESSION["user"]) ) {
                 return {
                     username: '',
                     password: '',
+                    email: '',
                 };
             },
             methods: {
                 registerUser() {
-                    console.warn(this.username,this.password);
+                    console.warn(this.username,this.password,this.email);
                     const user = {
                         username: this.username,
                         password: this.password,
+                        email: this.email,
                     }
                     axios.post('../../server/api/register.php', user)
                     .then((res) => {

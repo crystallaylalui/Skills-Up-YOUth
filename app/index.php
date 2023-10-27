@@ -1,7 +1,7 @@
 <?php
 session_start();
 // No session variable "user" => no login
-if ( isset($_SESSION["user"]) ) {
+if (isset($_SESSION["user_id"]) ) {
      // redirect to login page
      header("Location: pages/homepage.php");
      exit;
