@@ -261,6 +261,61 @@ body {
     /* Add additional styling here */
 }
 
+.registration-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0 10px;
+    background-color: #fff;
+    padding: 0 5px;
+    color: #888;
+    transition: transform 0.2s ease-in-out;
+    pointer-events: none;
+}
+
+.form-control {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #007BFF;
+    padding: 10px;
+    background-color: transparent;
+    color: #333;
+}
+
+.form-control:focus {
+    outline: none;
+    border-bottom: 2px solid #5BC0DE;
+}
+
+.form-control:focus + label,
+.form-control:not(:placeholder-shown) + label {
+    transform: translateY(-20px);
+    font-size: 0.8em;
+    background-color: #fff;
+}
+
+.btn.confirm-button {
+    background-color: #6eb4ff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.btn.confirm-button:hover {
+    background-color: #0056b3;
+}
 
 
 
