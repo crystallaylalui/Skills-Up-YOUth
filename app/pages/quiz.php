@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -84,10 +87,6 @@
 </head>
 
 <body>
-    <div>
-        <?php include('navbar.php'); ?>
-    </div>
-
     <div id="quiz">
         <div class="question-card question" v-for="(qn, index) in quiz" :class="{ active: index === currentIndex }">
             <div>
@@ -129,30 +128,32 @@
     </div>
 
     <script>
+        let urlParams = new URLSearchParams(window.location.search);
         const quiz = Vue.createApp({
             data() {
-                    return {
-                        quiz: '',
-                        tags: 'javascript', // set the topic
-                        limit: 3, // set number of questions
-                        currentIndex: 0,
-                        selectedAnswers: {}, // Initialize as an empty array
-                        quizSubmitted: false,
-                        quizResults: [],
-                    };
+                return {
+                    quiz: '',
+                    tags: 'javascript', // set the topic
+                    limit: 3, // set number of questions
+                    currentIndex: 0,
+                    selectedAnswers: {}, // Initialize as an empty array
+                    quizSubmitted: false,
+                    quizResults: [],
+                    enrolled_content: '',
+                };
+            },
+            created() {
+                this.getQuiz();
+                this.getEnrollment();
+            },
+            methods: {
+                getQuiz() {
+                    let url = `https://quizapi.io/api/v1/questions?tags=${this.tags}&limit=${this.limit}&apiKey=mEBcY3BKOXPQCSBfEM8OrDhUPJB43ALBjAKdw9dI`;
+                    axios.get(url)
+                        .then(r => {
+                            this.quiz = r.data;
+                        })
                 },
-                created() {
-                    this.getQuiz();
-                },
-                methods: {
-                    getQuiz() {
-                        let url = `https://quizapi.io/api/v1/questions?tags=${this.tags}&limit=${this.limit}&apiKey=mEBcY3BKOXPQCSBfEM8OrDhUPJB43ALBjAKdw9dI`;
-                        axios.get(url)
-                            .then(r => {
-                                this.quiz = r.data;
-                            })
-                    },
-
                 goToQuestion(index) {
                     this.currentIndex = index;
                 },
@@ -172,8 +173,6 @@
                     // Create a new object with the selected answer for the current question
                     this.selectedAnswers = { ...this.selectedAnswers, [questionIndex]: optionIndex };
                 },
-
-
                 submitQuiz() {
                     const numberOfAnswers = Object.keys(this.selectedAnswers).length;
                     console.log(this.selectedAnswers)
@@ -195,9 +194,11 @@
                             return;
                         }
 
-                        const isCorrect = Array.isArray(qn.correct_answers)
-                            ? qn.correct_answers.includes(selectedAnswerIndex)
-                            : selectedAnswerIndex === qn.correct_answers;
+                        // const isCorrect = Array.isArray(qn.correct_answers)
+                        //     ? qn.correct_answers.includes(selectedAnswerIndex)
+                        //     : selectedAnswerIndex === qn.correct_answers;
+
+                        const isCorrect = qn.correct_answer == this.selectedAnswers[i];
 
                         quizResults.push({
                             question: qn.question,
@@ -207,11 +208,43 @@
 
                     this.quizResults = quizResults;
                     this.quizSubmitted = true;
+
+
+                    // if all correct, completeQuiz
+                    this.completeQuiz();
+                },
+                completeQuiz() {
+                    this.enrolled_content.quiz[1] = 1;
+
+                    let url = "../../server/api/enrollments.php";
+                    let params = {
+                        update: true,
+                        user_id: <?php echo $_SESSION["user_id"]; ?>,
+                        course_id: urlParams.get('course_id'),
+                        content: JSON.stringify(this.enrolled_content),
+                        completed: true, // set to true
+                    };
+
+                    axios.post(url, params)
+                    .then(r => {
+                        alert("Quiz completed!");
+                    })
+                },
+                getEnrollment() {
+                    let url = "../../server/api/enrollments.php";
+                    let params = {
+                        user_id: <?php echo $_SESSION["user_id"]; ?>,
+                        course_id: urlParams.get('course_id'),
+                    }
+
+                    axios.get(url, {params: params})
+                    .then(r => {
+                        if (r.data != null) {
+                            this.enrolled_content = JSON.parse(r.data.content);
+                        }
+                    })
                 }
             },
-            created() {
-                this.getQuiz();
-            }
         })
 
         const vm = quiz.mount('#quiz');

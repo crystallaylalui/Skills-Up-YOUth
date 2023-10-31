@@ -50,3 +50,16 @@ CREATE TABLE IF NOT EXISTS course (
   course_badges json NOT NULL,
   PRIMARY KEY (course_id)
 );
+
+
+CREATE TABLE IF NOT EXISTS enrollment (
+  enrollment_id int NOT NULL AUTO_INCREMENT,
+  user_id int NOT NULL,
+  course_id int NOT NULL,
+  content json NOT NULL,
+  start_date datetime NOT NULL,
+  completed boolean NOT NULL,
+  PRIMARY KEY (enrollment_id),
+  FOREIGN KEY (user_id) REFERENCES User(user_id),
+  FOREIGN KEY (course_id) REFERENCES Course(course_id)
+);
