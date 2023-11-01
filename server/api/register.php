@@ -3,6 +3,7 @@
 
     # Get parameters passed from register.php
     $_POST = json_decode(file_get_contents('php://input'),true);
+    
     $username = $_POST["username"];
     $password = $_POST["password"];
     $email = $_POST["email"];

@@ -30,8 +30,10 @@ if (isset($_SESSION["user_id"]) ) {
             </div>
             
             <div class="col-md-5 col-12">
-                <div class="mt-5" style="justify-content:center;width:400px;padding-top:100px">
-                    <h1>Log in</h1>
+                <div class="mt-3" style="justify-content:center;width:400px;padding-top:100px">
+                    <img src="images/skills-up-logo.jpg" width="400" alt="Skills Up Logo">
+                    
+                    <h1 class="mt-2" style="color:royalblue">Log in</h1>
                     <br>
                     <div class="login-form">
                         <div class="form-group">
@@ -45,8 +47,12 @@ if (isset($_SESSION["user_id"]) ) {
                     <div class="d-flex justify-content-end">
                         <button v-on:click="loginUser" class="btn confirm-button">Login</button>
                     </div>
+                    
+                    <p class="signup py-5 text-center">Don't have an account? <a href="pages/register.php">Register here.</a></p>
+
                 </div>
             </div>
+        </div>  
     </div>
     
     <script>

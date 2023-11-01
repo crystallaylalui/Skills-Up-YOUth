@@ -27,20 +27,17 @@
 
     <div id="homepage">
         <div class="container-fluid" style="padding: 0px;">
-            <div id="achievements" class="row">
-                <div class="body col-8" style="padding-right: 0px;">
-                <h1>Welcome back {{ user.username }}!</h1>
+            <div id="achievements" class="row homepage-header">
+                <div class="body col-md-8 col-sm-6" style="padding-right: 0px;">
+                <p class="display-6" style="margin-bottom:30px">Welcome back, {{ user.username }}!</p>
                     <div class="row">
-                        <h1>Achievements</h1>
-                    </div>
-                    <div class="row">
-                        <div class="profile col-4">
-                            <img src="../images/profile8.jpg" alt="Profile Picture" class="rounded-circle" style="width: 100px; height: 100px; margin-right: 10px;">
-                            <h2>beginner</h2>
+                        <div class="profile col-lg-4">
+                            <img src="../images/profile8.jpg" alt="Profile Picture" class="rounded-circle" style="width: 200px; height: 200px; margin-top:10px;margin-right: 10px;">
+                            <h4 style="margin-top:10px;margin-left: 50px;">beginner</h4>
                         </div>
                         <div class="col-6 row">
                             <div class="col-6 category">
-                                <img src="../images/ranking.png" alt="Rank Icon" style="width: 100px;">
+                                <!-- <img src="../images/ranking.png" alt="Rank Icon" style="width: 100px;"> -->
                                 <div class="category-text">
                                     <span class="number">#{{ getRank() }}</span>
                                     <br>
@@ -48,27 +45,27 @@
                                 </div>
                             </div>
                             <div class="col-6 category">
-                                <img src="../images/days.png" alt="Days Icon" style="width: 100px;">
+                                <!-- <img src="../images/days.png" alt="Days Icon" style="width: 100px;"> -->
                                 <div class="category-text">
                                     <span class="number">122</span> 
                                     <br>
-                                    Days
+                                    Days active
                                 </div>
                             </div>
                             <div class="col-6 category">
-                                <img src="../images/course.png" alt="Courses Icon" style="width: 100px;">
+                                <!-- <img src="../images/course.png" alt="Courses Icon" style="width: 100px;"> -->
                                 <div class="category-text">
                                     <span class="number">{{ enrolled.length }}</span>
                                     <br>
-                                    Courses
+                                    Courses completed
                                 </div>
                             </div>
                             <div class="col-6 category">
-                                <img src="../images/badges.png" alt="Badges Icon" style="width: 100px;">
+                                <!-- <img src="../images/badges.png" alt="Badges Icon" style="width: 100px;"> -->
                                 <div class="category-text">
                                     <span class="number">{{ user_badges.length }}</span>
                                     <br>
-                                    Badges
+                                    Badges obtained
                                 </div>
                             </div>
                         </div>
@@ -78,12 +75,12 @@
                     </div>
                 </div>
 
-                <div id="reminder" class="col-4 main">
+                <div id="reminder" class="col-md-4 col-sm-6 main reminder-box">
                     <h1>Reminders</h1>
                     
                     <!-- Reminder Alert Box -->
-                    <div class="reminder-alert">
-                        <p style="font-size: 30px;">Your daily tasks are waiting! <span class="reminder-count">3</span></p>
+                    <div class="container-fluid">
+                        <p style="font-size: 20px;">Your daily tasks are waiting! <span class="reminder-count">3</span></p>
                         <ul class="reminder-list">
                             <li class="reminder-item">
                                 Don't forget to complete the Python course! <span class="reminder-count">1</span>

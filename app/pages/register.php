@@ -46,38 +46,38 @@ if (isset($_SESSION["user_id"]) ) {
         </div>
     </div>
 
-    <div class="services section" id="services">
+    <div class="services section">
         <div class="container">
             <div class="row">
+                <h1 class="text-center display-5 header-text fw-bold"> Become a freelance programmer today.</h1>
             <div class="container-fluid vh-100 mt-5 p-5 registration-bg">
-        <div class="row d-flex align-items-center h-75">
-            <div class="col-md-8 col-12">
-
-            </div>
-
-            <div class="col-md-4 col-12>
-                <div class="mt-5 p-3">
-                <h2 class="text-center m-3 p-3">Register</h2>
-                <div class="registration-form" id="register">
-                    <div class="form-group">
-                        <input type="text" id="username" class="form-control" placeholder="Username" v-model="username">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="email" class="form-control" placeholder="Email" v-model="email">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" id="password" class="form-control" placeholder="Password" v-model="password">
-                    </div>
-                    <br>
-                    <div class="d-flex justify-content-end">
-                        <button v-on:click="registerUser" class="btn confirm-button">Register</button>
-                    </div>
+            <div class="row d-flex align-items-center h-75">
+                <div class="col-md-8 col-12">
                 </div>
+
+            <div class="col-md-4 col-12">
+                <div class="mt-2 p-3">
+                <h2 class="text-center m-3 p-3" v-if="shouldAnimateRegister">Register</h2>
+                    <div class="registration-form" id="register">
+                        <div class="form-group">
+                            <input type="text" id="username" class="form-control" placeholder="Username" v-model="username">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="email" class="form-control" placeholder="Email" v-model="email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="password" class="form-control" placeholder="Password" v-model="password">
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-end">
+                            <button v-on:click="registerUser" class="btn confirm-button">Register</button>
+                        </div>
+                    </div>
                 <p class="signup py-5 text-center">Already have an account? <a href="../index.php">Login</a></p>
                 </div>
             </div>
         </div>
-    </div>
+            </div>
             </div>
         </div>
         

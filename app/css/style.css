@@ -27,12 +27,14 @@
     padding: 50px;
 }
 
+
+
 .lesson {
     margin: 20px 0px;
 }
 
 body {
-    background-color: rgb(250, 246, 246);
+    background-color: rgb(255, 255, 255);
 }
 
 .next {
@@ -46,6 +48,10 @@ body {
 
 .custom-bronze {
     background-color: #c79665; 
+}
+
+.homepage-header{
+    background: linear-gradient(69.5deg, rgba(189, 73, 255, 0.99) 18.6%, rgb(254, 76, 227) 85.9%);
 }
 
 .reminder-alert {
@@ -83,6 +89,7 @@ body {
 
 .category-text {
     margin-left: 10px;
+    font-size:13px;
 }
 
 .number {
@@ -90,7 +97,7 @@ body {
     color: #fff;
     /* border-radius: 10%; */
     padding: 5px;
-    font-size: 50px;
+    font-size: 40px;
     margin-right: 5px;
     font-weight: bold;
 }
@@ -104,9 +111,13 @@ body {
 
 .nav-link {
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.691); 
+    color: black; 
     margin: 0 10px;
     position: relative;
+}
+
+.nav-link:hover{
+    color:#c03afe;
 }
 
 #indicator {
@@ -447,6 +458,4 @@ body {
     line-height: 30px;
     font-weight:300;
 }
-
-
 
