@@ -19,38 +19,34 @@ if (isset($_SESSION["user_id"]) ) {
 
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body>
+<body style="background-color:white">
+
     <div id="login" class="container-fluid vh-100">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Skill Up Youth!</a>
-            </div>
-        </nav>
-        <div class="row d-flex align-items-center h-75">
-            <div class="col-md-8 col-12">
-                <img class="w-50 mx-auto d-block" src="images/login.svg">
+
+        <div class="row">
+            <div class="col-md-7 col-12">
+                <!-- Add an image here -->
+                <img src="images/login-pic.png" alt="login-background" class="img-fluid" style="height:800px">
             </div>
             
-            <div class="col-md-2 col-12">
-                <h1>Welcome!</h1>
-                <br>
-                <div class="h6">Username</div>
-                <div class="input-group mb-4">
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" v-model="username">
+            <div class="col-md-5 col-12">
+                <div class="mt-5" style="justify-content:center;width:400px;padding-top:100px">
+                    <h1>Log in</h1>
+                    <br>
+                    <div class="login-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" v-model="username">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" v-model="password">
+                        </div>
+                    <br>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button v-on:click="loginUser" class="btn confirm-button">Login</button>
+                    </div>
                 </div>
-                <div class="h6">Password</div>
-                <div class="input-group mb-4">
-                    <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" v-model="password">
-                </div>
-                <br>
-                <div class="d-flex justify-content-end">
-                    <button v-on:click="loginUser" class="btn confirm-button">Login</button>
-                </div>
-
-                
-                <p class="signup py-5 text-center">Don't have an account? <a href="pages/register.php">Register</a></p>
             </div>
-        </div>
     </div>
     
     <script>
