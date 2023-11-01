@@ -1,18 +1,20 @@
 <?php
     class UserDAO{
 
-        public function createUser($username, $email, $hashedPassword) {
+        public function createUser($username, $email, $hashedPassword, $points, $badges) {
             $conn_manager = new ConnectionManager();
             $pdo = $conn_manager->getConnection();
             
             $sql = "insert into user (username, email, hashed_password, points, badges) 
-                    values (:username, :email, :hashed_password, 0, '[]')";
+                    values (:username, :email, :hashed_password, :points, :badges)";
 
             
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(":username",$username);
             $stmt->bindParam(":email",$email);
             $stmt->bindParam(":hashed_password",$hashedPassword);
+            $stmt->bindParam(":points",$points);
+            $stmt->bindParam(":badges",$badges);
             $status = $stmt->execute();
             
 
@@ -207,6 +209,7 @@
 
             return $status;
         }
+        
 
     }
     

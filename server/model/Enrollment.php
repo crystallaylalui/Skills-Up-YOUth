@@ -1,26 +1,44 @@
 <?php
 
-    class Enrollment {
+    // class Enrollment {
 
+    //     private $enrollment_id;
+    //     private $user_id;
+    //     private $course_id;
+    //     private $duration;
+    //     private $last_watched_id;
+    //     private $completed_video_id;
+    //     private $completed;
+
+    //     public function __construct($enrollment_id, $user_id, $course_id, $duration, $last_watched_id, $completed_video_id, $completed) {
+    //         $this->enrollment_id = $enrollment_id;
+    //         $this->user_id = $user_id;
+    //         $this->course_id = $course_id;
+    //         $this->duration = $duration;
+    //         $this->last_watched_id = $last_watched_id;
+    //         $this->completed = $completed;
+    //         $this->completed_video_id = $completed_video_id;
+    //     }
+
+
+
+    // }
+
+    class Enrollment {
         private $enrollment_id;
         private $user_id;
         private $course_id;
-        private $duration;
-        private $last_watched_id;
-        private $completed_video_id;
+        private $content;
+        private $start_date;
         private $completed;
-
-        public function __construct($enrollment_id, $user_id, $course_id, $duration, $last_watched_id, $completed_video_id, $completed) {
+        public function __construct($enrollment_id, $user_id, $course_id, $content, $start_date, $completed) {
             $this->enrollment_id = $enrollment_id;
             $this->user_id = $user_id;
             $this->course_id = $course_id;
-            $this->duration = $duration;
-            $this->last_watched_id = $last_watched_id;
+            $this->content = $content;
+            $this->start_date = $start_date;
             $this->completed = $completed;
-            $this->completed_video_id = $completed_video_id;
         }
-
-
 
     }
 

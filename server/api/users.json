@@ -1,0 +1,18 @@
+[
+    {
+        "username": "KennyLim",
+        "password": "pass",
+        "email": "kennylim@email.com"
+
+    },
+    {
+        "username": "JeannaTan",
+        "password": "pass",
+        "email": "jeannatan@email.com"
+    },
+    {
+        "username": "TanWanFeng",
+        "password": "pass",
+        "email": "tanwanfeng@email.com"
+    }
+]

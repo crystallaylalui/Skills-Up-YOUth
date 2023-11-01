@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    // No session variable "user" => no login
+    if ( !isset($_SESSION["user_id"]) ) {
+         // redirect to login page
+         header("Location: ../index.php"); 
+         exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,17 +30,25 @@
             <div class="col-8">
                 <div class="p-4">
                     <div class="container-fluid py-5">
-                     <h2 class="display-6 fw-bold"> Hi, Michael! What do you want to learn today? </h2>
-                     <p class="fs-4 text-muted"> Invest in yourself and take the first step in <br>achieving your dreams </p>
-                   </div>
+                        <h2 class="display-6 fw-bold"> Hi, Michael! What do you want to learn today? </h2>
+                        <p class="fs-4 text-muted"> Invest in yourself and take the first step in <br>achieving your dreams </p>
+                    </div>
                 </div>
                 <hr>
                 <div class="px-5">
                   <div id="courses">
                     <div class="m-5">
+                        <h3>My courses</h3>
+                        <!-- <div class="row">
+                            <course v-for="c in enrolled_courses" v-if="enrolled_courses" :course_id="c.course.course_id" :title="c.course.course_title" :description="c.course.course_description" :playlist_url="c.course.playlist_url"></course>
+                        </div>  -->
+                        <div class="row">
+                            <course v-for="c in enrolled_courses.sort(function(a, b){return a.completed - b.completed})" :completed="c.completed" :enrolled="true" :course_id="c.course_id" :title="c.course ? c.course.course_title : ''" :description="c.course ? c.course.course_description : ''" :playlist_url="c.course.playlist_url"></course>
+                        </div> 
+                        <hr>
                         <h3>All courses</h3>
                         <div class="row">
-                            <course v-for="c in courses" :course_id="c.course_id" :title="c.course_title" :description="c.course_description" :playlist_url="c.playlist_url"></course>
+                            <course v-for="c in courses" :course_id="c.course_id" :title="c.course_title" :description="c.course_description" :playlist_url="c.playlist_url" :completed="false"></course>
                         </div>       
                     </div>
                   </div>
@@ -86,76 +103,111 @@
     </div>
 
     <script>
-      // 1. display courses
+        // 1. display courses
 
-      const courses = Vue.createApp({
-          data() {
-              return {
-                  courses: [],
-                  badges: '',
-              }
-          },
-          methods: {
-              showCourses() {
-                  
-                  let url = "../../server/api/courses.php";
+        const courses = Vue.createApp({
+            data() {
+                return {
+                    courses: [],
+                    enrolled_courses: [],
+                    badges: '',
+                }
+            },
+            methods: {
+                showCourses() {
+                    
+                    let url = "../../server/api/courses.php";
 
-                  axios.get(url)
-                  .then(r => {
-                      this.courses = r.data;
-                      console.log(r.data);
-                  })
-              },
-          },
-          created() {
-              this.showCourses();
-          }
-      })
+                    axios.get(url)
+                    .then(r => {
+                        this.courses = r.data;
+                        //   console.log(r.data);
+                    })
+                },
+                getEnrolledCourses() {
+                    let url = "../../server/api/enrollments.php";
+                    let params = {
+                        user_id: <?php echo $_SESSION["user_id"]; ?>,
+                    }
 
-      // show course component
-      courses.component('course', {
-          data() {
-              return {
-                  img: '',
-              }
-          },
-          props: ['course_id', 'playlist_url', 'title', 'description', 'enrolled'],
-          methods: {
-              getCourse() {
+                    axios.get(url, {params: params})
+                    .then(r => {
+                        this.enrolled_courses = r.data;
+                        for (c in r.data) {
+                            this.getCourse(r.data[c].course_id, c);
+                        }
+                    })
+                },
+                getCourse(course_id, index) {
+                    let url = "../../server/api/courses.php";
+                    let params = {
+                        course_id: course_id,
+                    }
 
-                  let course_url = `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=20&playlistId=${this.playlist_url}&key=AIzaSyArqgpdPWq6_ZTQgdzn9r1dIxpYoysqOlY`;
+                    axios.get(url, { params: params })
+                    .then(r => {
+                        this.enrolled_courses[index].course = r.data;
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    })
+                }
+            },
+            created() {
+                this.showCourses();
+                this.getEnrolledCourses();
+            }
+        })
 
-                  axios.get(course_url)
-                  .then(r => {
-                      this.img = r.data.items[0].snippet.thumbnails.standard.url;
-                  })
-              },
-          },
-          created() {
-              this.getCourse();
-          },
-          template: `
-              <div class="col-4 d-flex align-items-stretch">
-                  <div class="card card-custom bg-white border-white border-0 shadow-lg">
-                      <img :src="img">
-                      <div class="card-body" style="overflow-y: auto">
-                          <h4 class="card-title">{{ title }}</h4>
-                          <p class="card-text">{{ description }}</p>
-                      </div>
-                      <div class="card-footer" style="background: inherit; border-color: inherit;">
-                          <a v-bind:href="'course.php?course_id=' + this.course_id +'&video_id=0'" class="btn btn-dark">Enroll</a>
-                      </div>
-                  </div>
-              </div>
-          `
-      })
+        // show course component
+        courses.component('course', {
+            data() {
+                return {
+                    img: '',
+                }
+            },
+            props: ['course_id', 'playlist_url', 'title', 'description', 'enrolled', 'completed'],
+            methods: {
+                getCourse() {
+                    let course_url = `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=20&playlistId=${this.playlist_url}&key=AIzaSyArqgpdPWq6_ZTQgdzn9r1dIxpYoysqOlY`;
 
-      let vm = courses.mount('#courses');
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous">
-  </script>
+                    axios.get(course_url)
+                    .then(r => {
+                        this.img = r.data.items[0].snippet.thumbnails.standard.url;
+                    })
+                    .catch(e => {
+                        console.log(e.response.data);
+                    })
+                },
+            },
+            created() {
+                this.getCourse();
+                console.log(this.completed);
+            },
+            template: 
+            `
+                <div class="col-4 my-2 d-flex align-items-stretch">
+                    <div class="card card-custom bg-white border-white border-0 shadow-lg">
+                        <img :src="img">
+                        <div class="card-body" style="overflow-y: auto">
+                            <h4 class="card-title">{{ title }}</h4>
+                            <p class="card-subtitle mb-2 text-muted">6 hrs 42 mins</p>
+                        </div>
+                        <div class="card-footer" style="background: inherit; border-color: inherit;">
+                            <a v-if="completed == false" v-bind:href="'course.php?course_id=' + this.course_id +'&video_id=0'" class="btn btn-dark">{{ enrolled ? "Continue" : "View Course" }}</a>
+                            <p v-else >Completed!</p>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
+
+        let vm = courses.mount('#courses');
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous">
+    </script>
 
 </body>
 </html>
