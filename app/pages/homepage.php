@@ -55,7 +55,7 @@
                             <div class="col-6 category">
                                 <!-- <img src="../images/course.png" alt="Courses Icon" style="width: 100px;"> -->
                                 <div class="category-text">
-                                    <span class="number">{{ enrolled.length }}</span>
+                                    <span class="number">{{ enrolled.filter(e => e.completed == 1 ).length }}</span>
                                     <br>
                                     Courses completed
                                 </div>

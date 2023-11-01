@@ -172,12 +172,35 @@
             },
             methods: {
                 openQuiz() {
-                    window.open('quiz.php?course_id=' + urlParams.get('course_id'), '_blank', 'popup=yes');
+
+                    // check if quiz ended
+                    let quiz = window.open('quiz.php?course_id=' + urlParams.get('course_id'), '_blank', 'popup=yes');
+                    let interval = setInterval( 
+                        () => {
+                            if (document.hasFocus()) {
+                                console.log("focus");
+                                if (quiz.closed) {
+                                    clearInterval(interval);
+                                    this.checkQuizProgress();
+                                    console.log("ended quiz")
+                                }
+                                
+                            } else {
+                                console.log("not focus")
+                            }
+                        } , 1000);
                 },
                 checkCourseProgress() {
                     let check = this.enrolled_content.content.indexOf(0) == -1; // if all completed
 
                     this.contentNotCompleted = !check;
+                },
+                checkQuizProgress() {
+                    let check = this.enrolled_content.quiz[0] = 1 // if all completed
+
+                    this.quiz_completed = check;
+
+                    console.log(check);
                 },
                 courseComplete() {
                     let url = "../../server/api/enrollments.php";
@@ -271,7 +294,7 @@
                     let params = {
                         user_id: <?php echo $_SESSION["user_id"]; ?>,
                         course_id: urlParams.get('course_id'),
-                        content: '{"content": [0, 0, 0, 0, 0, 0, 0, 0, 0], "quiz": [0, 0]}',
+                        content: '{"content": [0, 0, 0, 0, 0, 0, 0, 0, 0], "quiz": [0]}',
                         start_date: new Date(),
                         completed: false,
                     }

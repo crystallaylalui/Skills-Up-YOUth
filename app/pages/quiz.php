@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    // No session variable "user" => no login
+    if ( !isset($_SESSION["user_id"]) ) {
+         // redirect to login page
+         header("Location: ../index.php"); 
+         exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -171,6 +180,8 @@
     </div>
 
     <script>
+        let urlParams = new URLSearchParams(window.location.search);
+
         const quiz = Vue.createApp({
             data() {
                     return {
@@ -181,6 +192,7 @@
                         selectedAnswers: {}, // Initialize as an empty array
                         quizSubmitted: false,
                         quizResults: [],
+                        enrolled_content: [],
                     };
                 },
                 created() {
@@ -214,6 +226,10 @@
                     this.selectedAnswers = { ...this.selectedAnswers, [questionIndex]: optionIndex };
                 },
                 submitQuiz() {
+
+                    //need change
+                    this.quizCompleted();
+
                     const numberOfAnswers = Object.keys(this.selectedAnswers).length;
 
                     if (numberOfAnswers !== this.quiz.length) {
@@ -243,11 +259,50 @@
                     this.quizResults = quizResults;
                     this.quizSubmitted = true;
                     console.log(quizResults);
-                }
+
+                    
+                },
+                quizCompleted() {
+                    this.enrolled_content.quiz[0] = 1;
+
+                    let url = "../../server/api/enrollments.php";
+                    let params = {
+                        update: true,
+                        user_id: <?php echo $_SESSION["user_id"]; ?>,
+                        course_id: urlParams.get('course_id'),
+                        content: JSON.stringify(this.enrolled_content),
+                        completed: false,
+                    };
+
+                    axios.post(url, params)
+                    .then(r => {
+                        console.log("quiz updated");
+                    })
+                },
+                checkUserEnrolled() {
+                    let url = "../../server/api/enrollments.php";
+                    let params = {
+                        user_id: <?php echo $_SESSION["user_id"]; ?>,
+                        course_id: urlParams.get('course_id'),
+                    }
+
+                    axios.get(url, {params: params})
+                    .then(r => {
+                        if (r.data != null) {
+                            this.enrolled = true;
+                            this.enrolled_content = JSON.parse(r.data.content);
+                            this.updateEnrolledContent(null);
+                            console.log(r.data)
+                            this.checkCourseProgress();
+
+                        }
+                    })
+                },
 
             },
             created() {
                 this.getQuiz();
+                this.checkUserEnrolled();
             }
         })
 
