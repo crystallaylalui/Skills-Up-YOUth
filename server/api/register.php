@@ -12,7 +12,7 @@
 
     # Add new user
     $dao = new UserDAO();
-    $status = $dao->createUser($username, $email, $hashed);
+    $status = $dao->createUser($username, $email, $hashed, 0, "[]");
 
     echo $status;
 ?>

@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -84,11 +87,7 @@
 </head>
 
 <body>
-    <div>
-        <?php include('navbar.php'); ?>
-    </div>
-
-    <div id="quiz">
+<div id="quiz">
         <div class="question-card question" v-for="(qn, index) in quiz" :class="{ active: index === currentIndex }">
             <div>
                 <strong>{{ index + 1 }}. {{ qn.question }}</strong>
@@ -176,8 +175,6 @@
 
                 submitQuiz() {
                     const numberOfAnswers = Object.keys(this.selectedAnswers).length;
-                    console.log(this.selectedAnswers)
-                    console.log(this.quiz)
 
                     if (numberOfAnswers !== this.quiz.length) {
                         console.error('Invalid selectedAnswers array.');
@@ -195,10 +192,8 @@
                             return;
                         }
 
-                        const isCorrect = Array.isArray(qn.correct_answers)
-                            ? qn.correct_answers.includes(selectedAnswerIndex)
-                            : selectedAnswerIndex === qn.correct_answers;
-
+                        const selectedAnswerKey = selectedAnswerIndex + '_correct';
+                        const isCorrect = qn.correct_answers[selectedAnswerKey] === 'true'; // Convert to boolean
                         quizResults.push({
                             question: qn.question,
                             correct: isCorrect,
@@ -207,7 +202,9 @@
 
                     this.quizResults = quizResults;
                     this.quizSubmitted = true;
+                    console.log(quizResults);
                 }
+
             },
             created() {
                 this.getQuiz();
