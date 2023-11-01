@@ -47,7 +47,7 @@ if (isset($_SESSION["user_id"]) ) {
     </div>
 
     <div class="services section" id="services">
-        <div class="container" id="register">
+        <div class="container">
             <div class="row">
             <div class="container-fluid vh-100 mt-5 p-5 registration-bg">
         <div class="row d-flex align-items-center h-75">
@@ -55,10 +55,10 @@ if (isset($_SESSION["user_id"]) ) {
 
             </div>
 
-            <div class="col-md-4 col-12">
+            <div class="col-md-4 col-12>
                 <div class="mt-5 p-3">
                 <h2 class="text-center m-3 p-3">Register</h2>
-                <div class="registration-form">
+                <div class="registration-form" id="register">
                     <div class="form-group">
                         <input type="text" id="username" class="form-control" placeholder="Username" v-model="username">
                     </div>
