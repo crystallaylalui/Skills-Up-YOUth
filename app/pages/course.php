@@ -71,10 +71,22 @@
                 <div class="ratio ratio-16x9">
                     <iframe :src="video_url" title="YouTube video" allowfullscreen></iframe>
                 </div>
+                <div v-if="quizCompleted" class="my-5 d-grid">
+                    <button class="btn btn-dark" @click="showCourseCompleteOption()">Complete Course!</button>
+                </div>
                 <div class="my-5 card p-3 rounded-2">
                     <h1> {{ course.course_title }}</h1>
                     <h4>Course Description</h4>
                     <p>{{ course.course_description }}</p>
+                </div>
+                <h2>Quizzes</h2>
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action quiz-item">
+                        <h5>Final Quiz</h5>
+                        <p v-if="contentNotCompleted" style="font-size: small; color: red;">Complete course content to unlock</p>
+                        <p style="font-size: small;">10 questions</p>
+                        <button class="btn btn-dark" @click="openQuiz()" :disabled="contentNotCompleted">Take quiz</button>
+                    </a>
                 </div>
             </div>
 
@@ -91,14 +103,6 @@
                                 :title="v.snippet.title" :enrolled_content="enrolled_content" @update="updateEnrolledContent"><course-content>
                         </a>
                     </div>
-                </div>
-
-                <h4 class="pt-5"> quizzes to be completed </h4>
-                <div class="list-group">
-                    <a @click="openQuiz()" class="list-group-item list-group-item-action quiz-item">
-                        <h5>final quiz</h5>
-                        <p style="font-size: small;">10 questions</p>
-                    </a>
                 </div>
             </div>
         </div>
@@ -156,42 +160,58 @@
                     total_duration: '',
                     enrolled: false,
                     enrolled_content: '',
+                    contentNotCompleted: false,
+                    quiz_completed: false,
+                }
+            },
+            computed: {
+                quizCompleted() {
+                    this.showCourseCompleteOption();
+                    return this.quiz_completed;
                 }
             },
             methods: {
                 openQuiz() {
                     window.open('quiz.php?course_id=' + urlParams.get('course_id'), '_blank', 'popup=yes');
                 },
-                courseComplete() {
-                        let url = "../../server/api/enrollments.php";
-                        let params = {
-                            update: true,
-                            user_id: <?php echo $_SESSION["user_id"]; ?>,
-                            course_id: urlParams.get('course_id'),
-                            content: JSON.stringify(this.enrolled_content),
-                            completed: true, // set to true
-                        };
+                checkCourseProgress() {
+                    let check = this.enrolled_content.content.indexOf(0) == -1; // if all completed
 
-                        axios.post(url, params)
-                        .then(r => {
-                            alert("You have completed the course!");
-                            console.log("updated course completion");
-                        })
+                    this.contentNotCompleted = !check;
                 },
-                // checkAllQuizCompleted() {
-                //     // loop enrolled_content
-                //     // if all 1's
-                //     // courseComplete()
-                //     // let check = this.enrolled_content.content.indexOf(0) != -1 && this.enrolled_content.quiz.indexOf(0) != -1;
-                //     let check = true;
-                    
-                //     if (check) {
-                //         // alert("test")
-                //         // if (confirm("Complete this course?")) {
-                //         //     alert("Completed course!");
-                //         // }
-                //     }
-                // },
+                courseComplete() {
+                    let url = "../../server/api/enrollments.php";
+                    let params = {
+                        update: true,
+                        user_id: <?php echo $_SESSION["user_id"]; ?>,
+                        course_id: urlParams.get('course_id'),
+                        content: JSON.stringify(this.enrolled_content),
+                        completed: true, // set to true
+                    };
+
+                    axios.post(url, params)
+                    .then(r => {
+                        alert("You have completed the course!");
+                        console.log("updated course completion");
+                    })
+
+
+                    // update user badges
+
+                },
+                showCourseCompleteOption() {
+                    if(this.quiz_completed) {
+                        let result = confirm("Complete Course?");
+                        // result ? alert("Completed!") : '';
+
+                        if (result) {
+                            this.courseComplete();
+                            window.location.href = "homepage.php";
+                        }
+                    }
+
+                    // display course complete option
+                },
                 updateEnrolledContent(video_id) {
                     if (video_id != null) {
                         this.enrolled_content.content[video_id] == 0 ? this.enrolled_content.content[video_id] = 1 : this.enrolled_content.content[video_id] = 0;
@@ -241,6 +261,8 @@
                             this.enrolled_content = JSON.parse(r.data.content);
                             this.updateEnrolledContent(null);
                             console.log(r.data)
+                            this.checkCourseProgress();
+
                         }
                     })
                 },
@@ -271,8 +293,6 @@
                     let params = {
                         // get course_id from url
                         course_id: urlParams.get('course_id'),
-                        // video_id: this.video_id,
-                        // video_url: '',
                     }
 
                     axios.get(url, { params: params })
@@ -317,8 +337,6 @@
             created() {
                 this.getCourse();
                 this.checkUserEnrolled();
-                // setInterval(function (){document.hasFocus()?console.log('focused'):console.log('not focused')}, 1000);
-
             }
         })
 

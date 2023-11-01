@@ -194,7 +194,6 @@
                                 this.quiz = r.data;
                             })
                     },
-
                 goToQuestion(index) {
                     this.currentIndex = index;
                 },
@@ -214,8 +213,6 @@
                     // Create a new object with the selected answer for the current question
                     this.selectedAnswers = { ...this.selectedAnswers, [questionIndex]: optionIndex };
                 },
-
-
                 submitQuiz() {
                     const numberOfAnswers = Object.keys(this.selectedAnswers).length;
 

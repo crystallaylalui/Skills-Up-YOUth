@@ -25,18 +25,18 @@
         <?php include ('navbar.php'); ?>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="courses">
         <div class="row">
-            <div class="col-8">
+            <div class="">
                 <div class="p-4">
                     <div class="container-fluid py-5">
-                        <h2 class="display-6 fw-bold"> Hi, Michael! What do you want to learn today? </h2>
+                        <h2 class="display-6 fw-bold"> Hi, {{ user.username }}! What do you want to learn today? </h2>
                         <p class="fs-4 text-muted"> Invest in yourself and take the first step in <br>achieving your dreams </p>
                     </div>
                 </div>
                 <hr>
                 <div class="px-5">
-                  <div id="courses">
+                  <div>
                     <div class="m-5">
                         <h3>My courses</h3>
                         <!-- <div class="row">
@@ -48,14 +48,15 @@
                         <hr>
                         <h3>All courses</h3>
                         <div class="row">
-                            <course v-for="c in courses" :course_id="c.course_id" :title="c.course_title" :description="c.course_description" :playlist_url="c.playlist_url" :completed="false"></course>
+                            <!-- filters enrolled courses -->
+                            <course v-for="c in courses" :course_id="c.course_id" :title="c.course_title" :description="c.course_description" :playlist_url="c.playlist_url" :completed="enrolled_courses.filter(e => e.course_id === c.course_id ).length > 0"></course>
                         </div>       
                     </div>
                   </div>
                     
                 </div>
             </div>
-            <div class="col-4">
+            <!-- <div class="col-4">
                 <div class="p-5 mb-4 rounded-3">
                     <div class="container-fluid py-5">
                     <p class="fs-4 fw-bold text-start"> Your schedule </p>
@@ -97,7 +98,7 @@
 
                 </div>
 
-            </div>
+            </div> -->
         </div>
 
     </div>
@@ -111,9 +112,22 @@
                     courses: [],
                     enrolled_courses: [],
                     badges: '',
+                    user: '',
                 }
             },
             methods: {
+                getUser(){
+                    let url = "../../server/api/users.php";
+                    let params = {
+                        user_id: <?php echo $_SESSION["user_id"] ?>,
+                    }
+
+                    axios.get(url, {params: params})
+                    .then(r => {
+                        this.user = r.data;
+                        // this.user_badges = JSON.parse(r.data.badges);
+                    })
+                },
                 showCourses() {
                     
                     let url = "../../server/api/courses.php";
@@ -154,6 +168,7 @@
                 }
             },
             created() {
+                this.getUser();
                 this.showCourses();
                 this.getEnrolledCourses();
             }
@@ -186,7 +201,7 @@
             },
             template: 
             `
-                <div class="col-4 my-2 d-flex align-items-stretch">
+                <div v-if="completed == false" class="col-4 my-2 d-flex align-items-stretch">
                     <div class="card card-custom bg-white border-white border-0 shadow-lg">
                         <img :src="img">
                         <div class="card-body" style="overflow-y: auto">

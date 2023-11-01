@@ -2,6 +2,8 @@ drop database if exists wad2_project;
 create database wad2_project;
 use wad2_project;
 
+-- change user and pass in connectionmanager
+
 -- user table
 CREATE TABLE IF NOT EXISTS user (
   user_id int NOT NULL AUTO_INCREMENT,
