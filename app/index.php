@@ -21,16 +21,6 @@ if (isset($_SESSION["user_id"]) ) {
 </head>
 <body style="background-color:white">
 
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:black">
-        <div class="container-fluid">
-            <img src="images/logo.jpg" height="45" alt="logo" />
-            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button> -->
-        </div>
-    </nav>
-
-
     <div id="login" class="container-fluid vh-100">
 
         <div class="row">

@@ -47,7 +47,7 @@ if (isset($_SESSION["user_id"]) ) {
     </div>
 
     <div class="services section" id="services">
-        <div class="container">
+        <div class="container" id="register">
             <div class="row">
             <div class="container-fluid vh-100 mt-5 p-5 registration-bg">
         <div class="row d-flex align-items-center h-75">
