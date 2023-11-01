@@ -1,13 +1,10 @@
-<?php
-    session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Quiz Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -16,73 +13,101 @@
 
     <link href="../css/style.css" rel="stylesheet">
     <style>
-    #quiz {
-        margin: 20px;
-    }
+        body {
+            background-image: url('../images/quiz-background.jpg'); 
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
 
-    .question-card {
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        padding: 15px;
-        margin-bottom: 20px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        background-color: #fff;
-    }
+        #quiz {
+            max-width: 800px; /* Adjust the maximum width as needed */
+            width: 100%;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Adjust the background color and opacity */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
 
-    .question {
-        display: none;
-    }
+        .question-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
 
-    .question.active {
-        display: block;
-    }
+        .question {
+            display: none;
+        }
 
-    .options-container {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
+        .question.active {
+            display: block;
+        }
 
-    .option-button {
-        border: 1px solid #007bff;
-        border-radius: 8px;
-        padding: 10px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
 
-    .option-button.selected {
-        background-color: #007bff;
-        color: #fff;
-    }
+        .option-button {
+            border: 1px solid #007bff;
+            border-radius: 8px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-    #navigation {
-        display: flex;
-        justify-content: space-between;
-        margin: 20px 0;
-    }
+        .option-button.selected {
+            background-color: #007bff;
+            color: #fff;
+        }
 
-    #progress-bar {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-    }
+        #navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
 
-    .bar-container {
-        flex: 1;
-        height: 20px;
-        background-color: #eee;
-        border-radius: 10px;
-        overflow: hidden;
-    }
+        #progress-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
 
-    .bar {
-        height: 100%;
-        background-color: #007bff;
-        border-radius: 10px;
-        transition: width 0.3s ease;
-    }
-</style>
+        .bar-container {
+            flex: 1;
+            height: 20px;
+            background-color: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .bar {
+            height: 100%;
+            background-color: #007bff;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .option-button-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+    </style>
 
 </head>
 
@@ -102,6 +127,24 @@
                 </button>
             </div>
         </div>
+
+        <!-- <div class="question-card question" v-for="(qn, index) in quiz" :class="{ active: index === currentIndex }">
+        <div>
+            <strong>{{ index + 1 }}. {{ qn.question }}</strong>
+        </div>
+        <div class="options-container">
+            <div v-for="(a, optionIndex) in qn.answers" :key="optionIndex" class="option-button-wrapper">
+                <button
+                    v-if="a !== null"
+                    @click="selectAnswer(index, optionIndex)"
+                    :class="{ 'option-button': true, selected: selectedAnswers[index] === optionIndex }"
+                >
+                    {{ a }}
+                </button>
+            </div>
+        </div>
+    </div> -->
+
 
         <div id="navigation">
             <button @click="prevQuestion" :disabled="currentIndex === 0">Previous</button>
