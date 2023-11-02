@@ -100,7 +100,14 @@
             <div id="lessons" class="row">
                 <div class="lessons col-md-8" >
                     <div class="row">
-                        <p class="display-6">Lessons</p>
+                        <div class="col-md-8">
+                            <p class="display-6">Lessons</p>
+                        </div>
+                        <div class="col-lg-4 text-end">
+                            <a href="courses.php">
+                                <button type="button" class="btn btn-outline-dark">More</button>
+                            </a>
+                        </div>
                     </div>
                     <div id="" class="row lesson">
                         <div>
@@ -201,7 +208,7 @@
                         <p class="display-6">Leaderboard</p>
                     </div>
                     <div class="col-lg-4">
-                        <button type="button" class="btn btn-outline-dark">View All</button>
+                        <button type="button" class="btn btn-outline-dark text-end">View All</button>
                     </div>
                 </div>           
 
@@ -327,8 +334,8 @@
                     <div class="card card-custom bg-white border-white border-0 shadow-lg">
                         <img :src="img">
                         <div class="card-body" style="overflow-y: auto">
-                            <h4 class="card-title">{{ title }}</h4>
-                            <p class="card-subtitle mb-2 text-muted">6 hrs 42 mins</p>
+                            <h4 class="card-title" style="margin-bottom: 0">{{ title }}</h4>
+                            
                         </div>
                         <div class="card-footer" style="background: inherit; border-color: inherit;">
                             <a v-if="completed == false" v-bind:href="'course.php?course_id=' + this.course_id +'&video_id=0'" class="btn btn-dark">{{ enrolled ? "Continue" : "View Course" }}</a>
