@@ -52,12 +52,18 @@ body {
 
 /* CONTENT */
 #content {
-	position: relative;
+	position: absolute;
 	width: calc(100% - 280px);
-	left: 280px;
+	left: 150px;
+	text-align: center;
 	transition: .3s ease;
 }
 
+.background-container {
+    background-image: url(background.png);
+    background-size: cover;
+    background-position: center;
+}
 
 
 
@@ -255,15 +261,15 @@ body {
 	align-items: center;
 }
 #content main .box-info li:nth-child(1) .bx {
-	background: var(--light-blue);
-	color: var(--blue);
+	background: linear-gradient(45deg, var(--light-blue), var(--blue));
+	color: #006aff;
 }
 #content main .box-info li:nth-child(2) .bx {
-	background: var(--light-yellow);
-	color: var(--yellow);
+	background: linear-gradient(45deg, #fcff9f, #f3eb0b);
+	color: #dcd62b;
 }
 #content main .box-info li:nth-child(3) .bx {
-	background: var(--light-orange);
+	background: linear-gradient(45deg, var(--light-orange), #ff8a00);
 	color: var(--orange);
 }
 #content main .box-info li .text h3 {
@@ -319,7 +325,7 @@ body {
 #content main .table-data .order table th {
 	padding-bottom: 12px;
 	font-size: 13px;
-	text-align: left;
+	text-align: center;
 	border-bottom: 1px solid var(--grey);
 }
 #content main .table-data .order table td {
