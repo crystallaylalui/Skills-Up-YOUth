@@ -46,24 +46,21 @@
                                         <br>
                                         Ranking
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-6 category">
-                                <!-- <img src="../images/course.png" alt="Courses Icon" style="width: 100px;"> -->
-                                <div class="category-text">
-                                    <span class="number">{{ enrolled.filter(e => e.completed == 1 ).length }}</span>
-                                    <br>
-                                    Courses completed
-                                </div>
-                                <div class="col-6 category">
-                                    <!-- <img src="../images/course.png" alt="Courses Icon" style="width: 100px;"> -->
                                     <div class="category-text">
-                                        <span class="number">{{ enrolled.length }}</span>
+                                        <span class="number">{{ enrolled.filter(e => e.completed == 1 ).length }}</span>
                                         <br>
                                         Courses completed
                                     </div>
                                 </div>
+
                                 <div class="col-6 category">
+                                    <!-- <img src="../images/course.png" alt="Courses Icon" style="width: 100px;"> -->
+                                    <div class="category-text">
+                                        <span class="number">Beginner</span>
+                                        <br>
+                                        Skill level
+                                    </div>
+
                                     <!-- <img src="../images/badges.png" alt="Badges Icon" style="width: 100px;"> -->
                                     <div class="category-text">
                                         <span class="number">{{ user_badges.length }}</span>
@@ -71,7 +68,10 @@
                                         Badges obtained
                                     </div>
                                 </div>
+
+                                
                             </div>
+
                         </div>
                 </div>
 
