@@ -334,7 +334,7 @@
                         course_id: urlParams.get('course_id'),
                         content: JSON.stringify({"content": Array.from({length: contentLength}).fill(0), "quiz": [0]}),
                         start_date: new Date(),
-                        completed: false,
+                        completed: 0,
                     }
 
                     axios.post(url, params)
