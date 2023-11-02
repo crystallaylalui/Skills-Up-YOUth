@@ -1,5 +1,24 @@
 <?php
 echo '
+<style>
+    #navbar {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        padding-bottom: 5px; 
+    }
+
+    .nav-link {
+        text-decoration: none;
+        color: black; 
+        margin: 0 10px;
+        position: relative;
+    }
+
+    .nav-link:hover{
+        color:#c03afe;
+    }
+</style>
 <nav id="navbar" class="navbar navbar-expand-lg navbar-light" style="background: white; color: black;">
     <div class="container-fluid">
         <!-- Left Logo -->
