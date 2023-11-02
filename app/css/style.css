@@ -11,7 +11,7 @@
 
 .signup {
     font-size: 14px;
-    color: grey;
+    color: white;
 }
 
 #achievements {
@@ -486,3 +486,41 @@ body {
     height: 655px;
     z-index: -1;
   }
+
+  .form-group-2 label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0 10px;
+    background-color: #fff;
+    padding: 0 5px;
+    color: white;
+    transition: transform 0.2s ease-in-out;
+    pointer-events: none;
+}
+
+  .form-control-2 {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid white;
+    padding: 10px;
+    background-color: transparent;
+    color: white;
+}
+
+.form-control-2:focus {
+    outline: none;
+    border-bottom: 2px solid white;
+}
+
+.form-control-2:focus + label,
+.form-control-2:not(:placeholder-shown) + label {
+    transform: translateY(-20px);
+    font-size: 0.8em;
+    background-color: #fff;
+    color:white;
+}
+
+.form-control-2::placeholder {
+    color: rgba(255, 255, 255, 0.496);
+}

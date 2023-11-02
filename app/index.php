@@ -19,7 +19,7 @@ if (isset($_SESSION["user_id"]) ) {
 
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body style="background-color:white">
+<body style="background: linear-gradient(68.2deg, rgb(7, 3, 98) -0.1%, rgb(179, 26, 132) 47.7%, rgb(239, 186, 83) 100.2%);">
 
     <div id="login" class="container-fluid vh-100">
 
@@ -31,16 +31,16 @@ if (isset($_SESSION["user_id"]) ) {
             
             <div class="col-md-5 col-12">
                 <div class="mt-3" style="justify-content:center;width:400px;padding-top:100px;text-align:center;">
-                    <img src="images/skills-up-logo.jpg" width="300" alt="Skills Up Logo" style="padding-bottom:50px">
+                    <img src="images/logo1.png" width="300" alt="Skills Up Logo" style="padding-bottom:50px">
                     
-                    <h1 class="mt-2" style="color:royalblue">Log in</h1>
+                    <h1 class="mt-2" style="color:white">Log in</h1>
                     <br>
-                    <div class="login-form">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" v-model="username">
+                    <div class="form-group-2">
+                        <div class="form-group-2">
+                            <input type="text" class="form-control-2" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" v-model="username">
                         </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" v-model="password">
+                        <div class="form-group-2">
+                            <input type="password" class="form-control-2" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" v-model="password">
                         </div>
                     <br>
                     </div>
@@ -48,7 +48,7 @@ if (isset($_SESSION["user_id"]) ) {
                         <button v-on:click="loginUser" class="btn confirm-button">Login</button>
                     </div>
                     
-                    <p class="signup py-5 text-center">Don't have an account? <a href="pages/register.php">Register here.</a></p>
+                    <p class="signup py-5 text-center">Don't have an account? <a href="pages/register.php" style="color:white">Register here.</a></p>
 
                 </div>
             </div>

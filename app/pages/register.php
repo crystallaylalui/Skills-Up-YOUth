@@ -30,7 +30,7 @@ if (isset($_SESSION["user_id"]) ) {
                     <img src="../images/skills-up-logo.png" width="200" alt="Skills Up Logo">
                 <!-- logo of skill up youth -->
                     <div class="animate__animated animate__slideInLeft">
-                        <h4>Dive <span> Into The Tech World </span> <br> with <span> Skills-Up Youth</span></h4>
+                        <h4>Dive <span> Into The Tech World </span> <br> with <em> Skills-Up Youth</em></h4>
                     </div>
                     <p class="registration-desc">Skill-up Youth provides essential educational and employment-related <br>resources to under-privileged youths  (aged 15-35) to ensure inclusive, <br> quality education and job opportunities for all. </p>
                 </div>

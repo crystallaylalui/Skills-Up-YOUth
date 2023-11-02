@@ -20,7 +20,7 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body style="background: linear-gradient(68.2deg, rgb(7, 3, 98) -0.1%, rgb(179, 26, 132) 47.7%, rgb(239, 186, 83) 100.2%); color:white;">
     <div>
         <?php include ('navbar.php'); ?>
     </div>
