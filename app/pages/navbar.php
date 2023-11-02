@@ -53,7 +53,7 @@ echo '
         </div>
 
 
-        <button class="btn btn-light" v-on:click="logoutUser">Logout</button>
+        <button class="btn btn-outline-dark" v-on:click="logoutUser">Logout</button>
     </div>
     <div id="indicator"></div>
     </nav>

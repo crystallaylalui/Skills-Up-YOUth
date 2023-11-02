@@ -8,11 +8,13 @@
             $sql = "insert into enrollment (user_id, course_id, content, start_date, completed) 
                     values (:user_id, :course_id, :content, :start_date, :completed)";
 
+            $start_date = date('Y-m-d H:i:s' , strtotime($start_date));
+
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(":user_id",$user_id);
             $stmt->bindParam(":course_id",$course_id);
             $stmt->bindParam(":content",$content);
-            $stmt->bindParam(":start_date",$start_date);
+            $stmt->bindParam(":start_date", $start_date);
             $stmt->bindParam(":completed",$completed);
             $status = $stmt->execute();
             

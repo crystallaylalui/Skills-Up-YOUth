@@ -79,6 +79,7 @@
                     <h4>Course Description</h4>
                     <p>{{ course.course_description }}</p>
                 </div>
+
                 <h2>Quizzes</h2>
                 <div class="list-group">
                     <div class="list-group-item quiz-item">
@@ -280,7 +281,7 @@
                             user_id: <?php echo $_SESSION["user_id"]; ?>,
                             course_id: urlParams.get('course_id'),
                             content: JSON.stringify(this.enrolled_content),
-                            completed: false,
+                            completed: 0,
                         };
 
                         axios.post(url, params)
@@ -296,7 +297,7 @@
                             user_id: <?php echo $_SESSION["user_id"]; ?>,
                             course_id: urlParams.get('course_id'),
                             content: JSON.stringify(this.enrolled_content),
-                            completed: false,
+                            completed: 0,
                         };
 
                         axios.post(url, params)
@@ -334,7 +335,7 @@
                         course_id: urlParams.get('course_id'),
                         content: JSON.stringify({"content": Array.from({length: contentLength}).fill(0), "quiz": [0]}),
                         start_date: new Date(),
-                        completed: false,
+                        completed: 0,
                     }
 
                     axios.post(url, params)
@@ -346,7 +347,6 @@
                     })
                 },
                 getCourse() {
-
                     // 1. get course from db (check if user is enrolled)
                     // 2. call youtube api to retrieve videos
 
@@ -451,6 +451,7 @@
         const listQuizItems = document.querySelectorAll('.quiz-item');
 
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
         </script>

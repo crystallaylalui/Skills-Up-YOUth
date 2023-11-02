@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Details</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
@@ -206,6 +208,84 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Function to fetch job details from the API
+        function fetchJobDetails() {
+            fetch('http://localhost:3001/jobs/1')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Fetched data:', data); // Log the fetched data
+                    updateJobDetails(data);
+                })
+                .catch(error => console.error('Error fetching job details:', error));
+        }
+
+        // Function to update the job details on the page
+        function updateJobDetails(job) {
+            // Update job title
+            document.querySelector('.large-text').innerText = job.title;
+
+            // Update job description
+            document.querySelector('.job-description p').innerText = job.description;
+
+            // Update responsibilities
+            const responsibilitiesList = document.querySelector('.responsibilities ul');
+            responsibilitiesList.innerHTML = job.responsibilities.map(res => `<li>${res}</li>`).join('');
+
+            // Update requirements
+            const requirementsList = document.querySelector('.requirements ul');
+            requirementsList.innerHTML = job.requirements.map(req => `<li>${req}</li>`).join('');
+
+            // Update badges
+            const badgeSection = document.querySelector('.badge-section');
+            badgeSection.innerHTML = `
+                <div class="section-heading">Badges</div>
+                ${job.badges.map(badge => `<button class="badge-button">${badge}</button>`).join('')}
+            `;
+
+            // Update other job details
+            const detailsSection = document.querySelector('.details-section');
+            detailsSection.innerHTML = `
+                <div class="section-heading">Job Details</div>
+                <hr>
+                <div class="details-item">
+                    <strong>Job Creation Date:</strong><br> ${job.details.creationDate}
+                </div>
+                <div class="details-item">
+                    <strong>Recruitment Period:</strong><br> ${job.details.recruitmentPeriod}
+                </div>
+                <div class="details-item">
+                    <strong>Hiring Manager:</strong><br> ${job.details.hiringManager}
+                </div>
+                <div class="details-item">
+                    <strong>Department:</strong><br> ${job.details.department}
+                </div>
+                <div class="details-item">
+                    <strong>Recruitment Quota:</strong><br> ${job.details.recruitmentQuota}
+                </div>
+                <div class="details-item">
+                    <strong>Job Type:</strong><br> ${job.details.jobType}
+                </div>
+                <div class="details-item">
+                    <strong>Location:</strong><br> ${job.details.location}
+                </div>
+                <div class="details-item">
+                    <strong>Salary:</strong><br> ${job.details.salary}
+                </div>
+                <div class="details-item">
+                    <strong>Work Category:</strong><br> ${job.details.workCategory}
+                </div>
+            `;
+
+            // Update other job details as needed
+        }
+
+        // Fetch job details when the page loads
+        window.onload = fetchJobDetails;
+
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
