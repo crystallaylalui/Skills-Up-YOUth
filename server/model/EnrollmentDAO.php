@@ -12,7 +12,7 @@
             $stmt->bindParam(":user_id",$user_id);
             $stmt->bindParam(":course_id",$course_id);
             $stmt->bindParam(":content",$content);
-            $stmt->bindParam(":start_date",$start_date);
+            $stmt->bindParam(":start_date",$start_date, PDO::PARAM_STR);
             $stmt->bindParam(":completed",$completed);
             $status = $stmt->execute();
             
