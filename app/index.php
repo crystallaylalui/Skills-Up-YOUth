@@ -26,12 +26,12 @@ if (isset($_SESSION["user_id"]) ) {
         <div class="row">
             <div class="col-md-7 col-12">
                 <!-- Add an image here -->
-                <img src="images/login-pic.png" alt="login-background" class="img-fluid" style="height:800px">
+                <img src="images/login-pic.png" alt="login-background" class="img-fluid" style="height:700px; padding-left:100px">
             </div>
             
             <div class="col-md-5 col-12">
-                <div class="mt-3" style="justify-content:center;width:400px;padding-top:100px">
-                    <img src="images/skills-up-logo.jpg" width="400" alt="Skills Up Logo">
+                <div class="mt-3" style="justify-content:center;width:400px;padding-top:100px;text-align:center;">
+                    <img src="images/skills-up-logo.jpg" width="300" alt="Skills Up Logo" style="padding-bottom:50px">
                     
                     <h1 class="mt-2" style="color:royalblue">Log in</h1>
                     <br>

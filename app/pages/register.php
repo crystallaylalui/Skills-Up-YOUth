@@ -21,26 +21,19 @@ if (isset($_SESSION["user_id"]) ) {
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body style="background-color:white">
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:black">
-        <div class="container-fluid">
-            <img src="../images/logo.jpg" height="45" alt="logo" />
-            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button> -->
-        </div>
-    </nav>
 
     <div class="main-banner" id="top">
         <div class="container">
         <div class="row">
             <div class="col-lg-7">
-            <div class="caption header-text">
+                <div class="caption header-text">
+                    <img src="../images/skills-up-logo.png" width="200" alt="Skills Up Logo">
                 <!-- logo of skill up youth -->
-                <div class="animate__animated animate__slideInLeft">
-                <h4>Dive <em>Into The Tech World </em> <br> with <span> Skills-Up Youth</span></h4>
+                    <div class="animate__animated animate__slideInLeft">
+                        <h4>Dive <span> Into The Tech World </span> <br> with <span> Skills-Up Youth</span></h4>
+                    </div>
+                    <p class="registration-desc">Skill-up Youth provides essential educational and employment-related <br>resources to under-privileged youths  (aged 15-35) to ensure inclusive, <br> quality education and job opportunities for all. </p>
                 </div>
-                <p class="registration-desc">Skill-up Youth provides essential educational and employment-related <br>resources to under-privileged youths  (aged 15-35) to ensure inclusive, <br> quality education and job opportunities for all. </p>
-            </div>
             </div>
         </div>
         </div>
