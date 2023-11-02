@@ -125,9 +125,9 @@ table, th, td {
     text-align: center;
 }
 
-.name{
-    text-align: left;
-}
+/* .name{
+    text-align: center;
+} */
 
 thead th {
     position: sticky;
