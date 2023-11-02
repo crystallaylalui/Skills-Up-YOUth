@@ -61,6 +61,7 @@
     </div>
 
     <script>
+        let apiKey = "AIzaSyAtAJBow77Rx2Bhm3tRGKCYvQSbDCjnpe0";
         // 1. display courses
 
         const courses = Vue.createApp({
@@ -141,7 +142,7 @@
             props: ['course_id', 'playlist_url', 'title', 'description', 'enrolled', 'completed'],
             methods: {
                 getCourse() {
-                    let course_url = `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=20&playlistId=${this.playlist_url}&key=AIzaSyArqgpdPWq6_ZTQgdzn9r1dIxpYoysqOlY`;
+                    let course_url = `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=20&playlistId=${this.playlist_url}&key=${apiKey}`;
 
                     axios.get(course_url)
                     .then(r => {

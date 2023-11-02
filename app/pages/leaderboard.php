@@ -134,6 +134,10 @@
         </div>
         
     </div>
+
+    <script>
+        // const leaderboard = Vue.
+    </script>
     
 </body>
 

@@ -109,6 +109,7 @@
     </div>
 
     <script>
+        let apiKey = "AIzaSyAtAJBow77Rx2Bhm3tRGKCYvQSbDCjnpe0";
         let urlParams = new URLSearchParams(window.location.search);
 
         function YTDurationToHMS(duration) {
@@ -377,7 +378,7 @@
                     })
                 },
                 getPlaylist() {
-                    let url = `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=20&playlistId=${this.playlist_url}&key=AIzaSyArqgpdPWq6_ZTQgdzn9r1dIxpYoysqOlY`;
+                    let url = `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=20&playlistId=${this.playlist_url}&key=${apiKey}`;
 
                     axios.get(url)
                         .then(r => {
@@ -386,7 +387,7 @@
                         })
                 },
                 getVideo(videoId) {
-                    let url = `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=contentDetails&key=AIzaSyArqgpdPWq6_ZTQgdzn9r1dIxpYoysqOlY`;
+                    let url = `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=contentDetails&key=${apiKey}`;
 
                     axios.get(url)
                     .then(r => {
@@ -412,7 +413,7 @@
             emits: ["update"],
             methods: {
                 getVideo(video_id) {
-                    let url = `https://www.googleapis.com/youtube/v3/videos?id=${video_id}&part=contentDetails&key=AIzaSyArqgpdPWq6_ZTQgdzn9r1dIxpYoysqOlY`;
+                    let url = `https://www.googleapis.com/youtube/v3/videos?id=${video_id}&part=contentDetails&key=${apiKey}`;
 
                     axios.get(url)
                         .then(r => {
