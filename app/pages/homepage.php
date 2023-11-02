@@ -47,13 +47,13 @@
                                         Ranking
                                     </div>
                                 </div>
-                                <div class="col-6 category">
-                                    <!-- <img src="../images/days.png" alt="Days Icon" style="width: 100px;"> -->
-                                    <div class="category-text">
-                                        <span class="number">Beginner</span> 
-                                        <br>
-                                        Skill Level
-                                    </div>
+                            </div>
+                            <div class="col-6 category">
+                                <!-- <img src="../images/course.png" alt="Courses Icon" style="width: 100px;"> -->
+                                <div class="category-text">
+                                    <span class="number">{{ enrolled.filter(e => e.completed == 1 ).length }}</span>
+                                    <br>
+                                    Courses completed
                                 </div>
                                 <div class="col-6 category">
                                     <!-- <img src="../images/course.png" alt="Courses Icon" style="width: 100px;"> -->
@@ -293,8 +293,8 @@
             template: `
 
             <div class="row">
-                <p class="no-courses" v-if="enrolled_courses == ''">Oops, there's nothing here! Click <a class="courses-link" href='courses.php'>here</a> to enroll into courses.</p>
-                <course v-for="c in enrolled_courses.sort(function(a, b){return a.completed - b.completed})" :completed="c.completed" :enrolled="true" :course_id="c.course_id" :title="c.course ? c.course.course_title : ''" :description="c.course ? c.course.course_description : ''" :playlist_url="c.course.playlist_url ? c.course.playlist_url : ''"></course>
+                <p v-if="enrolled_courses == ''">Nothing here! Click <a href='courses.php'>here</a> to enroll into courses.</p>
+                <course v-for="c in enrolled_courses" :completed="c.completed" :enrolled="true" :course_id="c.course_id" :title="c.course ? c.course.course_title : ''" :description="c.course ? c.course.course_description : ''" :playlist_url="c.course.playlist_url ? c.course.playlist_url : ''"></course>
             </div> 
             `
         })
@@ -322,7 +322,7 @@
             },
             template: 
             `
-                <div class="col-4 my-2 d-flex align-items-stretch">
+                <div v-if="completed == false" class="col-4 my-2 d-flex align-items-stretch">
                     <div class="card card-custom bg-white border-white border-0 shadow-lg">
                         <img :src="img">
                         <div class="card-body" style="overflow-y: auto">

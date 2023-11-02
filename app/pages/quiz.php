@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    // No session variable "user" => no login
+    if ( !isset($_SESSION["user_id"]) ) {
+         // redirect to login page
+         header("Location: ../index.php"); 
+         exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -166,21 +175,30 @@
                 <p>
                     {{ result.question }}: {{ result.correct ? 'Correct' : 'Wrong' }}
                 </p>
+                <!-- show button try again -->
             </div>
+            <!-- if all answers correct, close quiz -->
+            <div v-if="quizResults.every((x) => x.correct === true)" >You passed! <button class="btn btn-dark" @click="quizCompleted">End quiz</button></div>
+            <button v-else class="btn btn-dark" onclick="location.reload()">Try again</button>
+
         </div>
     </div>
 
     <script>
+        let urlParams = new URLSearchParams(window.location.search);
+
         const quiz = Vue.createApp({
             data() {
                     return {
                         quiz: '',
-                        tags: 'javascript', // set the topic
-                        limit: 3, // set number of questions
+                        tags: '', // set the topic
+                        limit: 1, // set number of questions
                         currentIndex: 0,
                         selectedAnswers: {}, // Initialize as an empty array
                         quizSubmitted: false,
                         quizResults: [],
+                        enrolled_content: [],
+                        course: '',
                     };
                 },
                 created() {
@@ -214,6 +232,7 @@
                     this.selectedAnswers = { ...this.selectedAnswers, [questionIndex]: optionIndex };
                 },
                 submitQuiz() {
+
                     const numberOfAnswers = Object.keys(this.selectedAnswers).length;
 
                     if (numberOfAnswers !== this.quiz.length) {
@@ -243,11 +262,60 @@
                     this.quizResults = quizResults;
                     this.quizSubmitted = true;
                     console.log(quizResults);
-                }
 
+                    
+                },
+                quizCompleted() {
+                    this.enrolled_content.quiz[0] = 1;
+
+                    let url = "../../server/api/enrollments.php";
+                    let params = {
+                        update: true,
+                        user_id: <?php echo $_SESSION["user_id"]; ?>,
+                        course_id: urlParams.get('course_id'),
+                        content: JSON.stringify(this.enrolled_content),
+                        completed: false,
+                    };
+
+                    axios.post(url, params)
+                    .then(r => {
+                        console.log("quiz updated");
+                        window.close();
+                    })
+                },
+                checkUserEnrolled() {
+                    let url = "../../server/api/enrollments.php";
+                    let params = {
+                        user_id: <?php echo $_SESSION["user_id"]; ?>,
+                        course_id: urlParams.get('course_id'),
+                    }
+
+                    axios.get(url, {params: params})
+                    .then(r => {
+                        if (r.data != null) {
+                            this.enrolled = true;
+                            this.enrolled_content = JSON.parse(r.data.content);
+                        }
+                    })
+                },
+                getCourse() {
+                    let url = "../../server/api/courses.php";
+                    let params = {
+                        // get course_id from url
+                        course_id: urlParams.get('course_id'),
+                    }
+
+                    axios.get(url, { params: params })
+                    .then(r => {
+                        this.course = r.data;
+                        this.tags = this.course.course_title.split(' ')[0];
+                        this.getQuiz();
+                    })
+                }
             },
             created() {
-                this.getQuiz();
+                this.getCourse();
+                this.checkUserEnrolled();
             }
         })
 

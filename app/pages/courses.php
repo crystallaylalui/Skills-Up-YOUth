@@ -43,7 +43,7 @@
                             <course v-for="c in enrolled_courses" v-if="enrolled_courses" :course_id="c.course.course_id" :title="c.course.course_title" :description="c.course.course_description" :playlist_url="c.course.playlist_url"></course>
                         </div>  -->
                         <div class="row">
-                            <course v-for="c in enrolled_courses.sort(function(a, b){return a.completed - b.completed})" :completed="c.completed" :enrolled="true" :course_id="c.course_id" :title="c.course ? c.course.course_title : ''" :description="c.course ? c.course.course_description : ''" :playlist_url="c.course.playlist_url"></course>
+                            <course v-for="c in enrolled_courses" :completed="c.completed" :enrolled="true" :course_id="c.course_id" :title="c.course ? c.course.course_title : ''" :description="c.course ? c.course.course_description : ''" :playlist_url="c.course.playlist_url"></course>
                         </div> 
                         <hr>
                         <h3>All courses</h3>
@@ -56,49 +56,6 @@
                     
                 </div>
             </div>
-            <!-- <div class="col-4">
-                <div class="p-5 mb-4 rounded-3">
-                    <div class="container-fluid py-5">
-                    <p class="fs-4 fw-bold text-start"> Your schedule </p>
-                    <hr>
-                     <p class="fs-4 fw-bold text-start"> September 2023 </p>
-                     <div class="calendar">
-                        <div class="day">Mon<br>1</div>
-                        <div class="day">Tue<br>2</div>
-                        <div class="day">Wed<br>3</div>
-                        <div class="day highlight">Thu<br>4</div>
-                        <div class="day">Fri<br>5</div>
-                        <div class="day">Sat<br>6</div>
-                        <div class="day">Sun<br>7</div>
-                    </div>
-                   </div>
-
-                   <div class="module">
-                    <p class="fs-5 fw-bold text-start"> <img src="../images/python.png" width="30px">   Intro to Python </p>    
-                    <p>Due today: Module 2 </p>
-                    <div class="progress-container">
-                        <div class="progress-bar" style="width: 60%;"></div>
-                    </div>
-                    <p class="module-progress-percent">
-                        Module progress: 60%
-                    </p>
-                   </div>
-                   <br>
-
-                   <div class="module">
-                    <p class="fs-5 fw-bold text-start"> <img src="../images/webcourse.png" width="30px">  Web Application Essentials </p>    
-                    <p>Due Sunday: Module 1 </p>
-                    <div class="progress-container">
-                        <div class="progress-bar" style="width: 10%;"></div>
-                    </div>
-                    <p class="module-progress-percent">
-                        Module progress: 10%
-                    </p>
-                   </div>
-
-                </div>
-
-            </div> -->
         </div>
 
     </div>

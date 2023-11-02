@@ -81,12 +81,12 @@
                 </div>
                 <h2>Quizzes</h2>
                 <div class="list-group">
-                    <a class="list-group-item list-group-item-action quiz-item">
+                    <div class="list-group-item quiz-item">
                         <h5>Final Quiz</h5>
                         <p v-if="contentNotCompleted" style="font-size: small; color: red;">Complete course content to unlock</p>
                         <p style="font-size: small;">10 questions</p>
                         <button class="btn btn-dark" @click="openQuiz()" :disabled="contentNotCompleted">Take quiz</button>
-                    </a>
+                    </div>
                 </div>
             </div>
 
@@ -162,6 +162,7 @@
                     enrolled_content: '',
                     contentNotCompleted: false,
                     quiz_completed: false,
+                    user_badges: []
                 }
             },
             computed: {
@@ -171,13 +172,50 @@
                 }
             },
             methods: {
+                getUser() {
+                    let url = "../../server/api/users.php";
+                    let params = {
+                        user_id : <?php echo $_SESSION["user_id"] ?>, // GET SESSION USER ID
+                    }
+
+                    axios.get(url, {params: params})
+                    .then(r => {
+                        // this.user = r.data;
+                        // this.user_id = r.data.user_id;
+
+                        // get user badges
+                        this.user_badges = JSON.parse(r.data.badges);
+                        console.log(r.data.badges)
+                    });
+                },
                 openQuiz() {
-                    window.open('quiz.php?course_id=' + urlParams.get('course_id'), '_blank', 'popup=yes');
+
+                    // check if quiz ended
+                    let quiz = window.open('quiz.php?course_id=' + urlParams.get('course_id'), '_blank', 'popup=yes');
+                    let interval = setInterval( 
+                        () => {
+                            if (document.hasFocus()) {
+                                console.log("focus");
+                                if (quiz.closed) {
+                                    clearInterval(interval);
+                                    this.checkUserEnrolled();
+                                }
+                            } else {
+                                console.log("not focus")
+                            }
+                        } , 1000);
                 },
                 checkCourseProgress() {
                     let check = this.enrolled_content.content.indexOf(0) == -1; // if all completed
 
                     this.contentNotCompleted = !check;
+                },
+                checkQuizProgress() {
+                    let check = this.enrolled_content.quiz[0] == 1 // if all completed
+
+                    this.quiz_completed = check;
+
+                    console.log(check);
                 },
                 courseComplete() {
                     let url = "../../server/api/enrollments.php";
@@ -191,18 +229,38 @@
 
                     axios.post(url, params)
                     .then(r => {
-                        alert("You have completed the course!");
-                        console.log("updated course completion");
+                        for (i in this.course.course_badges) {
+                            // check if badge already acquired before adding
+                            if(this.user_badges.indexOf(this.course.course_badges[i]) === -1) {
+                                this.user_badges.push(parseInt(this.course.course_badges[i]));
+                            } else {
+                                console.log("Badge already acquired");
+                            }
+                        }
+                        this.addBadges();
                     })
+                },
+                addBadges() {
+                    let badgeurl = "../../server/api/badges.php";
+                    let badgeparams = {
+                        user_id: <?php echo $_SESSION["user_id"] ?>,
+                        badges: this.user_badges,
+                    }
+
+                    axios.post(badgeurl, badgeparams)
+                    .then(r => {
+                        console.log("user badges updated");
+                    });
 
 
-                    // update user badges
 
+                    alert("You have completed the course!");
+                    console.log("updated course completion");
                 },
                 showCourseCompleteOption() {
                     if(this.quiz_completed) {
                         let result = confirm("Complete Course?");
-                        // result ? alert("Completed!") : '';
+                        result ? alert("Completed!") : '';
 
                         if (result) {
                             this.courseComplete();
@@ -210,7 +268,6 @@
                         }
                     }
 
-                    // display course complete option
                 },
                 updateEnrolledContent(video_id) {
                     if (video_id != null) {
@@ -262,16 +319,19 @@
                             this.updateEnrolledContent(null);
                             console.log(r.data)
                             this.checkCourseProgress();
+                            this.checkQuizProgress();
 
                         }
                     })
                 },
                 enrollUser(){
+                    let contentLength = this.playlist.items.length;
+
                     let url = "../../server/api/enrollments.php";
                     let params = {
                         user_id: <?php echo $_SESSION["user_id"]; ?>,
                         course_id: urlParams.get('course_id'),
-                        content: '{"content": [0, 0, 0, 0, 0, 0, 0, 0, 0], "quiz": [0, 0]}',
+                        content: JSON.stringify({"content": Array.from({length: contentLength}).fill(0), "quiz": [0]}),
                         start_date: new Date(),
                         completed: false,
                     }
@@ -335,6 +395,7 @@
                 },
             },
             created() {
+                this.getUser();
                 this.getCourse();
                 this.checkUserEnrolled();
             }
