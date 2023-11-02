@@ -1,0 +1,23 @@
+{
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Senior Product Design",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "responsibilities": ["Design innovative products", "Collaborate with cross-functional teams", "..."],
+      "requirements": ["5+ years of experience", "Proficient in design tools", "..."],
+      "badges": ["UI/UX", "Creative", "Team Player"],
+      "details": {
+        "creationDate": "2023-11-01",
+        "recruitmentPeriod": "30 days",
+        "hiringManager": "John Doe",
+        "department": "Product Design",
+        "recruitmentQuota": 5,
+        "jobType": "Full-Time",
+        "location": "San Francisco, CA",
+        "salary": "$80,000 - $100,000",
+        "workCategory": "Hybrid"
+      }
+    }
+  ]
+}
