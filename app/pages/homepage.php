@@ -38,15 +38,15 @@
                             <div class="profile col-lg-4 text-center">
                                 <img src="../images/profile8.jpg" alt="Profile Picture" class="rounded-circle" style="width: 200px; height: 200px;">
                             </div>
-                            <div class="col-6">
+                            <div class="col-6" style="text-align:center; justify-content:center">
                                 <div class="category">
                                     <!-- <img src="../images/ranking.png" alt="Rank Icon" style="width: 100px;"> -->
-                                    <div class="col-6 category-text">
+                                    <div class="col-md-6 category-text">
                                         <span class="number">#{{ getRank() }}</span>
                                         <br>
                                         Ranking
                                     </div>
-                                    <div class="col-6 category-text">
+                                    <div class="col-md-6 category-text">
                                         <span class="number">{{ enrolled.filter(e => e.completed == 1 ).length }}</span>
                                         <br>
                                         Courses completed
@@ -55,14 +55,14 @@
 
                                 <div class="category">
                                     <!-- <img src="../images/course.png" alt="Courses Icon" style="width: 100px;"> -->
-                                    <div class="col-6 category-text">
+                                    <div class="col-md-6 category-text">
                                         <span class="number">Beginner</span>
                                         <br>
                                         Skill level
                                     </div>
 
                                     <!-- <img src="../images/badges.png" alt="Badges Icon" style="width: 100px;"> -->
-                                    <div class="col-6 category-text">
+                                    <div class="col-md-6 category-text">
                                         <span class="number">{{ user_badges.length }}</span>
                                         <br>
                                         Badges obtained
