@@ -280,7 +280,7 @@
                             user_id: <?php echo $_SESSION["user_id"]; ?>,
                             course_id: urlParams.get('course_id'),
                             content: JSON.stringify(this.enrolled_content),
-                            completed: false,
+                            completed: 0,
                         };
 
                         axios.post(url, params)
@@ -296,7 +296,7 @@
                             user_id: <?php echo $_SESSION["user_id"]; ?>,
                             course_id: urlParams.get('course_id'),
                             content: JSON.stringify(this.enrolled_content),
-                            completed: false,
+                            completed: 0,
                         };
 
                         axios.post(url, params)
@@ -346,7 +346,6 @@
                     })
                 },
                 getCourse() {
-
                     // 1. get course from db (check if user is enrolled)
                     // 2. call youtube api to retrieve videos
 
