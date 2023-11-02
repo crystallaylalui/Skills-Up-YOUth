@@ -295,7 +295,7 @@
 
             <div class="row">
                 <p v-if="enrolled_courses == ''">Nothing here! Click <a href='courses.php'>here</a> to enroll into courses.</p>
-                <course v-for="c in enrolled_courses.sort(function(a, b){return a.completed - b.completed})" :completed="c.completed" :enrolled="true" :course_id="c.course_id" :title="c.course ? c.course.course_title : ''" :description="c.course ? c.course.course_description : ''" :playlist_url="c.course.playlist_url ? c.course.playlist_url : ''"></course>
+                <course v-for="c in enrolled_courses" :completed="c.completed" :enrolled="true" :course_id="c.course_id" :title="c.course ? c.course.course_title : ''" :description="c.course ? c.course.course_description : ''" :playlist_url="c.course.playlist_url ? c.course.playlist_url : ''"></course>
             </div> 
             `
         })
@@ -323,7 +323,7 @@
             },
             template: 
             `
-                <div class="col-4 my-2 d-flex align-items-stretch">
+                <div v-if="completed == false" class="col-4 my-2 d-flex align-items-stretch">
                     <div class="card card-custom bg-white border-white border-0 shadow-lg">
                         <img :src="img">
                         <div class="card-body" style="overflow-y: auto">
