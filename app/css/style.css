@@ -462,3 +462,27 @@ body {
     font-weight:300;
 }
 
+.courses-banner {
+    position: relative;
+    padding: 195px 0px 185px 0px;
+}
+  
+  .courses-banner:after {
+    content: url(../images/courses-bg3.png);
+    top: -1px;
+    right: 0;
+    position: absolute;
+    width: 500px;
+    height: 200px;
+    z-index: -1;
+  }
+  
+  .courses::before {
+    content: url(../images/banner-left.png);
+    top: -1px;
+    left: 0;
+    position: absolute;
+    width: 500px;
+    height: 655px;
+    z-index: -1;
+  }

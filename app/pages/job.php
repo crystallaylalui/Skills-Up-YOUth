@@ -17,105 +17,11 @@
         <?php include ('navbar.php'); ?>
     </div>
 
-    <div id="job-search-container" style="background-color: black; color: white; padding: 50px;">
-        <div class="row">
-            <!-- Search Bar -->
-            <div id="search-bar" class="col-md-6">
-                <div class="search-container">
-                    <input type="text" placeholder="Search jobs..." class="form-control">
-                    <!-- Add other search-related elements here -->
-                </div>
-            </div>
-
-            <!-- Employer Reviews -->
-            <div id="employer-reviews" class="col-md-2">
-                <h3>Employer Reviews</h3>
-                <!-- Add content specific to employer reviews -->
-            </div>
-
-            <!-- Project Duration -->
-            <div id="project-duration" class="col-md-2">
-                <h3>Project Duration</h3>
-                <!-- Add content specific to project duration -->
-            </div>
-
-            <!-- For Employers -->
-            <div id="for-employers" class="col-md-2">
-                <h3>For Employers</h3>
-                <!-- Add content specific to employers -->
-            </div>
-        </div>
-    </div>
-
     <div class="row">
-        <div id="filter-container" class="col-md-3" style="border-right: 1px solid black; padding-right: 10px;">
-            <h2>Filters</h2>
-            
-            <!-- Employment Type Filter -->
-            <div class="filter-section">
-                <h3>Employment Type</h3>
-                <div class="filter-option">
-                    <input type="checkbox" id="full-time" name="employment-type" value="full-time">
-                    <label for="full-time">Full Time</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="part-time" name="employment-type" value="part-time">
-                    <label for="part-time">Part Time</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="internship" name="employment-type" value="internship">
-                    <label for="internship">Internship</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="volunteer" name="employment-type" value="volunteer">
-                    <label for="volunteer">Volunteering</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="project" name="employment-type" value="project">
-                    <label for="project">Project-Based</label>
-                </div>
-            </div>
         
-            <!-- Eligibility Filter -->
-            <div class="filter-section">
-                <h3>Eligibility Based on</h3>
-                <div class="filter-option">
-                    <input type="checkbox" id="completed" name="eligibility" value="completed">
-                    <label for="completed">Completed Courses</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="ongoing" name="eligibility" value="ongoing">
-                    <label for="ongoing">Ongoing Courses</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="saved" name="eligibility" value="saved">
-                    <label for="saved">Saved Courses</label>
-                </div>
-            </div>
-        
-            <!-- Work Location Filter -->
-            <div class="filter-section">
-                <h3>Work Location</h3>
-                <div class="filter-option">
-                    <input type="checkbox" id="in-office" name="work-location" value="in-office">
-                    <label for="in-office">In Office</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="remote" name="work-location" value="remote">
-                    <label for="remote">Remote</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="hybrid" name="work-location" value="hybrid">
-                    <label for="hybrid">Hybrid</label>
-                </div>
-            </div>
-        
-            <!-- Add more filter sections as needed -->
-        </div>
-
         <!-- jobs -->
         <div class="col-md-8" style="padding: 50px;">
-            <h2>All courses</h2>
+            <h2>Jobs available</h2>
             <div class="row">
                 <div class="col-md-4">
                     <div class="card card-custom bg-white border-white border-0">

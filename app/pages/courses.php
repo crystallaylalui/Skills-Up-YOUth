@@ -26,15 +26,15 @@
     </div>
 
     <div class="container-fluid" id="courses">
-        <div class="row">
-            <div class="">
-                <div class="p-4">
-                    <div class="container-fluid py-5">
-                        <h2 class="display-6 fw-bold"> Hi, {{ user.username }}! What do you want to learn today? </h2>
-                        <p class="fs-4 text-muted"> Invest in yourself and take the first step in <br>achieving your dreams </p>
+        <div class="row courses-banner py-5">
+                <div class="col-md-8 col-sm-4 my-5">
+                    <div class="container-fluid px-5">
+                        <h2 class="display-6"> Hi, {{ user.username }}! What do you want to learn today? </h2>
+                        <p class="fs-5"> Invest in yourself and take the first step in achieving your dreams. </p>
                     </div>
                 </div>
-                <hr>
+        </div>
+
                 <div class="px-5">
                   <div>
                     <div class="m-5">
@@ -55,8 +55,8 @@
                   </div>
                     
                 </div>
-            </div>
-        </div>
+
+        
 
     </div>
 
