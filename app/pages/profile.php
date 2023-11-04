@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- Boxicons -->
-	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-	<!-- My CSS -->
-	<link rel="stylesheet" href="../css/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script defer src="navbar.js"></script>
+		<!-- Boxicons -->
+		<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+		<!-- My CSS -->
+		<link rel="stylesheet" href="../css/styles.css">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script defer src="navbar.js"></script>
 
-	<title>AdminHub</title>
+		<title>AdminHub</title>
 </head>
 <body>
 	<div>
@@ -24,35 +24,15 @@
 
 
 	<!-- CONTENT -->
-	<section id="content">
-		<!-- NAVBAR -->
-		<!-- <nav>
-			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-			<a href="#" class="profile">
-				<img src="images/youth.png">
-			</a>
-		</nav> -->
-		<!-- NAVBAR -->
+	<!-- <section id="content"> -->
+		
 
 		<!-- MAIN -->
 		<main>
 			<div class="head-title">
 				<div class="left">
 					<h1>Welcome back!</h1>
-					<ul class="breadcrumb">
+					<!-- <ul class="breadcrumb">
 						<li>
 							<a href="#">Dashboard</a>
 						</li>
@@ -60,7 +40,7 @@
 						<li>
 							<a class="active" href="#">Home</a>
 						</li>
-					</ul>
+					</ul> -->
 				</div>
 			</div>
 
@@ -69,21 +49,21 @@
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
 						<h3>5</h3>
-						<p>Courses in progress</p>
+						<p>Courses Completed</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-badge-check' ></i>
 					<span class="text">
-						<h3>24</h3>
+						<h3>5</h3>
 						<p>Badges earned</p>
 					</span>
 				</li>
 				<li>
-					<i class='bx bxs-dollar-circle' ></i>
+					<i class='bx bxs-bar-chart-alt-2' ></i>
 					<span class="text">
-						<h3>7</h3>
-						<p>Projects completed</p>
+						<h3>60</h3>
+						<p>Points </p>
 					</span>
 				</li>
 			</ul>
@@ -101,79 +81,72 @@
 							<tr>
 								<th>Course Name</th>
 								<th>Start Date</th>
-								<th>Status</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td>
-									<img src="images/python.jpg">
-									<p>Intro to Python</p>
+									<img src="../images/python.jpg">
+									<p>Python Fundamentals</p>
 								</td>
-								<td>29-10-2023</td>
-								<td><span class="status completed">Completed</span></td>
+								<td>29-01-2023</td>
+								<!-- <td><span class="status completed">Completed</span></td> -->
 							</tr>
 							<tr>
 								<td>
-									<img src="images/javascript.jpg">
-									<p>Intro to Javascript</p>
+									<img src="../images/python.jpg">
+									<p>Python: Intermediate</p>
 								</td>
 								<td>30-10-2023</td>
-								<td><span class="status completed">Completed</span></td>
+								<!-- <td><span class="status completed">Completed</span></td> -->
 							</tr>
 							<tr>
 								<td>
-									<img src="images/c.png">
-									<p>Intro to C</p>
+									<img src="../images/javascript.jpg">
+									<p>Javascript Fundamentals</p>
 								</td>
-								<td>01-11-2023</td>
-								<td><span class="status completed">Completed</span></td>
+								<td>01-03-2023</td>
+								<!-- <td><span class="status completed">Completed</span></td> -->
 							</tr>
 							<tr>
 								<td>
-									<img src="images/vue.png">
-									<p>Vue 101</p>
+									<img src="../images/php.png">
+									<p>Introduction to PHP</p>
 								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">In Progress</span></td>
+								<td>20-06-2023</td>
+								<!-- <td><span class="status completed">Completed</span></td> -->
 							</tr>
 							<tr>
 								<td>
-									<img src="images/webdev.jpg">
-									<p>Web Design 101</p>
+									<img src="../images/sql.png">
+									<p>Introduction to SQL</p>
 								</td>
-								<td>2-11-2023</td>
-								<td><span class="status pending">In Progress</span></td>
+								<td>12-07-2023</td>
+								<!-- <td><span class="status completed">Completed</span></td> -->
 							</tr>
 						</tbody>
 					</table>
 				</div>
 				<div class="todo">
 					<div class="head">
-						<h3>To Do List</h3>
-						<i class='bx bx-plus' ></i>
-						<i class='bx bx-filter' ></i>
+						<h3>Badges</h3>
 					</div>
 					<ul class="todo-list">
-						<li class="completed">
-							<p>Intro to Python: Exercise 1</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
+						<li>
+							<p><img src="../images/badges/py1.png" alt="" class = 'badges'></p>
+							<p><img src="../images/badges/py2.png" alt="" class = 'badges'></p>
 						</li>
-						<li class="completed">
-							<p>Intro to Javascript: Quiz 1</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
+						<li>
+							<p><img src="../images/badges/py2.png" alt="" class = 'badges'></p>
 						</li>
-                        <li class="completed">
-							<p>Intro to C: Quiz 2</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
+                        <li>
+							<p><img src="../images/badges/js1.png" alt="" class = 'badges'></p>
 						</li>
-						<li class="not-completed">
-							<p>Vue 101: Exercise 2</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
+						<li>
+							<p><img src="../images/badges/php1.png" alt="" class = 'badges'></p>
 						</li>
-						<li class="not-completed">
-							<p>Web Design 101: Exercise 3</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
+						<li>
+							<p><img src="../images/badges/sql1.png" alt="" class = 'badges'></p>
 						</li>
 					</ul>
 				</div>
