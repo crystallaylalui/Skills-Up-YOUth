@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    // No session variable "user" => no login
+    if ( !isset($_SESSION["user_id"]) ) {
+         // redirect to login page
+         header("Location: ../index.php"); 
+         exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,10 +37,10 @@
 		
 
 		<!-- MAIN -->
-		<main>
+		<main id="profile">
 			<div class="head-title">
 				<div class="left">
-					<h1>Welcome back!</h1>
+					<h1>Welcome back {{user.username}}! </h1>
 					<!-- <ul class="breadcrumb">
 						<li>
 							<a href="#">Dashboard</a>
@@ -48,21 +57,21 @@
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
-						<h3>5</h3>
+						<h3>{{ completed }}</h3>
 						<p>Courses Completed</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-badge-check' ></i>
 					<span class="text">
-						<h3>5</h3>
+						<h3>{{ user_badges.length }}</h3>
 						<p>Badges earned</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-bar-chart-alt-2' ></i>
 					<span class="text">
-						<h3>60</h3>
+						<h3>{{user.points}}</h3>
 						<p>Points </p>
 					</span>
 				</li>
@@ -84,45 +93,16 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
+							<tr v-for="e in enrolled">
 								<td>
-									<img src="../images/python.jpg">
-									<p>Python Fundamentals</p>
+									<img v-if="e.course.course_title.split(' ')[0] == 'Python'" src="../images/python.jpg">
+									<img v-if="e.course.course_title.split(' ')[0] == 'PHP'" src="../images/php.png">
+									<img v-if="e.course.course_title.split(' ')[0] == 'Javascript'" src="../images/javascript.jpg">
+									<img v-if="e.course.course_title.split(' ')[0] == 'SQL'" src="../images/sql.png">
+									<p>{{e.course.course_title}}</p>
 								</td>
-								<td>29-01-2023</td>
-								<!-- <td><span class="status completed">Completed</span></td> -->
-							</tr>
-							<tr>
-								<td>
-									<img src="../images/python.jpg">
-									<p>Python: Intermediate</p>
-								</td>
-								<td>30-10-2023</td>
-								<!-- <td><span class="status completed">Completed</span></td> -->
-							</tr>
-							<tr>
-								<td>
-									<img src="../images/javascript.jpg">
-									<p>Javascript Fundamentals</p>
-								</td>
-								<td>01-03-2023</td>
-								<!-- <td><span class="status completed">Completed</span></td> -->
-							</tr>
-							<tr>
-								<td>
-									<img src="../images/php.png">
-									<p>Introduction to PHP</p>
-								</td>
-								<td>20-06-2023</td>
-								<!-- <td><span class="status completed">Completed</span></td> -->
-							</tr>
-							<tr>
-								<td>
-									<img src="../images/sql.png">
-									<p>Introduction to SQL</p>
-								</td>
-								<td>12-07-2023</td>
-								<!-- <td><span class="status completed">Completed</span></td> -->
+								<td>{{ e.start_date }}</td>
+								<td v-if="e.completed == '1'"><span class="status completed">Completed</span></td>
 							</tr>
 						</tbody>
 					</table>
@@ -131,23 +111,11 @@
 					<div class="head">
 						<h3>Badges</h3>
 					</div>
-					<ul class="todo-list">
-						<li>
-							<p><img src="../images/badges/py1.png" alt="" class = 'badges'></p>
-							<p><img src="../images/badges/py2.png" alt="" class = 'badges'></p>
+					<ul class="row">
+						<li v-for="b in badges" class="col-6">
+							<img :src="'../images/badges/' + b.badge_img" alt="" class = 'badges'>
 						</li>
-						<li>
-							<p><img src="../images/badges/py2.png" alt="" class = 'badges'></p>
-						</li>
-                        <li>
-							<p><img src="../images/badges/js1.png" alt="" class = 'badges'></p>
-						</li>
-						<li>
-							<p><img src="../images/badges/php1.png" alt="" class = 'badges'></p>
-						</li>
-						<li>
-							<p><img src="../images/badges/sql1.png" alt="" class = 'badges'></p>
-						</li>
+
 					</ul>
 				</div>
 			</div>
@@ -156,7 +124,85 @@
 	</section>
 	<!-- CONTENT -->
 	
+	<script>
+		const profile = Vue.createApp({
+			data() {
+				return {
+					user: '',
+					user_badges: [],
+					enrolled: '',
+					completed: 0,
+					badges: [],
+				}
+			},
+			created() {
+				this.getUser();
+			},
+			methods: {
+				checkTitle(title, name) {
+					return title.split(' ')[0] == name
+				},
+				getUser(){
+                    let url = "../../server/api/users.php";
+                    let params = {
+                        user_id: <?php echo $_SESSION["user_id"] ?>,
+                    }
 
+                    axios.get(url, {params: params})
+                    .then(r => {
+                        this.user = r.data;
+                        this.user_badges = JSON.parse(r.data.badges);
+						for (b in this.user_badges) {
+                            this.getBadge(this.user_badges[b]);
+                        }
+						this.getEnrolledCourses();
+                    })
+                },
+				getEnrolledCourses() {
+                    let url = "../../server/api/enrollments.php";
+                    let params = {
+                        user_id: <?php echo $_SESSION["user_id"]; ?>,
+                    }
+
+                    axios.get(url, {params: params})
+                    .then(r => {
+                        this.enrolled = r.data;
+                        for (c in r.data) {
+                            this.getCourse(r.data[c].course_id, c);
+                        }
+						this.completed = r.data.filter(e => e.completed == 1 ).length;
+                    })
+                },
+				getCourse(course_id, index) {
+                    let url = "../../server/api/courses.php";
+                    let params = {
+                        course_id: course_id,
+                    }
+
+                    axios.get(url, { params: params })
+                    .then(r => {
+                        this.enrolled[index].course = r.data;
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    })
+                },
+				getBadge(badge_id){
+                    let badges_url = "../../server/api/badges.php";
+
+                    axios.get(badges_url, {params: {badge_id: badge_id}})
+                    .then(r => {
+                        this.badges.push(r.data);
+						this.badges.sort(function(a, b){return a.badge_id - b.badge_id})
+                    })
+                },
+			}
+		})
+
+		const vm = profile.mount("#profile");
+	</script>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 	<script src="script.js"></script>
 </body>
 </html>
