@@ -20,7 +20,7 @@
         </div>
 
         <div>
-            <div class="table">
+            <div class="table" id="leaderboard">
                 <section class="table__header">
                     <h1>Leaderboard</h1>
                 </section>
@@ -35,77 +35,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><strong> 1 </strong></td>
-                                <td> <img src="../images/guy1.jpg" alt="">Alex Chan</td>
+                            <tr v-for="(u, index) in users">
+                                <td><strong> {{ getRank(index) }} </strong></td>
+                                <td> <img :src="'../images/profile' + getRank(index) + '.jpg'" alt="">{{ u.username }}</td>
                                 <td>
-                                    <p class="status expert">Coding Expert</p>
+                                    <p class="status expert" v-if="getLevel(u.points) == 'Coding Expert'">Coding Expert</p>
+                                    <p class="status whiz" v-if="getLevel(u.points) == 'Tech Whiz'">Tech Whiz</p>
+                                    <p class="status proficient" v-if="getLevel(u.points) == 'Proficient Coder'">Proficient Coder</p>
+                                    <p class="status intermediate" v-if="getLevel(u.points) == 'Intermediate'">Intermediate</p>
+                                    <p class="status beginner" v-if="getLevel(u.points) == 'Beginner'">Beginner</p>
                                 </td>
-                                <td> <strong> 100 </strong></td>
-                            </tr>
-                            <tr>
-                                <td><strong> 2 </strong></td>
-                                <td><img src="../images/guy2.jpg" alt="">Shawn Lim</td>
-                                <td>
-                                    <p class="status expert">Coding Expert</p>
-                                </td>
-                                <td> <strong>90</strong> </td>
-                            </tr>
-                            <tr>
-                                <td><strong> 3 </strong></td>
-                                <td><img src="../images/girl1.jpg" alt=""> Chloe Tan </td>
-                                <td>
-                                    <p class="status whiz">Tech Whiz</p>
-                                </td>
-                                <td> <strong>80</strong> </td>
-                            </tr>
-                            <tr>
-                                <td><strong> 4 </strong></td>
-                                <td><img src="../images/guy3.jpg" alt=""> Elson Chua </td>
-                                <td>
-                                    <p class="status whiz">Tech Whiz</p>
-                                </td>
-                                <td> <strong>70</strong> </td>
-                            </tr>
-                            <tr>
-                                <td><strong> 5 </strong></td>
-                                <td><img src="../images/girl2.png" alt=""> Rachel Lee </td>
-                                <td>
-                                    <p class="status proficient">Proficient Coder</p>
-                                </td>
-                                <td> <strong>60</strong> </td>
-                            </tr>
-                            <tr>
-                                <td><strong> 6 </strong></td>
-                                <td><img src="../images/guy4.jpg" alt=""> Ali Abdul </td>
-                                <td>
-                                    <p class="status proficient">Proficient Coder</p>
-                                </td>
-                                <td> <strong>50</strong> </td>
-                            </tr>
-                            <tr>
-                                <td><strong> 7 </strong></td>
-                                <td><img src="../images/guy5.jpg" alt=""> Fernando Alonso </td>
-                                <td>
-                                    <p class="status intermediate">Intermediate</p>
-                                </td>
-                                <td> <strong>40</strong> </td>
-                            </tr>
-                            <tr>
-                                <td><strong> 8 </strong></td>
-                                <td><img src="../images/girl3.jpg" alt=""> Aayat Ali Khan </td>
-                                <td>
-                                    <p class="status intermediate">Intermediate</p>
-                                </td>
-                                <td> <strong>30</strong> </td>
-                            </tr>
-                            <tr>
-                                <td><strong> 9 </strong></td>
-                                <td><img src="../images/guy6.jpg" alt=""> Cody Chua </td>
-                                <td>
-                                    <p class="status intermediate">Intermediate</p>
-                                </td>
-                                <td> <strong>20</strong> </td>
+                                <td> <strong>{{ u.points }}</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -114,7 +54,55 @@
         </div>
         
     </div>
-    
+    <script>
+        const leaderboard = Vue.createApp({
+            data() {
+                return {
+                    users: [],
+                }
+            },
+            created() {
+                this.getUsers();
+            },
+            methods: {
+                getUsers(){
+                    let url = "../../server/api/users.php";
+
+                    axios.get(url)
+                    .then(r => {
+                        this.users = r.data;
+                        // sort highest - lowest
+                        this.users = r.data.sort(function(a, b){return b.points-a.points});
+                    })
+                },
+                getRank(index) {
+                    return index +1;
+                },
+                getLevel(points) {
+                    if (points > 5000) {
+                        return "Coding Expert";
+                    } else if (points > 4000) {
+                        return "Tech Whiz";
+                    } else if (points > 2000) {
+                        return "Proficient Coder";
+                    } else if (points > 1000) {
+                        return "Intermediate";
+                    } else if (points >= 0) {
+                        return "Beginner";
+                    }
+                }
+            }
+
+        })
+
+        const vm = leaderboard.mount("#leaderboard");
+        
+    </script>
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+        </script>
 </body>
 
 </html>

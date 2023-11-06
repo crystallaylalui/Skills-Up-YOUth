@@ -195,10 +195,16 @@
                 
             },
             methods: {
+                userCheck(user_id) {
+                    if (user_id == <?php echo $_SESSION['user_id'] ?>) {
+                        return true
+                    } else {
+                        return false
+                    }
+                },
                 getRank(index) {
                     return index +1;
                 },
-
             },
             template: `
 
@@ -208,12 +214,12 @@
                         <p class="display-6">Leaderboard</p>
                     </div>
                     <div class="col-lg-4">
-                        <button type="button" class="btn btn-outline-dark text-end">View All</button>
+                        <a type="button" class="btn btn-outline-dark text-end" href="leaderboard.php">View All</a>
                     </div>
                 </div>           
 
-                <div v-for="(u, index) in users">
-                    <div class="card" style="width: auto;">
+                <div v-for="(u, index) in users.slice(0, 5)">
+                    <div class="card" style="width: auto;" :style="{ 'background' : userCheck(u.user_id) ? '#E69CF2': ''}">
                         <div class="card-body d-flex align-items-center">
                             <!-- Profile Picture (Left) -->
                             <img :src="'../images/profile' + getRank(index) + '.jpg'" alt="Profile Picture" class="rounded-circle" style="width: 50px; height: 50px; margin-right: 10px;">

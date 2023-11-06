@@ -201,6 +201,11 @@ tbody tr.hide td img {
     background-color: #6fcaea;
 }
 
+.status.beginner {
+    background-color: lightgrey;
+}
+
+
 
 @media (max-width: 1000px) {
     td:not(:first-of-type) {
