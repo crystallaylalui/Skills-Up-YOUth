@@ -9,115 +9,7 @@
     <script src="https://unpkg.com/vue@3"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            /* background: url('../images/job-desc.jpeg') center/cover fixed; */
-            background-color: rgba(255, 255, 255, 0.8); /* Translucent white background */
-            color: #333;
-        }
-
-        .navbar {
-            background-color: #007bff;
-            padding: 10px;
-            color: #fff;
-            text-align: center;
-        }
-
-        .section-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: 20px;
-        }
-
-        .left-section {
-            padding: 20px;
-            text-align: left;
-        }
-
-        .left-section h1 {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .large-text {
-            font-size: 1.5em;
-        }
-
-        .section-heading {
-            font-weight: bold;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
-        .job-description,
-        .responsibilities,
-        .requirements {
-            margin-bottom: 20px;
-        }
-
-        .badge-section {
-            margin-top: 20px;
-        }
-
-        .badge-button {
-            background-color: #87CEEB;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-
-        .apply-button {
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            margin-right: 10px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: #fff;
-        }
-
-        .right-section {
-            padding: 20px;
-            /* text-align: right; */
-            background-color: #f8f9fa;
-        }
-
-        .details-section {
-            margin-top: 20px;
-            color: #555;
-        }
-
-        .details-section hr {
-            border: 1px solid #ddd;
-            margin: 10px 0;
-        }
-
-        .details-item {
-            margin-bottom: 10px;
-        }
-
-        .top-section {
-            background-color: #f8f9fa;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .top-section h2 {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-    </style>
+    <link href="../css/jobdesc.css" rel="stylesheet">
 </head>
 
 <body>
@@ -161,7 +53,7 @@
                             <div class="section-heading">Badges</div>
                             <button class="badge-button">Badge 1</button>
                             <button class="badge-button">Badge 2</button>
-                            <!-- Add more badges as needed -->
+                            <!-- more badges if needed -->
                         </div>
                         <hr>
                         <button class="apply-button">Apply</button>
@@ -212,7 +104,7 @@
     <script>
         // Function to fetch job details from the API
         function fetchJobDetails() {
-            fetch('http://localhost:3001/jobs/1')
+            fetch('http://localhost:3001/jobs/2')
                 .then(response => response.json())
                 .then(data => {
                     console.log('Fetched data:', data); // Log the fetched data
@@ -241,7 +133,7 @@
             const badgeSection = document.querySelector('.badge-section');
             badgeSection.innerHTML = `
                 <div class="section-heading">Badges</div>
-                ${job.badges.map(badge => `<button class="badge-button">${badge}</button>`).join('')}
+                ${job.badges.map(badge => `<img src='../images/badges/${badge}.png' style='width: 120px;'>`).join('')}
             `;
 
             // Update other job details
@@ -281,6 +173,18 @@
             // Update other job details as needed
         }
 
+        // Apply button click event
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the "Apply" button
+            var applyButton = document.querySelector('.apply-button');
+
+            // Add a click event listener to the "Apply" button
+            applyButton.addEventListener('click', function () {
+                // Display an alert when the button is clicked
+                alert('Job applied!');
+            });
+        });
+
         // Fetch job details when the page loads
         window.onload = fetchJobDetails;
 
@@ -292,4 +196,3 @@
 </body>
 
 </html>
-

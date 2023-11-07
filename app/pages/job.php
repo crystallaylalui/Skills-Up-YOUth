@@ -12,6 +12,12 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 
+<style>
+    img {
+        width: 80px;
+    }
+</style>
+
 <body>
     <div>
         <?php include ('navbar.php'); ?>
@@ -20,55 +26,83 @@
     <div class="row">
         
         <!-- jobs -->
-        <div class="col-md-8" style="padding: 50px;">
+        <!-- <div class="col-md-8" style="padding: 50px;"> -->
+        <div style="padding: 50px;">
             <h2>Jobs available</h2>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="card card-custom bg-white border-white border-0">
+                <div class="col-md-3">
+                    <div class="card card-custom bg-light border-black border-2">
                         <div class="card-custom-img" style="background-image: url(../images/job.jpg)"></div>
                         <div class="card-custom-avatar">
-                        <img class="img-fluid" src="../images/job1.jpeg" alt="Avatar" />
+                        <!-- <img class="img-fluid" src="../images/job1.jpeg" alt="Avatar" /> -->
                         </div>
                         <div class="card-body" style="overflow-y: auto">
-                        <h4 class="card-title">Software Engineer</h4>
-                        <p class="card-text">Job Description</p>
+                        <h4 class="card-title">JavaScript Developer</h4>
+                        <p class="card-text">Building a mobile-app</p>
+                        <img src="../images/badges/js3.png">
+                        <img src="../images/badges/php2.png">
                         </div>
                         <div class="card-footer" style="background: inherit; border-color: inherit;">
-                        <a href="#" class="btn btn-dark">Apply</a>
+                        <a href="job-description1.php" class="btn btn-dark">Learn More</a>
                         <button id="saveButton" onclick="saveFilters()">Save</button>
                         </div>
                         
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card card-custom bg-white border-white border-0">
+                <div class="col-md-3">
+                    <div class="card card-custom bg-light border-black border-2">
                         <div class="card-custom-img" style="background-image: url(../images/job.jpg)"></div>
                         <div class="card-custom-avatar">
-                        <img class="img-fluid" src="../images/job2.png" alt="Avatar" />
+                        <!-- <img class="img-fluid" src="../images/job2.png" alt="Avatar" /> -->
                         </div>
                         <div class="card-body" style="overflow-y: auto">
-                        <h4 class="card-title"> Cybersecurity Engineer</h4>
-                        <p class="card-text"> Job description </p>
+                        <h4 class="card-title">Python Backend Developer</h4>
+                        <p class="card-text"> Analytics project </p>
+                        <img src="../images/badges/py3.png">
+                        <img src="../images/badges/sql2.png">
                         </div>
                         <div class="card-footer" style="background: inherit; border-color: inherit;">
-                        <a href="#" class="btn btn-dark">Apply</a>
+                        <a href="job-description2.php" class="btn btn-dark">Learn More</a>
                         <button id="saveButton" onclick="saveFilters()">Save</button>
                         </div>
                         
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card card-custom bg-white border-white border-0">
+                <div class="col-md-3">
+                    <div class="card card-custom bg-light border-black border-2">
                         <div class="card-custom-img" style="background-image: url(../images/job.jpg)"></div>
                         <div class="card-custom-avatar">
-                        <img class="img-fluid" src="../images/job3.png" alt="Avatar" />
+                        <!-- <img class="img-fluid" src="../images/job3.png" alt="Avatar" /> -->
                         </div>
                         <div class="card-body" style="overflow-y: auto">
-                        <h4 class="card-title"> Front-End Engineer</h4>
-                        <p class="card-text"> Job description </p>
+                        <h4 class="card-title">PHP Developer</h4>
+                        <p class="card-text"> For e-commerce platform </p>
+                        <img src="../images/badges/php3.png">
+                        <img src="../images/badges/js1.png">
+                        <img src="../images/badges/sql2.png">
                         </div>
                         <div class="card-footer" style="background: inherit; border-color: inherit;">
-                        <a href="#" class="btn btn-dark">Apply</a>
+                        <a href="job-description3.php" class="btn btn-dark">Learn More</a>
+                        <button id="saveButton" onclick="saveFilters()">Save</button>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card card-custom bg-light border-black border-2">
+                        <div class="card-custom-img" style="background-image: url(../images/job.jpg)"></div>
+                        <div class="card-custom-avatar">
+                        <!-- <img class="img-fluid" src="../images/job3.png" alt="Avatar" /> -->
+                        </div>
+                        <div class="card-body" style="overflow-y: auto">
+                        <h4 class="card-title"> MySQL Database Engineer</h4>
+                        <p class="card-text"> For social platform </p>
+                        <img src="../images/badges/sql3.png">
+                        <img src="../images/badges/php2.png">
+                        <img src="../images/badges/py2.png">
+                        </div>
+                        <div class="card-footer" style="background: inherit; border-color: inherit;">
+                        <a href="job-description4.php" class="btn btn-dark">Learn More</a>
                         <button id="saveButton" onclick="saveFilters()">Save</button>
                         </div>
                         

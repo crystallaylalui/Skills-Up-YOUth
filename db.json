@@ -2,22 +2,77 @@
   "jobs": [
     {
       "id": 1,
-      "title": "Senior Product Design",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "responsibilities": ["Design innovative products", "Collaborate with cross-functional teams", "..."],
-      "requirements": ["5+ years of experience", "Proficient in design tools", "..."],
-      "badges": ["UI/UX", "Creative", "Team Player"],
+      "title": "JavaScript Developer for Mobile App Project",
+      "description": "We are in need of a JavaScript Developer to contribute to our mobile app project. Your responsibilities include developing interactive features, collaborating with designers, and optimizing app performance.",
+      "responsibilities": ["Develop interactive features for mobile app", "Collaborate with UX/UI designers", "Optimize app performance for various devices"],
+      "requirements": ["Proven experience as a JavaScript developer", "Strong knowledge of JavaScript and mobile app development", "Experience with PHP is a plus"],
+      "badges": ["js3", "php1"],
+      "details": {
+        "creationDate": "2023-10-26",
+        "recruitmentPeriod": "22 days",
+        "hiringManager": "Michael Green",
+        "projectDuration": "42 days",
+        "recruitmentQuota": 3,
+        "jobType": "Freelance",
+        "location": "Remote",
+        "salary": "$600",
+        "workCategory": "Project-Based"
+      }
+    },    
+    {
+      "id": 2,
+      "title": "Python Backend Developer for Analytics Project",
+      "description": "Join our team as a Python Backend Developer to work on an analytics project. Your role includes developing backend logic, handling data integration, and ensuring data accuracy. MySQL knowledge is essential.",
+      "responsibilities": ["Develop backend logic for analytics project", "Integrate data from various sources", "Ensure data accuracy and reliability"],
+      "requirements": ["Proven experience as a Python developer", "Strong knowledge of Python and MySQL", "Experience with data analytics is a plus"],
+      "badges": ["py3", "sql2"],
       "details": {
         "creationDate": "2023-11-01",
-        "recruitmentPeriod": "30 days",
-        "hiringManager": "John Doe",
-        "department": "Product Design",
+        "recruitmentPeriod": "18 days",
+        "hiringManager": "Sarah White",
+        "projectDuration": "35 days",
         "recruitmentQuota": 5,
-        "jobType": "Full-Time",
-        "location": "San Francisco, CA",
-        "salary": "$80,000 - $100,000",
-        "workCategory": "Hybrid"
+        "location": "Remote",
+        "payment": "$700",
+        "workCategory": "Project-Based"
+      }
+    },    
+    {
+      "id": 3,
+      "title": "PHP Developer for E-commerce Platform",
+      "description": "We are seeking a PHP Developer to work on our e-commerce platform. The project involves enhancing features, optimizing performance, and ensuring smooth functionality. Experience with JavaScript and MySQL is a plus.",
+      "responsibilities": ["Develop and maintain PHP-based e-commerce platform", "Collaborate with front-end developers", "Optimize application performance"],
+      "requirements": ["Proven experience as a PHP developer", "Strong knowledge of PHP and MySQL", "Experience with JavaScript is a plus"],
+      "badges": ["php3", "js1", "sql2"],
+      "details": {
+        "creationDate": "2023-10-31",
+        "recruitmentPeriod": "20 days",
+        "hiringManager": "David Brown",
+        "projectDuration": "56 Days",
+        "recruitmentQuota": 5,
+        "location": "Remote",
+        "payment": "$800",
+        "workCategory": "Project-Based"
+      }
+    },
+    {
+      "id": 4,
+      "title": "MySQL Database Engineer for Social Media Platform",
+      "description": "Join our team as a MySQL Database Engineer to work on a social media platform. Your role includes designing, implementing, and optimizing database systems. Knowledge of PHP and Python is advantageous.",
+      "responsibilities": ["Design and implement database systems", "Optimize database performance", "Collaborate with developers on data integration"],
+      "requirements": ["Proven experience as a database engineer", "Strong knowledge of MySQL and database architecture", "Experience with PHP and Python is a plus"],
+      "badges": ["sql3", "php2", "py1"],
+      "details": {
+        "creationDate": "2023-11-05",
+        "recruitmentPeriod": "15 days",
+        "hiringManager": "Alex Johnson",
+        "projectDuration": "18 Days",
+        "recruitmentQuota": 2,
+        "location": "Remote",
+        "payment": "$200",
+        "workCategory": "Project-Based"
       }
     }
+                
   ]
 }
