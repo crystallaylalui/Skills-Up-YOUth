@@ -16,7 +16,7 @@
 
 body {
     min-height: 100vh;
-    background: url(images/background.png) center / cover;
+    background: url(../images/background.png) center / cover;
     display: flex;
     justify-content: center;
     align-items: center;
