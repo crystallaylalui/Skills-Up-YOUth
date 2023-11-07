@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -90,9 +93,15 @@
                     playlist_url: '',
                     title: '',
                     description: '',
+                    badges: [],
+                    selection: [],
+                    selected_badges: [],
                 }
             },
             props: [''],
+            created() {
+                this.getBadges();
+            },
             methods: {
                 addCourse() {
                     let url = "../../server/api/courses.php";
@@ -109,7 +118,7 @@
                         playlist_url: this.playlist_url.substring(38),
                         title: this.title,
                         description: this.description,
-                        badges: '[1, 2, 3, 4]',
+                        badges: JSON.stringify(this.selection),
                     }
 
                     axios.post(url, params)
@@ -118,6 +127,31 @@
                         alert("Added Course successfully");
                     })
                 },
+                getBadges() {
+                    let url = "../../server/api/badges.php";
+
+                    axios.get(url)
+                    .then(r => {
+                        this.badges = r.data;
+                    });
+                    // console.log(this.badges);
+                    return this.badges;
+                },
+                addBadges(selected) {
+                    this.selection = selected;
+
+                    for (i in this.selection) {
+                        this.getBadge(this.selection[i]);
+                    }
+                },
+                getBadge(badge_id){
+                    let badges_url = "../../server/api/badges.php";
+
+                    axios.get(badges_url, {params: {badge_id: badge_id}})
+                    .then(r => {
+                        this.selected_badges.push(r.data);
+                    })
+                }
             },
             template: `
                 <label for="title">Title</label>
@@ -141,6 +175,26 @@
                 </div>
 
                 <br>
+
+                <!-- badges -->
+                <hr solid class="my-5">
+                <h2 class="text-center">Badges</h2>
+                <div id="badges" class="container-fluid p-5 my-5 bg-dark rounded-5">
+                    <div v-for="badge in badges" class="d-inline row">
+                        <img class="col-1" v-bind:src="'../images/badges/' + badge.badge_img">
+                    </div>
+
+                    <select v-model="selected" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" size="16" multiple>
+                        <option v-for="badge in badges" v-bind:value="badge.badge_id">{{ badge.badge_name }}</option>
+                    </select>
+                    <button class="btn bg-light col-12" @click="addBadges(selected)">Add Badges</button>
+                    
+                    <br>
+                    <h2 style="color: white">Selection:</h2>
+                    <div v-for="badge in selected_badges" class="d-inline row">
+                        <img class="col-1" v-bind:src="'../images/badges/' + badge.badge_img">
+                    </div>
+                </div>
 
                 <button type="submit" class="btn btn-primary" @click="addCourse">Submit</button>
             `,

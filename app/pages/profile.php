@@ -95,14 +95,15 @@
 						<tbody>
 							<tr v-for="e in enrolled">
 								<td>
-									<img v-if="e.course.course_title.split(' ')[0] == 'Python'" src="../images/python.jpg">
-									<img v-if="e.course.course_title.split(' ')[0] == 'PHP'" src="../images/php.png">
-									<img v-if="e.course.course_title.split(' ')[0] == 'Javascript'" src="../images/javascript.jpg">
-									<img v-if="e.course.course_title.split(' ')[0] == 'SQL'" src="../images/sql.png">
-									<p>{{e.course.course_title}}</p>
+									<img v-if="checkTitle(e, 'Python')" src="../images/python.jpg">
+									<img v-if="checkTitle(e, 'PHP')" src="../images/php.png">
+									<img v-if="checkTitle(e, 'Javascript')" src="../images/javascript.jpg">
+									<img v-if="checkTitle(e, 'SQL')" src="../images/sql.png">
+									<p>{{e.course ? e.course.course_title : ''}}</p>
 								</td>
 								<td>{{ e.start_date }}</td>
 								<td v-if="e.completed == '1'"><span class="status completed">Completed</span></td>
+								<td v-if="e.completed == '0'"><span class="status ongoing">Ongoing</span></td>
 							</tr>
 						</tbody>
 					</table>
@@ -139,8 +140,11 @@
 				this.getUser();
 			},
 			methods: {
-				checkTitle(title, name) {
-					return title.split(' ')[0] == name
+				checkTitle(e, name) {
+					if (e.course) {
+						return e.course.course_title.split(' ')[0] == name
+					}
+					
 				},
 				getUser(){
                     let url = "../../server/api/users.php";
@@ -203,6 +207,6 @@
 	</script>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-	<script src="script.js"></script>
+	<!-- <script src="script.js"></script> -->
 </body>
 </html>

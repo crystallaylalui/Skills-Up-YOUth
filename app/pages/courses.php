@@ -35,29 +35,25 @@
                 </div>
         </div>
 
-                <div class="px-5">
-                  <div>
-                    <div class="m-5">
-                        <h3>My courses</h3>
-                        <!-- <div class="row">
-                            <course v-for="c in enrolled_courses" v-if="enrolled_courses" :course_id="c.course.course_id" :title="c.course.course_title" :description="c.course.course_description" :playlist_url="c.course.playlist_url"></course>
-                        </div>  -->
-                        <div class="row">
-                            <course v-for="c in enrolled_courses" :completed="c.completed" :enrolled="true" :course_id="c.course_id" :title="c.course ? c.course.course_title : ''" :description="c.course ? c.course.course_description : ''" :playlist_url="c.course.playlist_url"></course>
-                        </div> 
-                        <hr>
-                        <h3>All courses</h3>
-                        <div class="row">
-                            <!-- filters enrolled courses -->
-                            <course v-for="c in courses" :course_id="c.course_id" :title="c.course_title" :description="c.course_description" :playlist_url="c.playlist_url" :completed="enrolled_courses.filter(e => e.course_id === c.course_id ).length > 0"></course>
-                        </div>       
-                    </div>
-                  </div>
-                    
+        <div class="px-5">
+            <div>
+                <div class="m-5">
+                    <h3>My courses</h3>
+                    <!-- <div class="row">
+                        <course v-for="c in enrolled_courses" v-if="enrolled_courses" :course_id="c.course.course_id" :title="c.course.course_title" :description="c.course.course_description" :playlist_url="c.course.playlist_url"></course>
+                    </div>  -->
+                    <div class="row">
+                        <course v-for="c in enrolled_courses" :completed="c.completed" :enrolled="true" :course_id="c.course_id" :title="c.course ? c.course.course_title : ''" :description="c.course ? c.course.course_description : ''" :playlist_url="c.course.playlist_url ? c.course.playlist_url : ''"></course>
+                    </div> 
+                    <hr>
+                    <h3>All courses</h3>
+                    <div class="row">
+                        <!-- filters enrolled courses -->
+                        <course v-for="c in courses" :course_id="c.course_id" :title="c.course_title" :description="c.course_description" :playlist_url="c ? c.playlist_url : ''" :completed="enrolled_courses.filter(e => e.course_id === c.course_id ).length > 0"></course>
+                    </div>       
                 </div>
-
-        
-
+            </div>   
+        </div>
     </div>
 
     <script>
@@ -155,7 +151,7 @@
             },
             created() {
                 this.getCourse();
-                console.log(this.completed);
+                // console.log(this.completed);
             },
             template: 
             `

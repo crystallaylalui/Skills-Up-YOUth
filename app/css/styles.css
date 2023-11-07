@@ -206,6 +206,11 @@ main .table-data .order table tr td .status.completed {
 	background: var(--blue);
 }
 
+main .table-data .order table tr td .status.ongoing {
+	background: var(--yellow);
+}
+
+
 
 .badges{
 	height: 100%;

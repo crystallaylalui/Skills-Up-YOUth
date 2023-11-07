@@ -47,7 +47,7 @@
                                         Ranking
                                     </div>
                                     <div class="col-md-6 category-text">
-                                        <span class="number">{{ enrolled.filter(e => e.completed == 1 ).length }}</span>
+                                        <span class="number">{{ completed }}</span>
                                         <br>
                                         Courses completed
                                     </div>
@@ -135,6 +135,7 @@
                     user_badges: {}, // get user badges
                     users: [],
                     enrolled: '',
+                    completed: 0,
                 }
             },
             created() {
@@ -179,6 +180,7 @@
                     axios.get(url, {params: params})
                     .then(r => {
                         this.enrolled = r.data;
+                        this.completed = r.data.filter(e => e.completed == 1 ).length;
                     })
                 },
             }
@@ -294,6 +296,7 @@
                     axios.get(url, { params: params })
                     .then(r => {
                         this.enrolled_courses[index].course = r.data;
+                        this.enrolled_courses[index].playlist_url = r.data.playlist_url;
                     })
                     .catch(e => {
                         console.log(e);
@@ -308,7 +311,7 @@
 
             <div class="row">
                 <p v-if="enrolled_courses == ''">Nothing here! Click <a href='courses.php'>here</a> to enroll into courses.</p>
-                <course v-for="c in enrolled_courses" :completed="c.completed" :enrolled="true" :course_id="c.course_id" :title="c.course ? c.course.course_title : ''" :description="c.course ? c.course.course_description : ''" :playlist_url="c.course.playlist_url ? c.course.playlist_url : ''"></course>
+                <course v-for="c in enrolled_courses" :completed="c.completed" :enrolled="true" :course_id="c.course_id" :title="c.course ? c.course.course_title : ''" :description="c.course ? c.course.course_description : ''" :playlist_url="c.course.playlist_url"></course>
             </div> 
             `
         })
@@ -322,7 +325,6 @@
             props: ['course_id', 'playlist_url', 'title', 'description', 'enrolled', 'completed'],
             methods: {
                 getCourse() {
-
                     let course_url = `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=20&playlistId=${this.playlist_url}&key=${apiKey}`;
 
                     axios.get(course_url)
