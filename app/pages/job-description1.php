@@ -11,6 +11,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script defer src="navbar.js"></script>
     <link href="../css/jobdesc.css" rel="stylesheet">
+    <script defer src="navbar.js"></script>
 </head>
 
 <body>

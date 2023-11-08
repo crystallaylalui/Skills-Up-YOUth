@@ -21,10 +21,15 @@
 		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script defer src="navbar.js"></script>
+<<<<<<< Updated upstream
 
 		<title>Profile</title>
+=======
+		<link href="../css/style.css" rel="stylesheet">
+		<title>AdminHub</title>
+>>>>>>> Stashed changes
 </head>
-<body>
+<body style="background:url(../images/space-bg1.jpg) no-repeat center center fixed; background-size: cover;">
 	<div>
         <?php include ('navbar.php'); ?>
     </div>
@@ -40,7 +45,7 @@
 		<main id="profile">
 			<div class="head-title">
 				<div class="left">
-					<h1> Your Profile</h1>
+					<p class="font2" style="color:white"> Your Profile</p>
 					<!-- <ul class="breadcrumb">
 						<li>
 							<a href="#">Dashboard</a>
