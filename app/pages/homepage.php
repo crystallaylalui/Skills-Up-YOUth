@@ -24,7 +24,7 @@
     <link href="../css/card.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
 </head>
-<body style="background-color:#eee">
+<body>
     <div>
         <?php include ('navbar.php'); ?>
     </div>
@@ -107,21 +107,21 @@
             </div>
         </div>
 
-        <div class="container-fluid" style="padding: 50px;">
+        <div class="container-fluid" style="background-color:#eee; padding: 50px;">
             <div id="lessons" class="row">
                 <div class="lessons col-md-8" >
                     <div class="row">
                         <div class="col-md-8">
                             <span class="font2">Lessons</span>
                         </div>
-                        <div class="col-lg-4" style="padding-left:100px; padding-top:15px">
+                        <div class="col-lg-4 text-end" style="padding-top:15px">
                             <a href="courses.php" style="color:black; text-decoration:none">
                                 <img src="../images/plus-sign.png" width="30"> Add more courses
                             </a>
                         </div>
                     </div>
                     <div id="" class="row lesson">
-                        <div style="margin-left:100px">
+                        <div class="col-md-8" style="margin-left:50px">
                             <lessons></lessons>
                         </div>
                         
@@ -356,7 +356,7 @@
                     axios.get(url, { params: params })
                     .then(r => {
                         this.enrolled_courses[index].course = r.data;
-                        this.enrolled_courses[index].playlist_url = r.data.playlist_url;
+                        // this.enrolled_courses[index].playlist_url = r.data.playlist_url;
                     })
                     .catch(e => {
                         console.log(e);
@@ -370,7 +370,7 @@
             template: `
 
             <div class="row">
-                <p v-if="enrolled_courses == ''" class="display-7">Nothing here! Click <a href='courses.php'>here</a> to enroll into courses.</p>
+                <p v-if="enrolled_courses == ''" style="font-weight:400">Nothing here! Click <a style="color:#9932CC" href='courses.php'>here</a> to enroll into courses.</p>
                 <course v-for="c in enrolled_courses" :completed="c.completed" :enrolled="true" :course_id="c.course_id" :title="c.course ? c.course.course_title : ''" :description="c.course ? c.course.course_description : ''" :playlist_url="c.course.playlist_url"></course>
             </div> 
             `
