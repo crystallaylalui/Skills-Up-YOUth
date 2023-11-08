@@ -68,10 +68,12 @@ CREATE TABLE IF NOT EXISTS course (
 
 INSERT INTO course (playlist_url, course_title, course_description, course_badges)
 VALUES 
-('PLWKjhJtqVAbleDe3_ZA8h3AO2rXar-q2V', 'Javascript Tutorial for Beginners', '', '[5, 6]'),
-('PL4cUxeGkcC9gksOX3Kd9KPo-O68ncT05o', 'PHP & MySQL Course - Beginner Introduction', '', '[9, 13]'),
-('PLr6-GrHUlVf_ZNmuQSXdS197Oyr1L9sPB', 'HTML Course - Tutorial for Beginners', '', '[17, 18]');
-('PLgCTlR71eB4-ZGpajuh01zexg8f9Qd98z', 'HTML + CSS Practice', 'Sharpen your HTML and CSS skills in this practice playlist. Complete the course to earn JavaScript Level 2 and 3 badges!', '[18, 19]')
+('PLWKjhJtqVAbleDe3_ZA8h3AO2rXar-q2V', 'Javascript Tutorial for Beginners', 'Embark on your coding journey with this beginner JavaScript tutorial. Complete the course and earn JS1 and JS2 badges!', '[5, 6]'),
+('PL4cUxeGkcC9gksOX3Kd9KPo-O68ncT05o', 'PHP & MySQL Course - Beginner Introduction', 'Get introduced to PHP and MySQL in this beginner-friendly course. Earn PHP1 and SQL1 badges upon completion!', '[9, 13]'),
+('PLr6-GrHUlVf_ZNmuQSXdS197Oyr1L9sPB', 'HTML Course - Tutorial for Beginners', 'Embark on a beginner-friendly HTML journey with this course. Earn HTML1 and HTML2 badges upon completion!', '[17, 18]'),
+('PLgCTlR71eB4-ZGpajuh01zexg8f9Qd98z', 'HTML + CSS Practice', 'Sharpen your HTML and CSS skills in this practice playlist. Complete the course to earn HTML2 and HTML3 badges!', '[18, 19]'),
+('PL0Zuz27SZ-6N3bG4YZhkrCL3ZmDcLTuGd', 'Advanced Javascript Concepts', 'Dive into advanced JavaScript concepts with this comprehensive tutorial. Master the skills and earn the prestigious JS3 badge!', '[8]'),
+()
 
 
 
