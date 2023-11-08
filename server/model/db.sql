@@ -54,6 +54,11 @@ CREATE TABLE IF NOT EXISTS course (
   PRIMARY KEY (course_id)
 );
 
+INSERT INTO course (playlist_url, course_title, course_description, course_badges)
+VALUES 
+('PLWKjhJtqVAbleDe3_ZA8h3AO2rXar-q2V', 'Javascript Tutorial for Beginners', '', '[5, 6]'),
+('PL4cUxeGkcC9gksOX3Kd9KPo-O68ncT05o', 'PHP & MySQL Course - Beginner Introduction', '', '[9, 13]'),
+
 
 CREATE TABLE IF NOT EXISTS enrollment (
   enrollment_id int NOT NULL AUTO_INCREMENT,
