@@ -38,15 +38,16 @@
                             <div class="profile col-lg-4 text-center">
                                 <img src="../images/profile8.jpg" alt="Profile Picture" class="rounded-circle" style="width: 200px; height: 200px;">
                             </div>
-                            <div class="col-6" style="text-align:center; justify-content:center">
+                            <div class="col-lg-6" style="text-align:center; justify-content:center; padding-left:80px;">
                                 <div class="category">
                                     <!-- <img src="../images/ranking.png" alt="Rank Icon" style="width: 100px;"> -->
-                                    <div class="col-md-6 category-text">
+                                    <div class="col-md-6 category-text" style="justify-content:center">
                                         <span class="number">#{{ getRank() }}</span>
                                         <br>
                                         Ranking
+
                                     </div>
-                                    <div class="col-md-6 category-text">
+                                    <div class="col-md-6 category-text" style="justify-content:center">
                                         <span class="number">{{ completed }}</span>
                                         <br>
                                         Courses completed
@@ -55,14 +56,14 @@
 
                                 <div class="category">
                                     <!-- <img src="../images/course.png" alt="Courses Icon" style="width: 100px;"> -->
-                                    <div class="col-md-6 category-text">
+                                    <div class="col-md-6 category-text" style="justify-content:center">
                                         <span class="number">Beginner</span>
                                         <br>
                                         Skill level
                                     </div>
 
                                     <!-- <img src="../images/badges.png" alt="Badges Icon" style="width: 100px;"> -->
-                                    <div class="col-md-6 category-text">
+                                    <div class="col-md-6 category-text" style="justify-content:center">
                                         <span class="number">{{ user_badges.length }}</span>
                                         <br>
                                         Badges obtained
@@ -101,7 +102,9 @@
                 <div class="lessons col-md-8" >
                     <div class="row">
                         <div class="col-md-8">
-                            <p class="display-6">Lessons</p>
+                            <img src="../images/video-tutorials.jpg" alt="" width="50" height="50">
+                            <span class="display-6 mt-2">Lessons</span>
+                            
                         </div>
                         <div class="col-lg-4 text-end">
                             <a href="courses.php">
@@ -211,12 +214,14 @@
             template: `
 
             <div id="leaderboard" class="col-md-4 main">
-                <div class="row">
-                    <div class="col-md-8">
-                        <p class="display-6">Leaderboard</p>
+                <div class="row mb-2">
+                    <div class="col-md-8 col-sm-6 leaderboard-header">
+                        <img src="../images/trophy.png" alt="" width="50">
+                        <span class="display-6 px-1">Leaderboard</span>
+                        
                     </div>
-                    <div class="col-lg-4">
-                        <a type="button" class="btn btn-outline-dark text-end" href="leaderboard.php">View All</a>
+                    <div class="col-lg-4 col-sm-6 col-xs-6 text-end">
+                        <a type="button" class="btn btn-outline-dark " style="margin-left:20px" href="leaderboard.php">View All</a>
                     </div>
                 </div>           
 
@@ -338,7 +343,7 @@
             },
             template: 
             `
-                <div v-if="completed == false" class="col-4 my-2 d-flex align-items-stretch">
+                <div v-if="completed == false" class="col-lg-4 col-md-6 col my-2 d-flex align-items-stretch">
                     <div class="card card-custom bg-white border-white border-0 shadow-lg">
                         <img :src="img">
                         <div class="card-body" style="overflow-y: auto">
