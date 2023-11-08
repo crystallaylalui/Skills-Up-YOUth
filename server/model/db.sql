@@ -73,7 +73,6 @@ VALUES
 ('PLr6-GrHUlVf_ZNmuQSXdS197Oyr1L9sPB', 'HTML Course - Tutorial for Beginners', 'Embark on a beginner-friendly HTML journey with this course. Earn HTML1 and HTML2 badges upon completion!', '[17, 18]'),
 ('PLgCTlR71eB4-ZGpajuh01zexg8f9Qd98z', 'HTML + CSS Practice', 'Sharpen your HTML and CSS skills in this practice playlist. Complete the course to earn HTML2 and HTML3 badges!', '[18, 19]'),
 ('PL0Zuz27SZ-6N3bG4YZhkrCL3ZmDcLTuGd', 'Advanced Javascript Concepts', 'Dive into advanced JavaScript concepts with this comprehensive tutorial. Master the skills and earn the prestigious JS3 badge!', '[8]'),
-()
 
 
 
