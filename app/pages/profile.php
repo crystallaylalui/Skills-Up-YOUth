@@ -22,7 +22,7 @@
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script defer src="navbar.js"></script>
 
-		<title>AdminHub</title>
+		<title>Profile</title>
 </head>
 <body>
 	<div>
@@ -82,8 +82,6 @@
 				<div class="order">
 					<div class="head">
 						<h3>Course List</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
 					</div>
 					<table>
 						<thead>

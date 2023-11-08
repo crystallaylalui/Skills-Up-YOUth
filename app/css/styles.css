@@ -91,6 +91,7 @@ main .box-info {
 	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 	grid-gap: 24px;
 	margin-top: 36px;
+	padding: 0px;
 }
 main .box-info li {
 	padding: 24px;
@@ -174,7 +175,7 @@ main .table-data .order table {
 main .table-data .order table th {
 	padding-bottom: 12px;
 	font-size: 13px;
-	text-align: center;
+	text-align: left;
 	border-bottom: 1px solid var(--grey);
 }
 main .table-data .order table td {
