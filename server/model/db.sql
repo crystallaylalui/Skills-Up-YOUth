@@ -15,7 +15,15 @@ CREATE TABLE IF NOT EXISTS user (
   tasks json NOT NULL,
   PRIMARY KEY (user_id)
 );
-
+INSERT INTO user (username, email, hashed_password, points, badges, tasks)
+VALUES 
+('AlexanderSmith', 'alexandersmith@email.com', '$2y$10$1YPckhzbJyeR1RE5XvvNfezdrm8saPRFg3Tc8dhpAMmTEwGx9zHme', 2100, '[1, 2, 3, 5]', '[[1, 1], [1, 1], [1, 1], [1, 1]]'),
+('IsabellaLee', 'isabellalee@email.com', '$2y$10$R7LGtsshVZkyJ8zDMPkWi.Hdy514R4yrasjMdn4.hPJ4bjsUxPFfe', 51300, '[5, 6, 9, 10, 11, 12]', '[[1, 1], [1, 1], [1, 1], [1, 1]]'),
+('OliviaWilson', 'oliviawilson@email.com', '$2y$10$ToKvSaYd4m5hAA9YWVQIxu3yrKujyLa57L4val10gvuazhkHgArki', 300, '[1, 2]', '[[1, 1], [1, 1], [1, 1], [1, 1]]'),
+('DanielTaylor', 'danieltaylor@email.com', '$2y$10$7GzOYh9i4kZCOA2vsMmAkeCcHV11KvKkHaBXmbajvtY1onGJ6/IFC', 121500, '[1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12]', '[[1, 1], [1, 1], [1, 1], [1, 1]]'),
+('BenjaminBrown', 'benjaminbrown@email.com', '$2y$10$rkKWtbt8DkMBIB45clRdUuA6r0BLuaeEDtwfdvWXVThyVab0MkXNO', 30200, '[1, 2, 5, 9, 17, 18]', '[[1, 1], [1, 1], [1, 1], [1, 1]]'),
+('AvaThomas', 'avathomas@email.com', '$2y$10$sGrtWSDwz0fLkCcbNSykreMPMacV.iWSrx12fFqmPdva6gzS9aDXO', 3000, '[17, 18]', '[[1, 1], [1, 1], [1, 1], [1, 1]]'),
+('AmeliaClark ', 'ameliaclark@email.com', '$2y$10$4Aoh/JcVap04oTojGJHomeh3Qu5ajvRL8CMX7SR0o4VH0fT/jvvJe', 23800, '[1, 2, 13, 14, 17, 18]', '[[1, 1], [1, 1], [1, 1], [1, 1]]');
 
 -- badge table
 CREATE TABLE IF NOT EXISTS badge (
@@ -42,7 +50,11 @@ VALUES
 ('SQL 1', 'sql', 'sql1.png'),
 ('SQL 2', 'sql', 'sql2.png'),
 ('SQL 3', 'sql', 'sql3.png'),
-('SQL 4', 'sql', 'sql4.png');
+('SQL 4', 'sql', 'sql4.png'),
+('HTML 1', 'html', 'html1.png'),
+('HTML 2', 'html', 'html2.png'),
+('HTML 3', 'html', 'html3.png'),
+('HTML 4', 'html', 'html4.png');
 
 
 CREATE TABLE IF NOT EXISTS course (
@@ -58,6 +70,8 @@ INSERT INTO course (playlist_url, course_title, course_description, course_badge
 VALUES 
 ('PLWKjhJtqVAbleDe3_ZA8h3AO2rXar-q2V', 'Javascript Tutorial for Beginners', '', '[5, 6]'),
 ('PL4cUxeGkcC9gksOX3Kd9KPo-O68ncT05o', 'PHP & MySQL Course - Beginner Introduction', '', '[9, 13]'),
+('PLr6-GrHUlVf_ZNmuQSXdS197Oyr1L9sPB', 'HTML Course - Tutorial for Beginners', '', '[17, 18]');
+
 
 
 CREATE TABLE IF NOT EXISTS enrollment (
