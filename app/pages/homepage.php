@@ -361,7 +361,7 @@
             template: `
 
             <div class="row">
-                <div class="col-md-6" v-if="enrolled_courses == ''" style="font-weight:500 ; padding:100px;">
+                <div class="col-md-6" v-if="enrolled_courses == ''" style="font-weight:300; padding-left:80px">
                     <img src="../images/rocket.gif" style="width: 200px !important; margin-left:80px">
                     <p> Nothing here! Click <a style="color:#9932CC" href='courses.php'>here</a> to enroll into courses.<p>
                 </div>
