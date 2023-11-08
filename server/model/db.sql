@@ -71,11 +71,12 @@ VALUES
 ('PLWKjhJtqVAbleDe3_ZA8h3AO2rXar-q2V', 'Javascript Tutorial for Beginners', '', '[5, 6]'),
 ('PL4cUxeGkcC9gksOX3Kd9KPo-O68ncT05o', 'PHP & MySQL Course - Beginner Introduction', '', '[9, 13]'),
 ('PLr6-GrHUlVf_ZNmuQSXdS197Oyr1L9sPB', 'HTML Course - Tutorial for Beginners', '', '[17, 18]');
+('PLgCTlR71eB4-ZGpajuh01zexg8f9Qd98z', 'HTML + CSS Practice', 'Sharpen your HTML and CSS skills in this practice playlist. Complete the course to earn JavaScript Level 2 and 3 badges!', '[18, 19]')
 
 
 
 CREATE TABLE IF NOT EXISTS enrollment (
-  enrollment_id int NOT NULL AUTO_INCREMENT,
+  enrollment_id int NOT\ NULL AUTO_INCREMENT,
   user_id int NOT NULL,
   course_id int NOT NULL,
   content json NOT NULL,
