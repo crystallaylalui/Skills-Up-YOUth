@@ -104,15 +104,24 @@
 
     <script>
         // Function to fetch job details from the API
-        function fetchJobDetails() {
-            fetch('http://localhost:3001/jobs/1')
+        function fetchJobDetails(jobId) {
+            fetch('https://crystallaylalui.github.io/JSON-Data/db.json')
                 .then(response => response.json())
                 .then(data => {
-                    console.log('Fetched data:', data); // Log the fetched data
-                    updateJobDetails(data);
+                    const job = data.jobs.find(job => job.id === jobId);
+                    if (job) {
+                        console.log('Fetched job details:', job);
+                        updateJobDetails(job);
+                    } else {
+                        console.error('Job not found');
+                    }
                 })
                 .catch(error => console.error('Error fetching job details:', error));
         }
+
+        // Usage example
+        fetchJobDetails(1); // Fetch details for job with id 1
+
 
         // Function to update the job details on the page
         function updateJobDetails(job) {
