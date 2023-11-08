@@ -165,7 +165,8 @@
                     enrolled_content: '',
                     contentNotCompleted: false,
                     quiz_completed: false,
-                    user_badges: []
+                    user_badges: [],
+                    user_tasks: [],
                 }
             },
             computed: {
@@ -175,6 +176,22 @@
                 }
             },
             methods: {
+                updateUserTasks(index) {
+                    // update first task
+                    this.user_tasks[index][0] = 1;
+
+                    let url = "../../server/api/users.php";
+                    let params = {
+                        user_id: <?php echo $_SESSION["user_id"] ?>,
+                        tasks: this.user_tasks,
+                    }
+
+                    axios.post(url, params)
+                    .then(r => {
+                        console.log(r.data);
+                        // this.user = r.data;
+                    })
+                },
                 getUser() {
                     let url = "../../server/api/users.php";
                     let params = {
@@ -188,11 +205,12 @@
 
                         // get user badges
                         this.user_badges = JSON.parse(r.data.badges);
+                        this.user_tasks = JSON.parse(r.data.tasks);
                         console.log(r.data.badges)
                     });
                 },
                 openQuiz() {
-
+                    this.updateUserTasks(1);
                     // check if quiz ended
                     let quiz = window.open('quiz.php?course_id=' + urlParams.get('course_id'), '_blank', 'popup=yes');
                     let interval = setInterval( 
@@ -241,6 +259,7 @@
                             }
                         }
                         this.addBadges();
+                        this.updateUserTasks(2);
                     })
                 },
                 addBadges() {
@@ -255,7 +274,7 @@
                         console.log("user badges updated");
                     });
 
-
+                    this.updateUserTasks(3);
 
                     alert("You have completed the course!");
                     console.log("updated course completion");
@@ -345,6 +364,7 @@
                         // alert("new enrollment");
                         // this.enrolled = true;
                         this.checkUserEnrolled();
+                        this.updateUserTasks(0);
                     })
                 },
                 getCourse() {
