@@ -16,7 +16,7 @@
 
 body {
     min-height: 100vh;
-    background: url(../images/background.png) center / cover;
+    background: url(images/background.png) center / cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -100,6 +100,11 @@ main.table {
     height: 0.5rem;
 }
 
+.table__body::-webkit-scrollbar-thumb{ 
+    border-radius: 0.5rem;
+    background-color: #0004;
+    visibility: hidden;
+}
 
 .table__body:hover::-webkit-scrollbar-thumb{ 
     visibility: visible;
@@ -125,9 +130,7 @@ table, th, td {
     text-align: center;
 }
 
-/* .name{
-    text-align: center;
-} */
+
 
 thead th {
     position: sticky;
