@@ -72,12 +72,12 @@ VALUES
 ('PL4cUxeGkcC9gksOX3Kd9KPo-O68ncT05o', 'PHP & MySQL Course - Beginner Introduction', 'Get introduced to PHP and MySQL in this beginner-friendly course. Earn PHP1 and SQL1 badges upon completion!', '[9, 13]'),
 ('PLr6-GrHUlVf_ZNmuQSXdS197Oyr1L9sPB', 'HTML Course - Tutorial for Beginners', 'Embark on a beginner-friendly HTML journey with this course. Earn HTML1 and HTML2 badges upon completion!', '[17, 18]'),
 ('PLgCTlR71eB4-ZGpajuh01zexg8f9Qd98z', 'HTML + CSS Practice', 'Sharpen your HTML and CSS skills in this practice playlist. Complete the course to earn HTML2 and HTML3 badges!', '[18, 19]'),
-('PL0Zuz27SZ-6N3bG4YZhkrCL3ZmDcLTuGd', 'Advanced Javascript Concepts', 'Dive into advanced JavaScript concepts with this comprehensive tutorial. Master the skills and earn the prestigious JS3 badge!', '[8]'),
+('PL0Zuz27SZ-6N3bG4YZhkrCL3ZmDcLTuGd', 'Advanced Javascript Concepts', 'Dive into advanced JavaScript concepts with this comprehensive tutorial. Master the skills and earn the prestigious JS3 badge!', '[8]');
 
 
 
 CREATE TABLE IF NOT EXISTS enrollment (
-  enrollment_id int NOT\ NULL AUTO_INCREMENT,
+  enrollment_id int NOT NULL AUTO_INCREMENT,
   user_id int NOT NULL,
   course_id int NOT NULL,
   content json NOT NULL,
@@ -99,4 +99,4 @@ VALUES
 ('Enroll into a course!', 500),
 ('Attempt a quiz!', 1500),
 ('Complete a course!', 2000),
-('Obtain a badge!', 3000)
+('Obtain a badge!', 3000);
