@@ -36,7 +36,7 @@
                     <p class="display-5 animate__animated animate__fadeInDown " style="margin-bottom:30px;margin-left:40px;margin-top:20px;">Welcome back, {{ user.username }}!</p>
                         <div class="row py-3">
                             <div class="profile col-lg-4 text-center">
-                                <img src="../images/profile8.jpg" alt="Profile Picture" class="rounded-circle" style="width: 200px; height: 200px;">
+                                <img :src="'../images/profile' + getRank(index) + '.jpg'" alt="Profile Picture" class="rounded-circle" style="width: 200px; height: 200px;">
                             </div>
                             <div class="col-lg-6" style="text-align:center; justify-content:center; padding-left:80px;">
                                 <div class="category">
