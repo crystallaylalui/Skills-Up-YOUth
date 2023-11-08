@@ -40,7 +40,7 @@
 		<main id="profile">
 			<div class="head-title">
 				<div class="left">
-					<h1>Welcome back {{user.username}}! </h1>
+					<h1> Your Profile</h1>
 					<!-- <ul class="breadcrumb">
 						<li>
 							<a href="#">Dashboard</a>

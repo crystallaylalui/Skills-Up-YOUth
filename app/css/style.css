@@ -11,8 +11,14 @@
 
 .signup {
     font-size: 14px;
+    color: grey;
+}
+
+.login{
+    font-size: 14px;
     color: white;
 }
+
 
 #achievements {
     color: white;
@@ -460,32 +466,17 @@ body {
     font-size: 15px;
     line-height: 30px;
     font-weight:300;
+    width:500px;
 }
 
 .courses-banner {
     position: relative;
-    padding: 195px 0px 185px 0px;
+    padding: 80px 50px 80px 50px;
+    color:white;
+    background: linear-gradient(135deg, rgb(247, 97, 161) 10%, rgb(140, 27, 171) 100%);
 }
   
-  .courses-banner:after {
-    content: url(../images/courses-bg3.png);
-    top: -1px;
-    right: 0;
-    position: absolute;
-    width: 500px;
-    height: 200px;
-    z-index: -1;
-  }
-  
-  .courses::before {
-    content: url(../images/banner-left.png);
-    top: -1px;
-    left: 0;
-    position: absolute;
-    width: 500px;
-    height: 655px;
-    z-index: -1;
-  }
+
 
   .form-group-2 label {
     position: absolute;
@@ -524,3 +515,40 @@ body {
 .form-control-2::placeholder {
     color: rgba(255, 255, 255, 0.496);
 }
+
+@media (max-width: 1400px) {
+    .blur-text {
+        background-color: rgba(255, 255, 255, 0.557);
+        padding: 10px;
+    }
+}
+
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+    width: 700px /* IE8 support, if needed */
+    
+}
+
+.fixed-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: -1; /* To ensure it stays behind other content */
+}
+
+@media (max-width: 768px) {
+    .fixed-image {
+        display: none; /* Hide the fixed image */
+    }
+}
+
+.jobs-banner{
+    position: relative;
+    padding: 80px 50px 80px 50px;
+    color:white;
+    background: radial-gradient(circle at 10% 20%, rgb(6, 123, 239) 14.2%, rgb(219, 115, 249) 89.5%);
+}
+
