@@ -21,7 +21,7 @@
         <h2>Important Information Concisely</h2>
         <p>Additional details here...</p>
     </div> -->
-    <div class="container-fluid">
+    <div class="container-fluid" id="job">
         <div class="row">
             <div class="col-md-9">
                 <div class="section-container">
@@ -58,7 +58,7 @@
                             <!-- more badges if needed -->
                         </div>
                         <hr>
-                        <button class="apply-button">Apply</button>
+                        <button v-if="checkJob == true" class="apply-button">Apply</button>
                         <!-- <button class="save-button">Save</button> -->
                     </div>
                 </div>
@@ -201,6 +201,40 @@
 
         // Fetch job details when the page loads
         window.onload = fetchJobDetails;
+
+        const job = Vue.createApp({
+            data() {
+                return {
+
+                }
+            },
+            created() {
+
+            },
+            methods: {
+                getAllJobs() {
+                    let url = "https://crystallaylalui.github.io/JSON-Data/db.json";
+
+                    axios.get(url)
+                    .then(r => {
+                        this.jobs = r.data.jobs;
+
+                        // for (i in r.data.jobs) {
+                        //     if(r.data.jobs[i].job_badges.every(r => this.user_badges.includes(r)) == true){
+                        //         this.unlocked.push(r.data.jobs[i]);
+                        //     } else {
+                        //         this.locked.push(r.data.jobs[i]);
+                        //     }
+                        // }
+                    })
+                },
+                checkJob() {
+                    this.jobs[0].job_badges.every(r => this.user_badges.includes(r))
+                }
+            }
+        })
+
+        const vm = job.mount("#job");
 
     </script>
 

@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    // No session variable "user" => no login
+    if ( !isset($_SESSION["user_id"]) ) {
+         // redirect to login page
+         header("Location: ../index.php"); 
+         exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,22 +38,50 @@
         </div>
     </div>
     <div class="row">
-        
         <!-- jobs -->
         <!-- <div class="col-md-8" style="padding: 50px;"> -->
         <div style="padding: 50px;">
+        <h2>Unlocked Jobs</h2>
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div v-for="j in unlocked" class="col-lg-3 col-md-4 col-sm-6">
                     <div class="card card-custom bg-light border-black border-2" style="margin-bottom:50px">
                         <div class="card-custom-img" style="background-image: url(../images/job.jpg)"></div>
                         <div class="card-custom-avatar">
                         <!-- <img class="img-fluid" src="../images/job1.jpeg" alt="Avatar" /> -->
                         </div>
                         <div class="card-body" style="overflow-y: auto">
-                        <h4 class="card-title">JavaScript Developer</h4>
-                        <p class="card-text">Building a mobile-app</p>
-                        <img src="../images/badges/js3.png">
-                        <img src="../images/badges/php1.png">
+                        <h4 class="card-title">{{ j.title }}</h4>
+                        <p class="card-text">{{ j.responsibilities[0] }}</p>
+                        <img v-for="i in j.badges" :src="'../images/badges/' + i + '.png'">
+                        </div>
+                        <div class="card-footer" style="background: inherit; border-color: inherit;">
+                        <a :href="getUrl(j.id)" class="btn btn-dark">Learn More</a>
+                        <!-- <button id="saveButton" onclick="saveFilters()">Save</button> -->
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <!-- jobs -->
+        <!-- <div class="col-md-8" style="padding: 50px;"> -->
+        <div style="padding: 50px;">
+        <h2>All Jobs</h2>
+            <div class="row">
+                <div v-for="j in locked" class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card card-custom bg-light border-black border-2" style="margin-bottom:50px">
+                        <div class="card-custom-img" style="background-image: url(../images/job.jpg)"></div>
+                        <div class="card-custom-avatar">
+                        <!-- <img class="img-fluid" src="../images/job1.jpeg" alt="Avatar" /> -->
+                        </div>
+                        <div class="card-body" style="overflow-y: auto">
+                        <h4 class="card-title">{{ j.title }}</h4>
+                        <p class="card-text">{{ j.responsibilities[0] }}</p>
+                        <img v-for="i in j.badges" :src="'../images/badges/' + i + '.png'">
                         </div>
                         <div class="card-footer" style="background: inherit; border-color: inherit;">
                         <a href="job-description1.php" class="btn btn-dark">Learn More</a>
@@ -53,69 +90,83 @@
                         
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card card-custom bg-light border-black border-2" style="margin-bottom:50px">
-                        <div class="card-custom-img" style="background-image: url(../images/job.jpg)"></div>
-                        <div class="card-custom-avatar">
-                        <!-- <img class="img-fluid" src="../images/job2.png" alt="Avatar" /> -->
-                        </div>
-                        <div class="card-body" style="overflow-y: auto">
-                        <h4 class="card-title">Python Backend Developer</h4>
-                        <p class="card-text"> Analytics project </p>
-                        <img src="../images/badges/py3.png">
-                        <img src="../images/badges/sql2.png">
-                        </div>
-                        <div class="card-footer" style="background: inherit; border-color: inherit;">
-                        <a href="job-description2.php" class="btn btn-dark">Learn More</a>
-                        <!-- <button id="saveButton" onclick="saveFilters()">Save</button> -->
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card card-custom bg-light border-black border-2" style="margin-bottom:50px">
-                        <div class="card-custom-img" style="background-image: url(../images/job.jpg)"></div>
-                        <div class="card-custom-avatar">
-                        <!-- <img class="img-fluid" src="../images/job3.png" alt="Avatar" /> -->
-                        </div>
-                        <div class="card-body" style="overflow-y: auto">
-                        <h4 class="card-title">PHP Developer</h4>
-                        <p class="card-text"> For e-commerce platform </p>
-                        <img src="../images/badges/php3.png">
-                        <img src="../images/badges/js1.png">
-                        <img src="../images/badges/sql2.png">
-                        </div>
-                        <div class="card-footer" style="background: inherit; border-color: inherit;">
-                        <a href="job-description3.php" class="btn btn-dark">Learn More</a>
-                        <!-- <button id="saveButton" onclick="saveFilters()">Save</button> -->
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card card-custom bg-light border-black border-2" style="margin-bottom:50px">
-                        <div class="card-custom-img" style="background-image: url(../images/job.jpg)"></div>
-                        <div class="card-custom-avatar">
-                        <!-- <img class="img-fluid" src="../images/job3.png" alt="Avatar" /> -->
-                        </div>
-                        <div class="card-body" style="overflow-y: auto">
-                        <h4 class="card-title"> MySQL Database Engineer</h4>
-                        <p class="card-text"> For social platform </p>
-                        <img src="../images/badges/sql3.png">
-                        <img src="../images/badges/php2.png">
-                        <img src="../images/badges/py1.png">
-                        </div>
-                        <div class="card-footer" style="background: inherit; border-color: inherit;">
-                        <a href="job-description4.php" class="btn btn-dark">Learn More</a>
-                        <!-- <button id="saveButton" onclick="saveFilters()">Save</button> -->
-                        </div>
-                        
-                    </div>
-                </div>
+
             </div>
         </div>
 
     </div>
+
+    <script>
+        const jobs = Vue.createApp({
+            data() {
+                return {
+                    user: '',
+                    jobs: [],
+                    badges: [],
+                    user_badges: [],
+                    job_badges: [],
+                    j_badges: [5],
+
+                    unlocked: [],
+                    locked: [],
+                }
+            },
+            created() {
+                this.getUser();
+                // this.getJBadges();
+                this.getAllJobs();
+            },
+            methods: {
+                filterJobs() {
+                    return this.j_badges.every(r => this.user_badges.includes(r));
+                },
+                getUser(){
+                    let url = "../../server/api/users.php";
+                    let params = {
+                        user_id: <?php echo $_SESSION["user_id"] ?>,
+                    }
+
+                    axios.get(url, {params: params})
+                    .then(r => {
+                        this.user = r.data;
+                        this.user_badges = JSON.parse(r.data.badges);
+						// for (b in this.user_badges) {
+                        //     this.getBadge(this.user_badges[b]);
+                        // }
+                    })
+                },
+                getAllJobs() {
+                    let url = "https://crystallaylalui.github.io/JSON-Data/db.json";
+
+                    axios.get(url)
+                    .then(r => {
+                        this.jobs = r.data.jobs;
+
+                        for (i in r.data.jobs) {
+                            if(r.data.jobs[i].job_badges.every(r => this.user_badges.includes(r)) == true){
+                                this.unlocked.push(r.data.jobs[i]);
+                            } else {
+                                this.locked.push(r.data.jobs[i]);
+                            }
+                        }
+                    })
+                },
+                getUrl(id){
+                    if(id == 1) {
+                        return "job-description1.php";
+                    } else if (id == 2) {
+                        return "job-description2.php";
+                    } else if (id == 3) {
+                        return "job-description3.php";
+                    } else if (id == 4) {
+                        return "job-description4.php";
+                    }
+                }
+            }
+        })
+
+        const vm = jobs.mount('body');
+    </script>
 
 </body>
 </html>
