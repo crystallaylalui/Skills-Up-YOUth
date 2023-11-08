@@ -11,18 +11,19 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script defer src="navbar.js"></script>
+    <link href="https://fonts.cdnfonts.com/css/public-pixel" rel="stylesheet">
+                
 </head>
 
-<body>
+<body style='background-image: url("../images/space-bg1.jpg")';>
+    <div>
+        <?php include ('navbar.php'); ?>
+    </div>
     <div class="container-fluid">
-        <div>
-            <?php include ('navbar.php'); ?>
-        </div>
-
         <div>
             <div class="table" id="leaderboard">
                 <section class="table__header">
-                    <h1>Leaderboard</h1>
+                    <p style="font-family: 'Public Pixel', sans-serif;">Leaderboard</p>
                 </section>
                 <section class="table__body">
                     <table>

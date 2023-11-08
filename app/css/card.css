@@ -20,6 +20,7 @@ strong {
 
 .canvas-wrapper .canvas + .canvas {
     margin-left: 40px;
+    margin-bottom: 100px;
 }
 
 .canvas {
@@ -68,7 +69,6 @@ strong {
 
 .canvas_img {
     transform: scale3d(0.9, 0.9, 0.9);
-    opacity: 0.3;
     max-width: 200px;
     max-height: 200px;
 }
@@ -87,11 +87,11 @@ strong {
 }
 
 .canvas_copy_title {
-    font-size: 50px;
+    font-size: 30px;
     display: block;
     transform: translateX(-80px);
     transition: all 0.75s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.35s;
-    color: rgb(234, 13, 230);
+    color: rgb(0, 0, 0);
 }
 
 .canvas_copy_title:nth-child(1) {
@@ -132,7 +132,11 @@ strong {
     opacity: 0;
 }
 
-.canvas:hover .canvas_copy_title, .canvas:hover .canvas_copy_subtitle, .canvas:hover .canvas_copy_details, .canvas:hover .canvas_img {
+.canvas:hover .canvas_img {
+    opacity: 0.3;
+}
+
+.canvas:hover .canvas_copy_title {
     opacity: 1;
 }
 
@@ -140,9 +144,7 @@ strong {
     transform: rotate(-14deg) skew(-14deg) scale(0.96);
 }
 
-.canvas:hover .canvas_img {
-    transform: scale3d(1, 1, 1);
-}
+
 
 .canvas:hover .canvas_copy_title, .canvas:hover .canvas_copy_details {
     transform: translateX(0);

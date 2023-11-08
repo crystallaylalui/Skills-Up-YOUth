@@ -31,7 +31,7 @@ if (isset($_SESSION["user_id"]) ) {
             </div>
             
             <div class="col-lg-5 col-md-10">
-                <div class="mt-3" style=" padding-right:80px; padding-top:100px;text-align:center; width:500px">
+                <div class="mt-3" style="padding-left:40px; padding-right:80px; padding-top:100px;text-align:center;">
                     <img src="images/logo1.png" width="300" alt="Skills Up Logo" style="padding-bottom:50px">
                     
                     <h1 class="mt-2" style="color:white">Log in</h1>

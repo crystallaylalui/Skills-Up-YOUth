@@ -285,3 +285,8 @@ main .table-data .todo .todo-list li:last-child {
 		min-width: 420px;
 	}
 }
+
+.font3{
+    font-weight: 700;
+    font-size: 30px;
+}

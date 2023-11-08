@@ -32,7 +32,7 @@
     <div id="homepage">
         <div class="container-fluid" style="padding: 0px;">
             <div id="achievements" class="row homepage-header">
-                <div class="body col-md-7 col-sm-6">
+            <div class="body col-md-7 col-sm-4">
                     <p class="font2 animate__animated animate__fadeInDown " style="margin-bottom:30px;margin-left:40px;margin-top:20px;">Welcome back, {{ user.username }}!</p>
                         <div class="row py-3">
                             <div class="profile col-lg-4" style="justify-content:center; text-align:center; padding-left:50px;">
@@ -45,7 +45,6 @@
                                         <span class="number">#{{ getRank() }}</span>
                                         <br>
                                         Ranking
-
                                     </div>
                                     <div class="col-md-6 category-text" style="justify-content:center">
                                         <span class="number">{{ completed }}</span>
@@ -53,7 +52,6 @@
                                         Courses completed
                                     </div>
                                 </div>
-
                                 <div class="category">
                                     <!-- <img src="../images/course.png" alt="Courses Icon" style="width: 100px;"> -->
                                     <div class="col-md-6 category-text">
@@ -61,7 +59,6 @@
                                         <br>
                                         Points
                                     </div>
-
                                     <!-- <img src="../images/badges.png" alt="Badges Icon" style="width: 100px;"> -->
                                     <div class="col-md-6 category-text" style="justify-content:center">
                                         <span class="number">{{ user_badges.length }}</span>
@@ -69,10 +66,8 @@
                                         Badges obtained
                                     </div>
                                 </div>
-
                                 
                             </div>
-
                         </div>
                 </div>
 
@@ -109,21 +104,19 @@
 
         <div class="container-fluid" style="background-color:#eee; padding: 50px;">
             <div id="lessons" class="row">
-                <div class="lessons col-md-8" >
-                    <div class="row">
+                <div class="lessons col-md-8"style="margin-bottom:40px" >
+                    <div class="row" style="margin-bottom:60px">
                         <div class="col-md-8">
                             <span class="font2">Lessons</span>
                         </div>
-                        <div class="col-lg-4 text-end" style="padding-top:15px">
+                        <div class="col-lg-4" style="padding-top:15px">
                             <a href="courses.php" style="color:black; text-decoration:none">
                                 <img src="../images/plus-sign.png" width="30"> Add more courses
                             </a>
                         </div>
                     </div>
-                    <div id="" class="row lesson">
-                        <div class="col-md-8" style="margin-left:50px">
-                            <lessons></lessons>
-                        </div>
+                    <div class="container-fluid lesson" style="padding-left:50px;">
+                        <lessons></lessons>
                         
                     </div>
                 </div>
@@ -267,13 +260,13 @@
             },
             template: `
 
-            <div id="leaderboard" class="col-md-4 main ">
+            <div id="leaderboard" class="container-fluid col-lg-4 col-md-8 main">
                 <div class="row mb-2">
-                    <div class="col-md-8 col-sm-6 leaderboard-header">
+                    <div class="col-lg-10 col-sm-8 leaderboard-header">
                         <span class="font2 px-1">Leaderboard</span>
                         
                     </div>
-                    <div class="col-lg-4 col-sm-6 col-xs-6 text-end">
+                    <div class="col-lg-2 col-sm-6">
                         <a href="leaderboard.php">
                             <img src="../images/podium.png" alt="" width="50"/>
                         </a>
@@ -287,10 +280,8 @@
                             <img :src="'../images/profile' + getRank(index) + '.jpg'" alt="Profile Picture" class="rounded-circle" style="width: 50px; height: 50px; margin-right: 10px;">
                         
                             <!-- User Information (Middle) -->
-                            <div>
-                                <h5 class="card-title"> <span class="text-muted"> #{{ index+1 }}</span> {{ u.username }}</h5>
-                                
-                            </div>
+                            <h5 class="card-title"> <span class="text-muted"> #{{ index+1 }}</span> {{ u.username }}</h5>
+
                         
                             <!-- Points Accumulated (Right) -->
                             <div class="ms-auto">
@@ -370,7 +361,10 @@
             template: `
 
             <div class="row">
-                <p v-if="enrolled_courses == ''" style="font-weight:400">Nothing here! Click <a style="color:#9932CC" href='courses.php'>here</a> to enroll into courses.</p>
+                <div class="col-md-6" v-if="enrolled_courses == ''" style="font-weight:500 ; padding:100px;">
+                    <img src="../images/rocket.gif" style="width: 200px !important; margin-left:80px">
+                    <p> Nothing here! Click <a style="color:#9932CC" href='courses.php'>here</a> to enroll into courses.<p>
+                </div>
                 <course v-for="c in enrolled_courses" :completed="c.completed" :enrolled="true" :course_id="c.course_id" :title="c.course ? c.course.course_title : ''" :description="c.course ? c.course.course_description : ''" :playlist_url="c.course.playlist_url"></course>
             </div> 
             `

@@ -38,7 +38,7 @@
         <div class="px-5">
             <div>
                 <div class="m-5">
-                    <p class="font2">My courses</p>
+                    <p class="font2" style="margin-bottom:50px">My courses</p>
                     <!-- <div class="row">
                         <course v-for="c in enrolled_courses" v-if="enrolled_courses" :course_id="c.course.course_id" :title="c.course.course_title" :description="c.course.course_description" :playlist_url="c.course.playlist_url"></course>
                     </div>  -->
@@ -46,7 +46,7 @@
                         <course v-for="c in enrolled_courses" :completed="c.completed" :enrolled="true" :course_id="c.course_id" :title="c.course ? c.course.course_title : ''" :description="c.course ? c.course.course_description : ''" :playlist_url="c.course.playlist_url ? c.course.playlist_url : ''"></course>
                     </div> 
                 
-                    <p class="font2"> All courses</p>
+                    <p class="font2" style="margin-bottom:50px"> All courses</p>
                     <div class="row">
                         <!-- filters enrolled courses -->
                         <course v-for="c in courses" :course_id="c.course_id" :title="c.course_title" :description="c.course_description" :playlist_url="c ? c.playlist_url : ''" :completed="enrolled_courses.filter(e => e.course_id === c.course_id ).length > 0"></course>
@@ -156,7 +156,7 @@
             },
             template: 
             `   
-                <div v-if="completed == false" class="col-lg-4 col-md-6 my-2 d-flex align-items-stretch mb-3">
+                <div v-if="completed == false" class="col-lg-4 col-md-6 my-2 d-flex align-items-stretch">
                     <a v-bind:href="'course.php?course_id=' + this.course_id +'&video_id=0'" class="canvas">
                         <div class="canvas_border">
                             <svg>

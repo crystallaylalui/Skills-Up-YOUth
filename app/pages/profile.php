@@ -40,7 +40,7 @@
 		<main id="profile">
 			<div class="head-title">
 				<div class="left">
-					<p class="font2" style="color:white"> Your Profile</p>
+					<p class="display-6" style="color:white"> Your Profile</p>
 					<!-- <ul class="breadcrumb">
 						<li>
 							<a href="#">Dashboard</a>
