@@ -84,7 +84,7 @@
                         <img v-for="i in j.badges" :src="'../images/badges/' + i + '.png'">
                         </div>
                         <div class="card-footer" style="background: inherit; border-color: inherit;">
-                        <a href="job-description1.php" class="btn btn-dark">Learn More</a>
+                        <a :href="getUrl(j.id)" class="btn btn-dark">Learn More</a>
                         <!-- <button id="saveButton" onclick="saveFilters()">Save</button> -->
                         </div>
                         
@@ -114,7 +114,7 @@
             created() {
                 this.getUser();
                 // this.getJBadges();
-                this.getAllJobs();
+                
             },
             methods: {
                 filterJobs() {
@@ -133,6 +133,7 @@
 						// for (b in this.user_badges) {
                         //     this.getBadge(this.user_badges[b]);
                         // }
+                        this.getAllJobs();
                     })
                 },
                 getAllJobs() {
