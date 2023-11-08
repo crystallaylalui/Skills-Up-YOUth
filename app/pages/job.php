@@ -44,11 +44,11 @@
                         <h4 class="card-title">JavaScript Developer</h4>
                         <p class="card-text">Building a mobile-app</p>
                         <img src="../images/badges/js3.png">
-                        <img src="../images/badges/php2.png">
+                        <img src="../images/badges/php1.png">
                         </div>
                         <div class="card-footer" style="background: inherit; border-color: inherit;">
                         <a href="job-description1.php" class="btn btn-dark">Learn More</a>
-                        <button id="saveButton" onclick="saveFilters()">Save</button>
+                        <!-- <button id="saveButton" onclick="saveFilters()">Save</button> -->
                         </div>
                         
                     </div>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="card-footer" style="background: inherit; border-color: inherit;">
                         <a href="job-description2.php" class="btn btn-dark">Learn More</a>
-                        <button id="saveButton" onclick="saveFilters()">Save</button>
+                        <!-- <button id="saveButton" onclick="saveFilters()">Save</button> -->
                         </div>
                         
                     </div>
@@ -87,7 +87,7 @@
                         </div>
                         <div class="card-footer" style="background: inherit; border-color: inherit;">
                         <a href="job-description3.php" class="btn btn-dark">Learn More</a>
-                        <button id="saveButton" onclick="saveFilters()">Save</button>
+                        <!-- <button id="saveButton" onclick="saveFilters()">Save</button> -->
                         </div>
                         
                     </div>
@@ -103,11 +103,11 @@
                         <p class="card-text"> For social platform </p>
                         <img src="../images/badges/sql3.png">
                         <img src="../images/badges/php2.png">
-                        <img src="../images/badges/py2.png">
+                        <img src="../images/badges/py1.png">
                         </div>
                         <div class="card-footer" style="background: inherit; border-color: inherit;">
                         <a href="job-description4.php" class="btn btn-dark">Learn More</a>
-                        <button id="saveButton" onclick="saveFilters()">Save</button>
+                        <!-- <button id="saveButton" onclick="saveFilters()">Save</button> -->
                         </div>
                         
                     </div>
@@ -116,44 +116,6 @@
         </div>
 
     </div>
-
-    <script>
-        // Function to save filters to local storage
-        function saveFilters() {
-            // Get selected filters (you need to adapt this part based on your actual filters)
-            var selectedFilters = {
-                employmentType: getSelectedFilters('employment-type'),
-                eligibility: getSelectedFilters('eligibility'),
-                workLocation: getSelectedFilters('work-location')
-            };
-
-        // Save to local storage
-        localStorage.setItem('savedFilters', JSON.stringify(selectedFilters));
-
-        alert('Job saved!');
-        }
-
-        // Function to get selected filters by name
-        function getSelectedFilters(filterName) {
-            var checkboxes = document.querySelectorAll('input[name="' + filterName + '"]:checked');
-            return Array.from(checkboxes, checkbox => checkbox.value);
-        }
-
-        // Function to load saved filters from local storage
-        function loadSavedFilters() {
-            var savedFiltersJSON = localStorage.getItem('savedFilters');
-            if (savedFiltersJSON) {
-                var savedFilters = JSON.parse(savedFiltersJSON);
-
-                // Apply saved filters to your UI (you need to implement this part)
-                applyFilters(savedFilters);
-            }
-        }
-
-        // Call this function when the page is loaded to load saved filters
-        loadSavedFilters();
-
-    </script>
 
 </body>
 </html>

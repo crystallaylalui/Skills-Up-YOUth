@@ -21,10 +21,10 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
-
+    <link href="../css/card.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
 </head>
-<body>
+<body style="background-color:#eee">
     <div>
         <?php include ('navbar.php'); ?>
     </div>
@@ -33,20 +33,21 @@
         <div class="container-fluid" style="padding: 0px;">
             <div id="achievements" class="row homepage-header">
                 <div class="body col-md-7 col-sm-6">
-                    <p class="display-5 animate__animated animate__fadeInDown " style="margin-bottom:30px;margin-left:40px;margin-top:20px;">Welcome back, {{ user.username }}!</p>
+                    <p class="font2 animate__animated animate__fadeInDown " style="margin-bottom:30px;margin-left:40px;margin-top:20px;">Welcome back, {{ user.username }}!</p>
                         <div class="row py-3">
-                            <div class="profile col-lg-4 text-center">
-                                <img src="../images/profile8.jpg" alt="Profile Picture" class="rounded-circle" style="width: 200px; height: 200px;">
+                            <div class="profile col-lg-4" style="justify-content:center; text-align:center; padding-left:50px;">
+                                <img :src="'../images/profile' + getRank() + '.jpg'" alt="Profile Picture" class="rounded-circle" style="width: 200px; height: 200px;">
                             </div>
-                            <div class="col-6" style="text-align:center; justify-content:center">
+                            <div class="col-lg-6" style="text-align:center; justify-content:center; padding-left:80px;">
                                 <div class="category">
                                     <!-- <img src="../images/ranking.png" alt="Rank Icon" style="width: 100px;"> -->
-                                    <div class="col-md-6 category-text">
+                                    <div class="col-md-6 category-text" style="justify-content:center">
                                         <span class="number">#{{ getRank() }}</span>
                                         <br>
                                         Ranking
+
                                     </div>
-                                    <div class="col-md-6 category-text">
+                                    <div class="col-md-6 category-text" style="justify-content:center">
                                         <span class="number">{{ completed }}</span>
                                         <br>
                                         Courses completed
@@ -56,13 +57,13 @@
                                 <div class="category">
                                     <!-- <img src="../images/course.png" alt="Courses Icon" style="width: 100px;"> -->
                                     <div class="col-md-6 category-text">
-                                        <span class="number">Beginner</span>
+                                        <span class="number">{{ user.points }}</span>
                                         <br>
-                                        Skill level
+                                        Points
                                     </div>
 
                                     <!-- <img src="../images/badges.png" alt="Badges Icon" style="width: 100px;"> -->
-                                    <div class="col-md-6 category-text">
+                                    <div class="col-md-6 category-text" style="justify-content:center">
                                         <span class="number">{{ user_badges.length }}</span>
                                         <br>
                                         Badges obtained
@@ -79,15 +80,25 @@
                     <!-- Reminder Alert Box -->
                     <div class="container-fluid">
                         <div class="reminders">
-                        <p class="display-6" style="padding-left:30px">Reminders</p>
-                        <ul class="reminder-list display-7">
-                            <li class="reminder-item">
-                                Complete the Python course! 
-                            </li>
-                            <li class="reminder-item">
-                                New lessons available in Web Development.
-                            </li>
-                        </ul>
+                        <p class="font2" style="padding-left:30px">Quests</p>
+                            <ul class="reminder-list display-7">
+                                <li v-for="(t, index) in tasks" class="reminder-item row">
+                                        <div class="d-inline mx-1 col-lg-8">{{ t.task_name }} 
+                                            <span style="color:grey">
+                                                Earn {{ t.task_points }} points
+                                            </span>
+                                        </div>
+                                        <!-- show button if user completed -->
+                                        <div class="col-lg-4">
+                                            
+                                            <button v-if="user_tasks[index][0] == 1" :disabled="user_tasks[index][1] == 1" class="btn btn-light" @click="claimTask(t.task_points, index)">
+                                                <img src="../images/money-bag.png" width="30"alt="">
+                                                Claim
+                                            </button>
+                                        </div>
+
+                                </li>
+                            </ul>
                         </div>
 
                     </div>
@@ -101,16 +112,16 @@
                 <div class="lessons col-md-8" >
                     <div class="row">
                         <div class="col-md-8">
-                            <p class="display-6">Lessons</p>
+                            <span class="font2">Lessons</span>
                         </div>
-                        <div class="col-lg-4 text-end">
-                            <a href="courses.php">
-                                <button type="button" class="btn btn-outline-dark">More</button>
+                        <div class="col-lg-4" style="padding-left:100px; padding-top:15px">
+                            <a href="courses.php" style="color:black; text-decoration:none">
+                                <img src="../images/plus-sign.png" width="30"> Add more courses
                             </a>
                         </div>
                     </div>
                     <div id="" class="row lesson">
-                        <div>
+                        <div style="margin-left:100px">
                             <lessons></lessons>
                         </div>
                         
@@ -136,6 +147,8 @@
                     users: [],
                     enrolled: '',
                     completed: 0,
+                    tasks: [],
+                    user_tasks: [],
                 }
             },
             created() {
@@ -143,6 +156,48 @@
                 this.getUsers();
             },
             methods: {
+                claimTask(points, index){
+                    console.log(points)
+                    let url = "../../server/api/tasks.php";
+                    let params = {
+                        user_id: <?php echo $_SESSION["user_id"] ?>,
+                        points: points,
+                    }
+
+                    axios.post(url, params)
+                    .then(r => {
+                        console.log(r.data);
+                        this.user = r.data;
+                        this.user_tasks[index][1] = 1;
+
+                        this.updateUserTasks();
+                    })
+                },
+                updateUserTasks() {
+                    // console.log(points)
+                    let url = "../../server/api/users.php";
+                    let params = {
+                        user_id: <?php echo $_SESSION["user_id"] ?>,
+                        tasks: this.user_tasks,
+                    }
+
+                    axios.post(url, params)
+                    .then(r => {
+                        console.log(r.data);
+                        // this.user = r.data;
+                    })
+                },
+                getTasks(){
+                    let url = "../../server/api/tasks.php";
+                    let params = {
+                        
+                    }
+
+                    axios.get(url)
+                    .then(r => {
+                        this.tasks = r.data;
+                    })
+                },
                 getUser(){
                     let url = "../../server/api/users.php";
                     let params = {
@@ -153,6 +208,8 @@
                     .then(r => {
                         this.user = r.data;
                         this.user_badges = JSON.parse(r.data.badges);
+                        this.user_tasks = JSON.parse(r.data.tasks);
+                        this.getTasks();
                     })
                 },
                 getUsers(){
@@ -210,13 +267,16 @@
             },
             template: `
 
-            <div id="leaderboard" class="col-md-4 main">
-                <div class="row">
-                    <div class="col-md-8">
-                        <p class="display-6">Leaderboard</p>
+            <div id="leaderboard" class="col-md-4 main ">
+                <div class="row mb-2">
+                    <div class="col-md-8 col-sm-6 leaderboard-header">
+                        <span class="font2 px-1">Leaderboard</span>
+                        
                     </div>
-                    <div class="col-lg-4">
-                        <a type="button" class="btn btn-outline-dark text-end" href="leaderboard.php">View All</a>
+                    <div class="col-lg-4 col-sm-6 col-xs-6 text-end">
+                        <a href="leaderboard.php">
+                            <img src="../images/podium.png" alt="" width="50"/>
+                        </a>
                     </div>
                 </div>           
 
@@ -310,7 +370,7 @@
             template: `
 
             <div class="row">
-                <p v-if="enrolled_courses == ''">Nothing here! Click <a href='courses.php'>here</a> to enroll into courses.</p>
+                <p v-if="enrolled_courses == ''" class="display-7">Nothing here! Click <a href='courses.php'>here</a> to enroll into courses.</p>
                 <course v-for="c in enrolled_courses" :completed="c.completed" :enrolled="true" :course_id="c.course_id" :title="c.course ? c.course.course_title : ''" :description="c.course ? c.course.course_description : ''" :playlist_url="c.course.playlist_url"></course>
             </div> 
             `
@@ -329,7 +389,7 @@
 
                     axios.get(course_url)
                     .then(r => {
-                        this.img = r.data.items[0].snippet.thumbnails.standard.url;
+                        this.img= "../images/" + this.title.split(" ")[0].toLowerCase() + "-thumbnail.png"
                     })
                 },
             },
@@ -337,19 +397,23 @@
                 this.getCourse();
             },
             template: 
-            `
-                <div v-if="completed == false" class="col-4 my-2 d-flex align-items-stretch">
-                    <div class="card card-custom bg-white border-white border-0 shadow-lg">
-                        <img :src="img">
-                        <div class="card-body" style="overflow-y: auto">
-                            <h4 class="card-title" style="margin-bottom: 0">{{ title }}</h4>
-                            
+            `   
+                <div v-if="completed == false" class="col-lg-6 my-2 d-flex align-items-stretch">
+                    <a v-bind:href="'course.php?course_id=' + this.course_id +'&video_id=0'" class="canvas">
+                        <div class="canvas_border">
+                            <svg>
+                                <defs><linearGradient id="grad-orange" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:rgb(136, 68, 253);stop-opacity:1"></stop><stop offset="100%" style="stop-color:rgb(23, 105, 153);stop-opacity:1"></stop></linearGradient><linearGradient id="grad-red" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#D34F48"></stop><stop offset="100%" stop-color="#772522"></stop></linearGradient></defs>
+                                <rect id="rect-grad" class="rect-gradient" fill="none" stroke="url(#grad-orange)" stroke-linecap="square" stroke-width="4" stroke-miterlimit="30" width="100%" height="100%"></rect>
+                            </svg>
                         </div>
-                        <div class="card-footer" style="background: inherit; border-color: inherit;">
-                            <a v-if="completed == false" v-bind:href="'course.php?course_id=' + this.course_id +'&video_id=0'" class="btn btn-dark">{{ enrolled ? "Continue" : "View Course" }}</a>
-                            <p v-else >Completed!</p>
+                        <div class="canvas_img-wrapper">
+                            <img class="canvas_img" :src="img">
                         </div>
-                    </div>
+                        <div class="canvas_copy canvas_copy--left">
+                            <strong class="canvas_copy_title">{{ title }}</strong>
+
+                        </div>
+                    </a>
                 </div>
             `
         })

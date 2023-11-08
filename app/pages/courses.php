@@ -18,9 +18,10 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/card.css" rel="stylesheet">
 </head>
 
-<body>
+<body style="background-color:#eee">
     <div>
         <?php include ('navbar.php'); ?>
     </div>
@@ -37,15 +38,15 @@
         <div class="px-5">
             <div>
                 <div class="m-5">
-                    <h3>My courses</h3>
+                    <p class="font2">My courses</p>
                     <!-- <div class="row">
                         <course v-for="c in enrolled_courses" v-if="enrolled_courses" :course_id="c.course.course_id" :title="c.course.course_title" :description="c.course.course_description" :playlist_url="c.course.playlist_url"></course>
                     </div>  -->
-                    <div class="row">
+                    <div class="row" style="margin-bottom:200px">
                         <course v-for="c in enrolled_courses" :completed="c.completed" :enrolled="true" :course_id="c.course_id" :title="c.course ? c.course.course_title : ''" :description="c.course ? c.course.course_description : ''" :playlist_url="c.course.playlist_url ? c.course.playlist_url : ''"></course>
                     </div> 
-                    <hr>
-                    <h3>All courses</h3>
+                
+                    <p class="font2"> All courses</p>
                     <div class="row">
                         <!-- filters enrolled courses -->
                         <course v-for="c in courses" :course_id="c.course_id" :title="c.course_title" :description="c.course_description" :playlist_url="c ? c.playlist_url : ''" :completed="enrolled_courses.filter(e => e.course_id === c.course_id ).length > 0"></course>
@@ -141,7 +142,8 @@
 
                     axios.get(course_url)
                     .then(r => {
-                        this.img = r.data.items[0].snippet.thumbnails.standard.url;
+                        // this.img = r.data.items[0].snippet.thumbnails.standard.url;
+                        this.img= "../images/" + this.title.split(" ")[0].toLowerCase() + "-thumbnail.png"
                     })
                     .catch(e => {
                         console.log(e.response.data);
@@ -153,21 +155,38 @@
                 // console.log(this.completed);
             },
             template: 
-            `
-                <div v-if="completed == false" class="col-lg-4 col-md-6 my-2 d-flex align-items-stretch">
-                    <div class="card card-custom bg-white border-white border-0 shadow-lg">
-                        <img :src="img">
-                        <div class="card-body" style="overflow-y: auto">
-                            <h4 class="card-title">{{ title }}</h4>
-                            <p class="card-subtitle mb-2 text-muted">6 hrs 42 mins</p>
+            `   
+                <div v-if="completed == false" class="col-lg-4 col-md-6 my-2 d-flex align-items-stretch mb-3">
+                    <a v-bind:href="'course.php?course_id=' + this.course_id +'&video_id=0'" class="canvas">
+                        <div class="canvas_border">
+                            <svg>
+                                <defs><linearGradient id="grad-orange" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:rgb(136, 68, 253);stop-opacity:1"></stop><stop offset="100%" style="stop-color:rgb(23, 105, 153);stop-opacity:1"></stop></linearGradient><linearGradient id="grad-red" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#D34F48"></stop><stop offset="100%" stop-color="#772522"></stop></linearGradient></defs>
+                                <rect id="rect-grad" class="rect-gradient" fill="none" stroke="url(#grad-orange)" stroke-linecap="square" stroke-width="4" stroke-miterlimit="30" width="100%" height="100%"></rect>
+                            </svg>
                         </div>
-                        <div class="card-footer" style="background: inherit; border-color: inherit;">
-                            <a v-if="completed == false" v-bind:href="'course.php?course_id=' + this.course_id +'&video_id=0'" class="btn btn-dark">{{ enrolled ? "Continue" : "View Course" }}</a>
-                            <p v-else >Completed!</p>
+                        <div class="canvas_img-wrapper">
+                            <img class="canvas_img" :src="img">
                         </div>
-                    </div>
+                        <div class="canvas_copy canvas_copy--left">
+                            <strong class="canvas_copy_title">{{ title }}</strong>
+
+                        </div>
+                    </a>
                 </div>
             `
+            // <div v-if="completed == false" class="col-lg-4 col-md-6 my-2 d-flex align-items-stretch">
+            //         <div class="card card-custom bg-white border-white border-0 shadow-lg">
+            //             <img :src="img">
+            //             <div class="card-body" style="overflow-y: auto">
+            //                 <h4 class="card-title">{{ title }}</h4>
+            //                 <p class="card-subtitle mb-2 text-muted">6 hrs 42 mins</p>
+            //             </div>
+            //             <div class="card-footer" style="background: inherit; border-color: inherit;">
+            //                 <a v-if="completed == false" v-bind:href="'course.php?course_id=' + this.course_id +'&video_id=0'" class="btn btn-dark">{{ enrolled ? "Continue" : "View Course" }}</a>
+            //                 <p v-else >Completed!</p>
+            //             </div>
+            //         </div>
+            //     </div>
         })
 
         let vm = courses.mount('#courses');

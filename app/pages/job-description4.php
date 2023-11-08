@@ -9,6 +9,7 @@
     <script src="https://unpkg.com/vue@3"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script defer src="navbar.js"></script>
     <link href="../css/jobdesc.css" rel="stylesheet">
 </head>
 
@@ -104,15 +105,24 @@
 
     <script>
         // Function to fetch job details from the API
-        function fetchJobDetails() {
-            fetch('http://localhost:3001/jobs/4')
+        function fetchJobDetails(jobId) {
+            fetch('https://crystallaylalui.github.io/JSON-Data/db.json')
                 .then(response => response.json())
                 .then(data => {
-                    console.log('Fetched data:', data); // Log the fetched data
-                    updateJobDetails(data);
+                    const job = data.jobs.find(job => job.id === jobId);
+                    if (job) {
+                        console.log('Fetched job details:', job);
+                        updateJobDetails(job);
+                    } else {
+                        console.error('Job not found');
+                    }
                 })
                 .catch(error => console.error('Error fetching job details:', error));
         }
+
+        // Usage example
+        fetchJobDetails(4); // Fetch details for job with id 1
+
 
         // Function to update the job details on the page
         function updateJobDetails(job) {

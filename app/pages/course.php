@@ -18,6 +18,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link href="../css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -66,7 +67,7 @@
         </div>
         <div v-else="enrolled" class="row">
             <div class="col-md-9 my-5">
-                <h1>{{ parseInt(video_id) + 1 }}. {{ playlist?playlist.items[video_id].snippet.title:'' }}</h1>
+                <p class="display-6">{{ parseInt(video_id) + 1 }}. {{ playlist?playlist.items[video_id].snippet.title:'' }}</p>
                 <br>
                 <div class="ratio ratio-16x9">
                     <iframe :src="video_url" title="YouTube video" allowfullscreen></iframe>
@@ -75,12 +76,12 @@
                     <button class="btn btn-dark" @click="showCourseCompleteOption()">Complete Course!</button>
                 </div>
                 <div class="my-5 card p-3 rounded-2">
-                    <h1> {{ course.course_title }}</h1>
-                    <h4>Course Description</h4>
-                    <p>{{ course.course_description }}</p>
+                    <p class="display-5"> {{ course.course_title }}</p>
+                    <p class="display-7 fw-bold">Course Description</p>
+                    <p class="display-7">{{ course.course_description }}</p>
                 </div>
 
-                <h2>Quizzes</h2>
+                <p class="display-6">Quizzes</p>
                 <div class="list-group">
                     <div class="list-group-item quiz-item">
                         <h5>Final Quiz</h5>
@@ -92,10 +93,10 @@
             </div>
 
             <div class="col-md-3 pt-5">
-                <h4>
+                <p class="display-6">
                     Course Content
-                </h4>
-                <div class="list-group">
+                </p>
+                <div class="list-group courses-list">
                     <!-- Course content -->
                     <div v-for="(v, index) in playlist.items">
                         <a :href="'course.php?course_id=' + course.course_id + '&video_id=' + index"
@@ -164,7 +165,8 @@
                     enrolled_content: '',
                     contentNotCompleted: false,
                     quiz_completed: false,
-                    user_badges: []
+                    user_badges: [],
+                    user_tasks: [],
                 }
             },
             computed: {
@@ -174,6 +176,22 @@
                 }
             },
             methods: {
+                updateUserTasks(index) {
+                    // update first task
+                    this.user_tasks[index][0] = 1;
+
+                    let url = "../../server/api/users.php";
+                    let params = {
+                        user_id: <?php echo $_SESSION["user_id"] ?>,
+                        tasks: this.user_tasks,
+                    }
+
+                    axios.post(url, params)
+                    .then(r => {
+                        console.log(r.data);
+                        // this.user = r.data;
+                    })
+                },
                 getUser() {
                     let url = "../../server/api/users.php";
                     let params = {
@@ -187,11 +205,12 @@
 
                         // get user badges
                         this.user_badges = JSON.parse(r.data.badges);
+                        this.user_tasks = JSON.parse(r.data.tasks);
                         console.log(r.data.badges)
                     });
                 },
                 openQuiz() {
-
+                    this.updateUserTasks(1);
                     // check if quiz ended
                     let quiz = window.open('quiz.php?course_id=' + urlParams.get('course_id'), '_blank', 'popup=yes');
                     let interval = setInterval( 
@@ -240,6 +259,7 @@
                             }
                         }
                         this.addBadges();
+                        this.updateUserTasks(2);
                     })
                 },
                 addBadges() {
@@ -254,7 +274,7 @@
                         console.log("user badges updated");
                     });
 
-
+                    this.updateUserTasks(3);
 
                     alert("You have completed the course!");
                     console.log("updated course completion");
@@ -344,6 +364,7 @@
                         // alert("new enrollment");
                         // this.enrolled = true;
                         this.checkUserEnrolled();
+                        this.updateUserTasks(0);
                     })
                 },
                 getCourse() {
