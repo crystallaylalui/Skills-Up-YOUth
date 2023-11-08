@@ -48,7 +48,7 @@
                         </div>
                         <div class="card-footer" style="background: inherit; border-color: inherit;">
                         <a href="job-description1.php" class="btn btn-dark">Learn More</a>
-                        <button id="saveButton" onclick="saveFilters()">Save</button>
+                        <!-- <button id="saveButton" onclick="saveFilters()">Save</button> -->
                         </div>
                         
                     </div>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="card-footer" style="background: inherit; border-color: inherit;">
                         <a href="job-description2.php" class="btn btn-dark">Learn More</a>
-                        <button id="saveButton" onclick="saveFilters()">Save</button>
+                        <!-- <button id="saveButton" onclick="saveFilters()">Save</button> -->
                         </div>
                         
                     </div>
@@ -87,7 +87,7 @@
                         </div>
                         <div class="card-footer" style="background: inherit; border-color: inherit;">
                         <a href="job-description3.php" class="btn btn-dark">Learn More</a>
-                        <button id="saveButton" onclick="saveFilters()">Save</button>
+                        <!-- <button id="saveButton" onclick="saveFilters()">Save</button> -->
                         </div>
                         
                     </div>
@@ -107,7 +107,7 @@
                         </div>
                         <div class="card-footer" style="background: inherit; border-color: inherit;">
                         <a href="job-description4.php" class="btn btn-dark">Learn More</a>
-                        <button id="saveButton" onclick="saveFilters()">Save</button>
+                        <!-- <button id="saveButton" onclick="saveFilters()">Save</button> -->
                         </div>
                         
                     </div>
