@@ -20,19 +20,18 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 
-<body style="background: linear-gradient(68.2deg, rgb(7, 3, 98) -0.1%, rgb(179, 26, 132) 47.7%, rgb(239, 186, 83) 100.2%); color:white;">
+<body>
     <div>
         <?php include ('navbar.php'); ?>
     </div>
 
     <div class="container-fluid" id="courses">
-        <div class="row courses-banner py-5">
-                <div class="col-md-8 col-sm-4 my-5">
-                    <div class="container-fluid px-5">
-                        <h2 class="display-6"> Hi, {{ user.username }}! What do you want to learn today? </h2>
-                        <p class="fs-5"> Invest in yourself and take the first step in achieving your dreams. </p>
-                    </div>
-                </div>
+        <div class="row courses-banner">
+            <div class="container-fluid ">
+                <h2 class="display-6"> Hi, {{ user.username }}! What do you want to learn today? </h2>
+                <p class="fs-5"> Invest in yourself and take the first step in achieving your dreams. </p>
+            </div>
+
         </div>
 
         <div class="px-5">
@@ -155,7 +154,7 @@
             },
             template: 
             `
-                <div v-if="completed == false" class="col-4 my-2 d-flex align-items-stretch">
+                <div v-if="completed == false" class="col-lg-4 col-md-6 my-2 d-flex align-items-stretch">
                     <div class="card card-custom bg-white border-white border-0 shadow-lg">
                         <img :src="img">
                         <div class="card-body" style="overflow-y: auto">

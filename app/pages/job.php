@@ -22,16 +22,20 @@
     <div>
         <?php include ('navbar.php'); ?>
     </div>
-
+    <div class="row jobs-banner">
+        <div class="container-fluid">
+            <p class="display-6">Freelance jobs available</p>
+            <p class="fs-5">Transform the badges you have earned into a job experience.</p>
+        </div>
+    </div>
     <div class="row">
         
         <!-- jobs -->
         <!-- <div class="col-md-8" style="padding: 50px;"> -->
         <div style="padding: 50px;">
-            <h2>Jobs available</h2>
             <div class="row">
-                <div class="col-md-3">
-                    <div class="card card-custom bg-light border-black border-2">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card card-custom bg-light border-black border-2" style="margin-bottom:50px">
                         <div class="card-custom-img" style="background-image: url(../images/job.jpg)"></div>
                         <div class="card-custom-avatar">
                         <!-- <img class="img-fluid" src="../images/job1.jpeg" alt="Avatar" /> -->
@@ -49,8 +53,8 @@
                         
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card card-custom bg-light border-black border-2">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card card-custom bg-light border-black border-2" style="margin-bottom:50px">
                         <div class="card-custom-img" style="background-image: url(../images/job.jpg)"></div>
                         <div class="card-custom-avatar">
                         <!-- <img class="img-fluid" src="../images/job2.png" alt="Avatar" /> -->
@@ -68,8 +72,8 @@
                         
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card card-custom bg-light border-black border-2">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card card-custom bg-light border-black border-2" style="margin-bottom:50px">
                         <div class="card-custom-img" style="background-image: url(../images/job.jpg)"></div>
                         <div class="card-custom-avatar">
                         <!-- <img class="img-fluid" src="../images/job3.png" alt="Avatar" /> -->
@@ -88,8 +92,8 @@
                         
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card card-custom bg-light border-black border-2">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card card-custom bg-light border-black border-2" style="margin-bottom:50px">
                         <div class="card-custom-img" style="background-image: url(../images/job.jpg)"></div>
                         <div class="card-custom-avatar">
                         <!-- <img class="img-fluid" src="../images/job3.png" alt="Avatar" /> -->

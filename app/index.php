@@ -19,18 +19,19 @@ if (isset($_SESSION["user_id"]) ) {
 
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body style="background: linear-gradient(68.2deg, rgb(7, 3, 98) -0.1%, rgb(179, 26, 132) 47.7%, rgb(239, 186, 83) 100.2%);">
+<body style="background: radial-gradient(circle at 52.1% -29.6%, rgb(144, 17, 105) 0%, rgb(51, 0, 131) 100.2%);" >
 
-    <div id="login" class="container-fluid vh-100">
+    <div id="login" class="container-fluid vh-100 ">
 
         <div class="row">
-            <div class="col-md-7 col-12">
+            <div class="col-md-7 col-12" style="justify-content:center;">
                 <!-- Add an image here -->
-                <img src="images/login-pic.png" alt="login-background" class="img-fluid" style="height:700px; padding-left:100px">
+                <img src="images/login-pic.png" alt="login-background" class="img-fluid responsive-image">
+
             </div>
             
-            <div class="col-md-5 col-12">
-                <div class="mt-3" style="justify-content:center;width:400px;padding-top:100px;text-align:center;">
+            <div class="col-lg-5 col-md-10">
+                <div class="mt-3" style="padding-left:40px; padding-right:80px; padding-top:100px;text-align:center;">
                     <img src="images/logo1.png" width="300" alt="Skills Up Logo" style="padding-bottom:50px">
                     
                     <h1 class="mt-2" style="color:white">Log in</h1>
@@ -48,7 +49,7 @@ if (isset($_SESSION["user_id"]) ) {
                         <button v-on:click="loginUser" class="btn confirm-button">Login</button>
                     </div>
                     
-                    <p class="signup py-5 text-center">Don't have an account? <a href="pages/register.php" style="color:white">Register here.</a></p>
+                    <p class="login py-5 text-center">Don't have an account? <a href="pages/register.php" style="color:white">Register here.</a></p>
 
                 </div>
             </div>

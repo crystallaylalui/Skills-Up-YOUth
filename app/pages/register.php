@@ -16,6 +16,7 @@ if (isset($_SESSION["user_id"]) ) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <link href="../css/style.css" rel="stylesheet">
@@ -23,16 +24,19 @@ if (isset($_SESSION["user_id"]) ) {
 <body style="background-color:white">
 
     <div class="main-banner" id="top">
-        <div class="container">
+        <div class="container-fluid">
         <div class="row">
             <div class="col-lg-7">
                 <div class="caption header-text">
                     <img src="../images/skills-up-logo.png" width="200" alt="Skills Up Logo">
                 <!-- logo of skill up youth -->
-                    <div class="animate__animated animate__slideInLeft">
-                        <h4>Dive <span> Into The Tech World </span> <br> with <em> Skills-Up Youth</em></h4>
+                    <div style="max-width:fit-content ;padding-left:10px;" class="blur-text">
+                        <div class=" animate__animated animate__slideInLeft">
+                            <h4>Dive <span> Into The Tech World</span> <br>with <em> Skills-Up Youth</em></h4>
+                        </div>
+                        <p class="registration-desc" style="padding-right:0px">Skill-up Youth provides essential educational and employment-related resources to under-privileged youths  (aged 15-35) to ensure inclusive,  quality education and job opportunities for all. </p>
                     </div>
-                    <p class="registration-desc">Skill-up Youth provides essential educational and employment-related <br>resources to under-privileged youths  (aged 15-35) to ensure inclusive, <br> quality education and job opportunities for all. </p>
+
                 </div>
             </div>
         </div>
@@ -48,8 +52,8 @@ if (isset($_SESSION["user_id"]) ) {
                 <div class="col-md-8 col-12">
                 </div>
 
-            <div class="col-md-4 col-12">
-                <div class="mt-2 p-3">
+            <div class="col-lg-4 col-md-10 col-12">
+                <div class="mt-2 p-3" style="background-color:white">
                 <h2 class="text-center m-3 p-3" v-if="shouldAnimateRegister">Register</h2>
                     <div class="registration-form" id="register">
                         <div class="form-group">
