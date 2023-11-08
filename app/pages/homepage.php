@@ -56,10 +56,10 @@
 
                                 <div class="category">
                                     <!-- <img src="../images/course.png" alt="Courses Icon" style="width: 100px;"> -->
-                                    <div class="col-md-6 category-text" style="justify-content:center">
-                                        <span class="number">Beginner</span>
+                                    <div class="col-md-6 category-text">
+                                        <span class="number">{{ user.points }}</span>
                                         <br>
-                                        Skill level
+                                        Points
                                     </div>
 
                                     <!-- <img src="../images/badges.png" alt="Badges Icon" style="width: 100px;"> -->
@@ -81,14 +81,13 @@
                     <div class="container-fluid">
                         <div class="reminders">
                         <p class="display-6" style="padding-left:30px">Reminders</p>
-                        <ul class="reminder-list display-7">
-                            <li class="reminder-item">
-                                Complete the Python course! 
-                            </li>
-                            <li class="reminder-item">
-                                New lessons available in Web Development.
-                            </li>
-                        </ul>
+                            <ul class="reminder-list display-7">
+                                <li v-for="(t, index) in tasks" class="reminder-item ">
+                                    <div class="d-inline mx-1">{{ t.task_name }} [{{ t.task_points }}]</div>
+                                    <!-- show button if user completed -->
+                                    <button v-if="user_tasks[index][0] == 1" :disabled="user_tasks[index][1] == 1" class="btn btn-dark" @click="claimTask(t.task_points, index)">Claim</button>
+                                </li>
+                            </ul>
                         </div>
 
                     </div>
@@ -139,6 +138,8 @@
                     users: [],
                     enrolled: '',
                     completed: 0,
+                    tasks: [],
+                    user_tasks: [],
                 }
             },
             created() {
@@ -146,6 +147,48 @@
                 this.getUsers();
             },
             methods: {
+                claimTask(points, index){
+                    console.log(points)
+                    let url = "../../server/api/tasks.php";
+                    let params = {
+                        user_id: <?php echo $_SESSION["user_id"] ?>,
+                        points: points,
+                    }
+
+                    axios.post(url, params)
+                    .then(r => {
+                        console.log(r.data);
+                        this.user = r.data;
+                        this.user_tasks[index][1] = 1;
+
+                        this.updateUserTasks();
+                    })
+                },
+                updateUserTasks() {
+                    // console.log(points)
+                    let url = "../../server/api/users.php";
+                    let params = {
+                        user_id: <?php echo $_SESSION["user_id"] ?>,
+                        tasks: this.user_tasks,
+                    }
+
+                    axios.post(url, params)
+                    .then(r => {
+                        console.log(r.data);
+                        // this.user = r.data;
+                    })
+                },
+                getTasks(){
+                    let url = "../../server/api/tasks.php";
+                    let params = {
+                        
+                    }
+
+                    axios.get(url)
+                    .then(r => {
+                        this.tasks = r.data;
+                    })
+                },
                 getUser(){
                     let url = "../../server/api/users.php";
                     let params = {
@@ -156,6 +199,8 @@
                     .then(r => {
                         this.user = r.data;
                         this.user_badges = JSON.parse(r.data.badges);
+                        this.user_tasks = JSON.parse(r.data.tasks);
+                        this.getTasks();
                     })
                 },
                 getUsers(){

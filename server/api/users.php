@@ -28,7 +28,10 @@ if ($req == "GET") {
 
     $_POST = json_decode(file_get_contents('php://input'),true);
 
-    echo "TESTTTT";
+    $user_id = $_POST["user_id"];
+    $tasks = $_POST["tasks"];
+
+    echo $dao->updateUserTasksById($user_id,$tasks);
 }
 
 

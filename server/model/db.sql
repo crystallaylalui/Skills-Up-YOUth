@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS user (
   hashed_password varchar(256) NOT NULL,
   points int NOT NULL,
   badges json NOT NULL,
+  tasks json NOT NULL,
   PRIMARY KEY (user_id)
 );
 
@@ -65,3 +66,16 @@ CREATE TABLE IF NOT EXISTS enrollment (
   FOREIGN KEY (user_id) REFERENCES User(user_id),
   FOREIGN KEY (course_id) REFERENCES Course(course_id)
 );
+
+CREATE TABLE IF NOT EXISTS tasks (
+  task_id int NOT NULL AUTO_INCREMENT,
+  task_name varchar(50) NOT NULL,
+  task_points int NOT NULL,
+  PRIMARY KEY (task_id)
+);
+INSERT INTO tasks (task_name, task_points)
+VALUES 
+('Enroll into a course!', 500),
+('Attempt a quiz!', 1500),
+('Complete a course!', 2000),
+('Obtain a badge!', 3000)
