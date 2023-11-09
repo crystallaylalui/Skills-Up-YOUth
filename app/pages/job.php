@@ -41,7 +41,7 @@
         <!-- jobs -->
         <!-- <div class="col-md-8" style="padding: 50px;"> -->
         <div style="padding: 50px;">
-        <h2>Unlocked Jobs</h2>
+        <p class="font2">Unlocked Jobs</p>
             <div class="row">
                 <div v-for="j in unlocked" class="col-lg-3 col-md-4 col-sm-6">
                     <div class="card card-custom bg-light border-black border-2" style="margin-bottom:50px">
@@ -70,10 +70,10 @@
     <!-- jobs -->
     <!-- <div class="col-md-8" style="padding: 50px;"> -->
     <div style="padding: 50px;">
-        <h2>All Jobs</h2>
+        <p class="font2">All Jobs</p>
         <div class="row" style="display: flex; flex-wrap: wrap;">
             <div v-for="j in locked" class="col-lg-3 col-md-4 col-sm-6" style="display: flex; padding: 15px;">
-                <div class="card card-custom bg-light border-black border-2" style="width: 100%;">
+            <div class="card card-custom bg-light" style="margin-bottom: 50px; border: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);">
                     <div class="card-custom-img" style="background-image: url(../images/job.jpg)"></div>
                     <div class="card-custom-avatar">
                         <!-- <img class="img-fluid" src="../images/job1.jpeg" alt="Avatar" /> -->
