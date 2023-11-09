@@ -1,6 +1,8 @@
 # Skills-Up-YOUth!
 
 URL deployment: http://3.27.164.168/
+Dummy Username : Crystal
+Dummy Password: hello
 
 
 Setup
