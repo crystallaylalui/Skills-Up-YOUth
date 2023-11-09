@@ -66,7 +66,7 @@ if (isset($_SESSION["user_id"]) ) {
             },
             methods: {
                 loginUser() {
-                    // console.warn(this.username,this.password);
+                    console.warn(this.username,this.password);
                     const user = {
                         username: this.username,
                         password: this.password,
