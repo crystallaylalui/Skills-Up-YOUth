@@ -114,6 +114,7 @@
         let apiKey = "AIzaSyAtAJBow77Rx2Bhm3tRGKCYvQSbDCjnpe0";
         let urlParams = new URLSearchParams(window.location.search);
 
+
         function YTDurationToHMS(duration) {
             var match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
 
@@ -282,7 +283,7 @@
                 showCourseCompleteOption() {
                     if(this.quiz_completed) {
                         let result = confirm("Complete Course?");
-                        result ? alert("Completed!") : '';
+                        // result ? alert("Completed!") : '';
 
                         if (result) {
                             this.courseComplete();
@@ -446,7 +447,7 @@
                 this.getVideo(this.video_id);
             },
             template: `
-                <input type="checkbox" :checked="enrolled_content.content[index]" @change="$emit('update', index)">
+                <input type="checkbox" :checked="enrolled_content.content[index]" onclick="return false">                
                 <p>{{ index+1 }}. {{ title }}</p>
                 <p style="font-size: small;">Duration: {{ this.duration }}</p>
             `

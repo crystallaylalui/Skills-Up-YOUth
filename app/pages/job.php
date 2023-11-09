@@ -114,9 +114,9 @@
                 
             },
             methods: {
-                filterJobs() {
-                    return this.j_badges.every(r => this.user_badges.includes(r));
-                },
+                // filterJobs() {
+                //     return this.j_badges.every(r => this.user_badges.includes(r));
+                // },
                 getUser(){
                     let url = "../../server/api/users.php";
                     let params = {

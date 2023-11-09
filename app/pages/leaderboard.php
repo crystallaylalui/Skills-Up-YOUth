@@ -78,13 +78,13 @@
                     return index +1;
                 },
                 getLevel(points) {
-                    if (points > 5000) {
+                    if (points > 100000) {
                         return "Coding Expert";
-                    } else if (points > 4000) {
+                    } else if (points > 50000) {
                         return "Tech Whiz";
-                    } else if (points > 2000) {
+                    } else if (points > 25000) {
                         return "Proficient Coder";
-                    } else if (points > 1000) {
+                    } else if (points > 5000) {
                         return "Intermediate";
                     } else if (points >= 0) {
                         return "Beginner";
