@@ -274,7 +274,7 @@
                         user_id: <?php echo $_SESSION["user_id"]; ?>,
                         course_id: urlParams.get('course_id'),
                         content: JSON.stringify(this.enrolled_content),
-                        completed: false,
+                        completed: 1,
                     };
 
                     axios.post(url, params)

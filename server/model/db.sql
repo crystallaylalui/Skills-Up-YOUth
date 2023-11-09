@@ -84,8 +84,8 @@ CREATE TABLE IF NOT EXISTS enrollment (
   start_date datetime NOT NULL,
   completed boolean NOT NULL,
   PRIMARY KEY (enrollment_id),
-  FOREIGN KEY (user_id) REFERENCES User(user_id),
-  FOREIGN KEY (course_id) REFERENCES Course(course_id)
+  FOREIGN KEY (user_id) REFERENCES user(user_id),
+  FOREIGN KEY (course_id) REFERENCES course(course_id)
 );
 
 CREATE TABLE IF NOT EXISTS tasks (
