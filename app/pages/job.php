@@ -31,67 +31,69 @@
     <div>
         <?php include ('navbar.php'); ?>
     </div>
-    <div class="row jobs-banner">
-        <div class="container-fluid">
-            <p class="display-6">Freelance jobs available</p>
-            <p class="fs-5">Transform the badges you have earned into a job experience.</p>
+    <div id='jobs'>
+        <div class="row jobs-banner">
+            <div class="container-fluid">
+                <p class="display-6">Freelance jobs available</p>
+                <p class="fs-5">Transform the badges you have earned into a job experience.</p>
+            </div>
         </div>
-    </div>
-    <div class="row">
+        <div class="row">
+            <!-- jobs -->
+            <!-- <div class="col-md-8" style="padding: 50px;"> -->
+            <div style="padding: 50px;">
+            <p class="font2">Unlocked Jobs</p>
+                <div class="row">
+                    <div v-for="j in unlocked" class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="card card-custom bg-light border-black border-2" style="margin-bottom:50px">
+                            <div class="card-custom-img" style="background-image: url(../images/job.jpg)"></div>
+                            <div class="card-custom-avatar">
+                            <!-- <img class="img-fluid" src="../images/job1.jpeg" alt="Avatar" /> -->
+                            </div>
+                            <div class="card-body" style="overflow-y: auto">
+                            <h4 class="card-title">{{ j.title }}</h4>
+                            <p class="card-text">{{ j.responsibilities[0] }}</p>
+                            <img v-for="i in j.badges" :src="'../images/badges/' + i + '.png'">
+                            </div>
+                            <div class="card-footer" style="background: inherit; border-color: inherit;">
+                            <a :href="getUrl(j.id)" class="btn btn-dark">Learn More</a>
+                            <!-- <button id="saveButton" onclick="saveFilters()">Save</button> -->
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="row" style="display: flex; flex-wrap: wrap;">
         <!-- jobs -->
         <!-- <div class="col-md-8" style="padding: 50px;"> -->
-        <div style="padding: 50px;">
-        <p class="font2">Unlocked Jobs</p>
-            <div class="row">
-                <div v-for="j in unlocked" class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card card-custom bg-light border-black border-2" style="margin-bottom:50px">
-                        <div class="card-custom-img" style="background-image: url(../images/job.jpg)"></div>
-                        <div class="card-custom-avatar">
-                        <!-- <img class="img-fluid" src="../images/job1.jpeg" alt="Avatar" /> -->
+            <div style="padding: 50px;">
+                <p class="font2">All Jobs</p>
+                <div class="row" style="display: flex; flex-wrap: wrap;">
+                    <div v-for="j in locked" class="col-lg-3 col-md-4 col-sm-6" style="display: flex; padding: 15px;">
+                        <div class="card card-custom bg-light" style="margin-bottom: 50px; border: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);">
+                            <div class="card-custom-img" style="background-image: url(../images/job.jpg)"></div>
+                            <div class="card-custom-avatar">
+                                <!-- <img class="img-fluid" src="../images/job1.jpeg" alt="Avatar" /> -->
+                            </div>
+                            <div class="card-body" style="overflow-y: auto;">
+                                <h4 class="card-title">{{ j.title }}</h4>
+                                <p class="card-text">{{ j.responsibilities[0] }}</p>
+                                <img v-for="i in j.badges" :src="'../images/badges/' + i + '.png'">
+                            </div>
+                            <div class="card-footer" style="background: inherit; border-color: inherit;">
+                                <a :href="getUrl(j.id)" class="btn btn-dark">Learn More</a>
+                                <!-- <button id="saveButton" onclick="saveFilters()">Save</button> -->
+                            </div>
                         </div>
-                        <div class="card-body" style="overflow-y: auto">
-                        <h4 class="card-title">{{ j.title }}</h4>
-                        <p class="card-text">{{ j.responsibilities[0] }}</p>
-                        <img v-for="i in j.badges" :src="'../images/badges/' + i + '.png'">
-                        </div>
-                        <div class="card-footer" style="background: inherit; border-color: inherit;">
-                        <a :href="getUrl(j.id)" class="btn btn-dark">Learn More</a>
-                        <!-- <button id="saveButton" onclick="saveFilters()">Save</button> -->
-                        </div>
-                        
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-    <div class="row" style="display: flex; flex-wrap: wrap;">
-    <!-- jobs -->
-    <!-- <div class="col-md-8" style="padding: 50px;"> -->
-    <div style="padding: 50px;">
-        <p class="font2">All Jobs</p>
-        <div class="row" style="display: flex; flex-wrap: wrap;">
-            <div v-for="j in locked" class="col-lg-3 col-md-4 col-sm-6" style="display: flex; padding: 15px;">
-            <div class="card card-custom bg-light" style="margin-bottom: 50px; border: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);">
-                    <div class="card-custom-img" style="background-image: url(../images/job.jpg)"></div>
-                    <div class="card-custom-avatar">
-                        <!-- <img class="img-fluid" src="../images/job1.jpeg" alt="Avatar" /> -->
-                    </div>
-                    <div class="card-body" style="overflow-y: auto;">
-                        <h4 class="card-title">{{ j.title }}</h4>
-                        <p class="card-text">{{ j.responsibilities[0] }}</p>
-                        <img v-for="i in j.badges" :src="'../images/badges/' + i + '.png'">
-                    </div>
-                    <div class="card-footer" style="background: inherit; border-color: inherit;">
-                        <a :href="getUrl(j.id)" class="btn btn-dark">Learn More</a>
-                        <!-- <button id="saveButton" onclick="saveFilters()">Save</button> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
     <script>
         const jobs = Vue.createApp({
@@ -163,8 +165,8 @@
             }
         })
 
-        const vm = jobs.mount('body');
+        const vm = jobs.mount('#jobs');
     </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

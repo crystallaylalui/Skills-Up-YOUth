@@ -7,13 +7,6 @@ body {
     color: #333;
 }
 
-.navbar {
-    background-color: #007bff;
-    padding: 10px;
-    color: #fff;
-    text-align: center;
-}
-
 .section-container {
     max-width: 1200px;
     margin: 0 auto;

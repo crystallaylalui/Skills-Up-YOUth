@@ -120,7 +120,7 @@
 			</div>
 		</main>
 		<!-- MAIN -->
-	</section>
+	<!-- </section> -->
 	<!-- CONTENT -->
 	
 	<script>

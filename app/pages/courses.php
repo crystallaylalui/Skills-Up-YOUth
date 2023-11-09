@@ -156,7 +156,8 @@
             },
             template: 
             `   
-                <div v-if="completed == false" class="col-lg-4 col-md-6 my-2 d-flex align-items-stretch">
+            <div v-if="!completed" class="col-lg-4 col-md-6 my-2 d-flex align-items-stretch">
+                <a :href="'course.php?course_id=' + course_id + '&video_id=0'" class="canvas">
                     <a v-bind:href="'course.php?course_id=' + this.course_id +'&video_id=0'" class="canvas">
                         <div class="canvas_border">
                             <svg>
