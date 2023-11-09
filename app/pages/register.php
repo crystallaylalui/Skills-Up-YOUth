@@ -93,7 +93,7 @@ if (isset($_SESSION["user_id"]) ) {
             },
             methods: {
                 registerUser() {
-                    // console.warn(this.username,this.password,this.email);
+                    console.warn(this.username,this.password,this.email);
                     const user = {
                         username: this.username,
                         password: this.password,
