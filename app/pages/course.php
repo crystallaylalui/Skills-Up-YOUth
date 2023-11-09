@@ -189,7 +189,7 @@
 
                     axios.post(url, params)
                     .then(r => {
-                        console.log(r.data);
+                        // console.log(r.data);
                         // this.user = r.data;
                     })
                 },
@@ -207,7 +207,7 @@
                         // get user badges
                         this.user_badges = JSON.parse(r.data.badges);
                         this.user_tasks = JSON.parse(r.data.tasks);
-                        console.log(r.data.badges)
+                        // console.log(r.data.badges)
                     });
                 },
                 openQuiz() {
@@ -217,13 +217,13 @@
                     let interval = setInterval( 
                         () => {
                             if (document.hasFocus()) {
-                                console.log("focus");
+                                // console.log("focus");
                                 if (quiz.closed) {
                                     clearInterval(interval);
                                     this.checkUserEnrolled();
                                 }
                             } else {
-                                console.log("not focus")
+                                // console.log("not focus")
                             }
                         } , 1000);
                 },
@@ -237,7 +237,7 @@
 
                     this.quiz_completed = check;
 
-                    console.log(check);
+                    // console.log(check);
                 },
                 courseComplete() {
                     let url = "../../server/api/enrollments.php";
@@ -272,13 +272,13 @@
 
                     axios.post(badgeurl, badgeparams)
                     .then(r => {
-                        console.log("user badges updated");
+                        // console.log("user badges updated");
                     });
 
                     this.updateUserTasks(3);
 
                     alert("You have completed the course!");
-                    console.log("updated course completion");
+                    // console.log("updated course completion");
                 },
                 showCourseCompleteOption() {
                     if(this.quiz_completed) {
@@ -307,7 +307,7 @@
 
                         axios.post(url, params)
                         .then(r => {
-                            console.log("updated checkbox");
+                            // console.log("updated checkbox");
                         })
                     } else {
                         this.enrolled_content.content[urlParams.get('video_id')] = 1;
@@ -323,7 +323,7 @@
 
                         axios.post(url, params)
                         .then(r => {
-                            console.log("updated checkbox");
+                            // console.log("updated checkbox");
                         })
                     }
                 },
@@ -340,7 +340,7 @@
                             this.enrolled = true;
                             this.enrolled_content = JSON.parse(r.data.content);
                             this.updateEnrolledContent(null);
-                            console.log(r.data)
+                            // console.log(r.data)
                             this.checkCourseProgress();
                             this.checkQuizProgress();
 
@@ -361,7 +361,7 @@
 
                     axios.post(url, params)
                     .then(r => {
-                        console.log(r.data);
+                        // console.log(r.data);
                         // alert("new enrollment");
                         // this.enrolled = true;
                         this.checkUserEnrolled();
