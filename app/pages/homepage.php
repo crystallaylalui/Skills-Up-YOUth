@@ -35,10 +35,10 @@
             <div class="body col-md-7 col-sm-12">
                 <p class="font2 animate__animated animate__fadeInDown" style="margin-bottom:30px; margin-left:40px; margin-top:20px;">Welcome back, {{ user.username }}!</p>
                 <div class="row py-3">
-                    <div class="profile col-4 col-sm-12 text-center mb-3 mb-lg-0">
+                    <div class="profile col-4 col-sm-12 text-center mb-3 mb-lg-0" style="padding-left: 50px; padding-right: 50px;">
                         <img :src="'../images/profile' + getRank() + '.jpg'" alt="Profile Picture" class="rounded-circle" style="width: 200px; height: 200px;">
                     </div>
-                    <div class="col-8 col-sm-12 text-center" style="padding-left: 25%;">
+                    <div class="col-8 col-sm-12 text-center" style="padding-left: 24%;">
                         <div class="row">
                             <div class="col-6">
                                 <div class="category">
