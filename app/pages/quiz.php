@@ -192,7 +192,7 @@
                     return {
                         quiz: '',
                         tags: '', // set the topic
-                        limit: 1, // set number of questions
+                        limit: 10, // set number of questions
                         currentIndex: 0,
                         selectedAnswers: {}, // Initialize as an empty array
                         quizSubmitted: false,

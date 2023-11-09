@@ -56,7 +56,7 @@
                             <img v-for="i in j.badges" :src="'../images/badges/' + i + '.png'">
                             </div>
                             <div class="card-footer" style="background: inherit; border-color: inherit;">
-                            <a :href="getUrl(j.id)" class="btn btn-dark">Learn More</a>
+                            <a :href="getUrlTrue(j.id)" class="btn btn-dark">Learn More</a>
                             <!-- <button id="saveButton" onclick="saveFilters()">Save</button> -->
                             </div>
                             
@@ -151,15 +151,26 @@
                         }
                     })
                 },
+                getUrlTrue(id){
+                    if(id == 1) {
+                        return "job-description1.php?id=True";
+                    } else if (id == 2) {
+                        return "job-description2.php?id=True";
+                    } else if (id == 3) {
+                        return "job-description3.php?id=True";
+                    } else if (id == 4) {
+                        return "job-description4.php?id=True";
+                    }
+                },
                 getUrl(id){
                     if(id == 1) {
-                        return "job-description1.php";
+                        return "job-description1.php?id=False";
                     } else if (id == 2) {
-                        return "job-description2.php";
+                        return "job-description2.php?id=False";
                     } else if (id == 3) {
-                        return "job-description3.php";
+                        return "job-description3.php?id=False";
                     } else if (id == 4) {
-                        return "job-description4.php";
+                        return "job-description4.php?id=False";
                     }
                 }
             }

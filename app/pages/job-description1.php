@@ -6,6 +6,9 @@
          header("Location: ../index.php"); 
          exit;
     }
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+    } 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,11 +17,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Details</title>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script defer src="navbar.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link href="../css/jobdesc.css" rel="stylesheet">
     <script defer src="navbar.js"></script>
 </head>
@@ -68,7 +71,12 @@
                             <!-- more badges if needed -->
                         </div>
                         <hr>
-                        <button v-if="checkJob == true" class="apply-button">Apply</button>
+                        <?php     
+                            if ($id == "True"){
+                                echo '<button class="apply-button">Apply</button>';
+                            }
+                            ?>
+                        
                         <!-- <button class="save-button">Save</button> -->
                     </div>
                 </div>
@@ -119,13 +127,11 @@
     fetch('https://crystallaylalui.github.io/JSON-Data/db.json')
         .then(response => response.json())
         .then(data => {
-            console.log('Fetched data:', data); // Log the fetched data to see its structure
             const job = data.jobs.find(job => job.id === jobId);
-            console.log('Fetched job details:', job);
             if (job) {
                 updateJobDetails(job);
             } else {
-                console.error('Job not found');
+
             }
         })
         .catch(error => console.error('Error fetching job details:', error));
@@ -197,12 +203,19 @@
             // Update other job details as needed
         }
 
+        // Apply button click event
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the "Apply" button
+            var applyButton = document.querySelector('.apply-button');
+
             // Add a click event listener to the "Apply" button
+
             document.querySelector('.apply-button').addEventListener('click', function () {
                 // Display an alert when the button is clicked
                 alert('Job applied!');
             });
-
+        });
+        
 
         // Fetch job details when the page loads
         window.onload = fetchJobDetails;
@@ -249,4 +262,3 @@
 </body>
 
 </html>
-

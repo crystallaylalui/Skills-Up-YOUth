@@ -1,3 +1,15 @@
+<?php
+    session_start();
+    // No session variable "user" => no login
+    if ( !isset($_SESSION["user_id"]) ) {
+         // redirect to login page
+         header("Location: ../index.php"); 
+         exit;
+    }
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+    } 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,11 +17,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Details</title>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script defer src="navbar.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link href="../css/jobdesc.css" rel="stylesheet">
+    <script defer src="navbar.js"></script>
 </head>
 
 <body>
@@ -20,7 +34,7 @@
         <h2>Important Information Concisely</h2>
         <p>Additional details here...</p>
     </div> -->
-    <div class="container-fluid">
+    <div class="container-fluid" id="job">
         <div class="row">
             <div class="col-md-9">
                 <div class="section-container">
@@ -51,12 +65,18 @@
                         <hr>
                         <div class="badge-section">
                             <div class="section-heading">Badges</div>
-                            <button class="badge-button">Badge 1</button>
-                            <button class="badge-button">Badge 2</button>
+                            <!-- <img src="../images/badges/js3.png"> -->
+                            <!-- <button class="badge-button">Badge 1</button> -->
+                            <!-- <button class="badge-button">Badge 2</button> -->
                             <!-- more badges if needed -->
                         </div>
                         <hr>
-                        <button class="apply-button">Apply</button>
+                        <?php     
+                            if ($id == "True"){
+                                echo '<button class="apply-button">Apply</button>';
+                            }
+                            ?>
+                        
                         <!-- <button class="save-button">Save</button> -->
                     </div>
                 </div>
@@ -104,22 +124,23 @@
     <script>
         // Function to fetch job details from the API
         function fetchJobDetails(jobId) {
-            fetch('https://crystallaylalui.github.io/JSON-Data/db.json')
-                .then(response => response.json())
-                .then(data => {
-                    const job = data.jobs.find(job => job.id === jobId);
-                    if (job) {
-                        console.log('Fetched job details:', job);
-                        updateJobDetails(job);
-                    } else {
-                        console.error('Job not found');
-                    }
-                })
-                .catch(error => console.error('Error fetching job details:', error));
-        }
+    fetch('https://crystallaylalui.github.io/JSON-Data/db.json')
+        .then(response => response.json())
+        .then(data => {
+            const job = data.jobs.find(job => job.id === jobId);
+            if (job) {
+                updateJobDetails(job);
+            } else {
+
+            }
+        })
+        .catch(error => console.error('Error fetching job details:', error));
+}
+
+
 
         // Usage example
-        fetchJobDetails(3); // Fetch details for job with id 1
+        fetchJobDetails(3); 
 
 
         // Function to update the job details on the page
@@ -188,14 +209,50 @@
             var applyButton = document.querySelector('.apply-button');
 
             // Add a click event listener to the "Apply" button
-            applyButton.addEventListener('click', function () {
+
+            document.querySelector('.apply-button').addEventListener('click', function () {
                 // Display an alert when the button is clicked
                 alert('Job applied!');
             });
         });
+        
 
         // Fetch job details when the page loads
         window.onload = fetchJobDetails;
+
+        const job = Vue.createApp({
+            data() {
+                return {
+
+                }
+            },
+            created() {
+
+            },
+            methods: {
+                getAllJobs() {
+                    let url = "https://crystallaylalui.github.io/JSON-Data/db.json";
+
+                    axios.get(url)
+                    .then(r => {
+                        this.jobs = r.data.jobs;
+
+                        // for (i in r.data.jobs) {
+                        //     if(r.data.jobs[i].job_badges.every(r => this.user_badges.includes(r)) == true){
+                        //         this.unlocked.push(r.data.jobs[i]);
+                        //     } else {
+                        //         this.locked.push(r.data.jobs[i]);
+                        //     }
+                        // }
+                    })
+                },
+                checkJob() {
+                    this.jobs[2].job_badges.every(r => this.user_badges.includes(r))
+                }
+            }
+        })
+
+        const vm = job.mount("#job");
 
     </script>
 
