@@ -22,9 +22,7 @@
     <div class="container-fluid">
         <div>
             <div class="table" id="leaderboard">
-                <section class="table__header">
-                    <p style="font-family: 'Public Pixel', sans-serif;">Leaderboard</p>
-                </section>
+                <p style="font-family: 'Public Pixel', sans-serif; font-size :50px; color: white; text-align:center; padding:10px;">Leaderboard</p>
                 <section class="table__body">
                     <table>
                         <thead>
