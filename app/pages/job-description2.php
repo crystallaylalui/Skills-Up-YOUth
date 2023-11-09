@@ -78,7 +78,7 @@
                                 <strong>Hiring Manager:</strong><br> Manager
                             </div>
                             <div class="details-item">
-                                <strong>Department:</strong><br> Department
+                                <strong>Project Duration:</strong><br> Project Duration
                             </div>
                             <div class="details-item">
                                 <strong>Recruitment Quota:</strong><br> Quota
@@ -161,7 +161,7 @@
                     <strong>Hiring Manager:</strong><br> ${job.details.hiringManager}
                 </div>
                 <div class="details-item">
-                    <strong>Department:</strong><br> ${job.details.department}
+                    <strong>Project Duration:</strong><br> ${job.details.projectDuration}
                 </div>
                 <div class="details-item">
                     <strong>Recruitment Quota:</strong><br> ${job.details.recruitmentQuota}
