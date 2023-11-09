@@ -19,12 +19,12 @@ if (isset($_SESSION["user_id"]) ) {
 
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body style="background: radial-gradient(circle at 52.1% -29.6%, rgb(144, 17, 105) 0%, rgb(51, 0, 131) 100.2%);" >
+<body class="login-background">
 
     <div id="login" class="container-fluid vh-100 ">
 
         <div class="row">
-            <div class="col-md-7 col-12" style="padding-left:100px;">
+            <div class="col-md-7 col-12" style="padding-left:80px;">
                 <!-- Add an image here -->
                 <img src="images/login-pic.png" alt="login-background" class="img-fluid responsive-image">
 
