@@ -29,7 +29,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <th> Student Id </th>
+                                <th> Ranking </th>
                                 <th> Name </th>
                                 <th> Level </th>
                                 <th> Number of Points </th>
