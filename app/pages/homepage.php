@@ -160,7 +160,7 @@
             },
             methods: {
                 claimTask(points, index){
-                    console.log(points)
+                    // console.log(points)
                     let url = "../../server/api/tasks.php";
                     let params = {
                         user_id: <?php echo $_SESSION["user_id"] ?>,
@@ -169,7 +169,7 @@
 
                     axios.post(url, params)
                     .then(r => {
-                        console.log(r.data);
+                        // console.log(r.data);
                         this.user = r.data;
                         this.user_tasks[index][1] = 1;
 
@@ -186,7 +186,7 @@
 
                     axios.post(url, params)
                     .then(r => {
-                        console.log(r.data);
+                        // console.log(r.data);
                         // this.user = r.data;
                     })
                 },
@@ -311,6 +311,7 @@
                     courses: [],
                     enrolled_courses: [],
                     badges: '',
+                    isLoading: true,
                 }
             },
             methods: {
@@ -346,6 +347,7 @@
                         for (c in r.data) {
                             this.getCourse(r.data[c].course_id, c);
                         }
+                        isLoading = false;
                     })
                 },
                 getCourse(course_id, index) {
@@ -375,7 +377,7 @@
                     <img src="../images/rocket.gif" style="width: 200px !important; margin-left:80px">
                     <p> Nothing here! Click <a style="color:#9932CC" href='courses.php'>here</a> to enroll into courses.<p>
                 </div>
-                <course v-for="c in enrolled_courses" :completed="c.completed" :enrolled="true" :course_id="c.course_id" :title="c.course ? c.course.course_title : ''" :description="c.course ? c.course.course_description : ''" :playlist_url="c.course.playlist_url"></course>
+                <course v-if="isLoading == false" v-for="c in enrolled_courses" :completed="c.completed" :enrolled="true" :course_id="c.course_id" :title="c.course ? c.course.course_title : ''" :description="c.course ? c.course.course_description : ''" :playlist_url="c.course.playlist_url"></course>
             </div> 
             `
         })

@@ -261,7 +261,7 @@
 
                     this.quizResults = quizResults;
                     this.quizSubmitted = true;
-                    console.log(quizResults);
+                    // console.log(quizResults);
 
                     
                 },
@@ -279,7 +279,7 @@
 
                     axios.post(url, params)
                     .then(r => {
-                        console.log("quiz updated");
+                        // console.log("quiz updated");
                         window.close();
                     })
                 },
