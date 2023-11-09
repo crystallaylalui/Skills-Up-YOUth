@@ -66,35 +66,32 @@
         </div>
 
     </div>
-    <div class="row">
-        <!-- jobs -->
-        <!-- <div class="col-md-8" style="padding: 50px;"> -->
-        <div style="padding: 50px;">
+    <div class="row" style="display: flex; flex-wrap: wrap;">
+    <!-- jobs -->
+    <!-- <div class="col-md-8" style="padding: 50px;"> -->
+    <div style="padding: 50px;">
         <h2>All Jobs</h2>
-            <div class="row">
-                <div v-for="j in locked" class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card card-custom bg-light border-black border-2" style="margin-bottom:50px">
-                        <div class="card-custom-img" style="background-image: url(../images/job.jpg)"></div>
-                        <div class="card-custom-avatar">
+        <div class="row" style="display: flex; flex-wrap: wrap;">
+            <div v-for="j in locked" class="col-lg-3 col-md-4 col-sm-6" style="display: flex; padding: 15px;">
+                <div class="card card-custom bg-light border-black border-2" style="width: 100%;">
+                    <div class="card-custom-img" style="background-image: url(../images/job.jpg)"></div>
+                    <div class="card-custom-avatar">
                         <!-- <img class="img-fluid" src="../images/job1.jpeg" alt="Avatar" /> -->
-                        </div>
-                        <div class="card-body" style="overflow-y: auto">
+                    </div>
+                    <div class="card-body" style="overflow-y: auto;">
                         <h4 class="card-title">{{ j.title }}</h4>
                         <p class="card-text">{{ j.responsibilities[0] }}</p>
                         <img v-for="i in j.badges" :src="'../images/badges/' + i + '.png'">
-                        </div>
-                        <div class="card-footer" style="background: inherit; border-color: inherit;">
+                    </div>
+                    <div class="card-footer" style="background: inherit; border-color: inherit;">
                         <a :href="getUrl(j.id)" class="btn btn-dark">Learn More</a>
                         <!-- <button id="saveButton" onclick="saveFilters()">Save</button> -->
-                        </div>
-                        
                     </div>
                 </div>
-
             </div>
         </div>
-
     </div>
+</div>
 
     <script>
         const jobs = Vue.createApp({

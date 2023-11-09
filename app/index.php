@@ -24,7 +24,7 @@ if (isset($_SESSION["user_id"]) ) {
     <div id="login" class="container-fluid vh-100 ">
 
         <div class="row">
-            <div class="col-md-7 col-12" style="justify-content:center;">
+            <div class="col-md-7 col-12" style="padding-left:100px;">
                 <!-- Add an image here -->
                 <img src="images/login-pic.png" alt="login-background" class="img-fluid responsive-image">
 
