@@ -38,7 +38,7 @@
                     <div class="profile col-4 col-sm-12 text-center mb-3 mb-lg-0">
                         <img :src="'../images/profile' + getRank() + '.jpg'" alt="Profile Picture" class="rounded-circle" style="width: 200px; height: 200px;">
                     </div>
-                    <div class="col-8 col-sm-12 text-center" style="padding-left: 80px;">
+                    <div class="col-8 col-sm-12 text-center" style="padding-left: 25%;">
                         <div class="row">
                             <div class="col-6">
                                 <div class="category">
