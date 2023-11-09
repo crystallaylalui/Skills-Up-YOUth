@@ -29,49 +29,59 @@
         <?php include ('navbar.php'); ?>
     </div>
 
-    <div id="homepage">
-        <div class="container-fluid" style="padding: 0px;">
-            <div id="achievements" class="row homepage-header">
-            <div class="body col-md-7 col-sm-4">
-                    <p class="font2 animate__animated animate__fadeInDown " style="margin-bottom:30px;margin-left:40px;margin-top:20px;">Welcome back, {{ user.username }}!</p>
-                        <div class="row py-3">
-                            <div class="profile col-lg-4" style="justify-content:center; text-align:center; padding-left:50px;">
-                                <img :src="'../images/profile' + getRank() + '.jpg'" alt="Profile Picture" class="rounded-circle" style="width: 200px; height: 200px;">
-                            </div>
-                            <div class="col-lg-6" style="text-align:center; justify-content:center; padding-left:80px;">
+<div id="homepage">
+    <div class="container-fluid" style="padding: 0px;">
+        <div id="achievements" class="row homepage-header">
+            <div class="body col-md-7 col-sm-12">
+                <p class="font2 animate__animated animate__fadeInDown" style="margin-bottom:30px; margin-left:40px; margin-top:20px;">Welcome back, {{ user.username }}!</p>
+                <div class="row py-3">
+                    <div class="profile col-4 col-sm-12 text-center mb-3 mb-lg-0">
+                        <img :src="'../images/profile' + getRank() + '.jpg'" alt="Profile Picture" class="rounded-circle" style="width: 200px; height: 200px;">
+                    </div>
+                    <div class="col-8 col-sm-12 text-center" style="padding-left: 80px;">
+                        <div class="row">
+                            <div class="col-6">
                                 <div class="category">
-                                    <!-- <img src="../images/ranking.png" alt="Rank Icon" style="width: 100px;"> -->
-                                    <div class="col-md-6 category-text" style="justify-content:center">
+                                    <div class="category-text">
                                         <span class="number">#{{ getRank() }}</span>
                                         <br>
                                         Ranking
                                     </div>
-                                    <div class="col-md-6 category-text" style="justify-content:center">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="category">
+                                    <div class="category-text">
                                         <span class="number">{{ completed }}</span>
                                         <br>
                                         Courses completed
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-6">
                                 <div class="category">
-                                    <!-- <img src="../images/course.png" alt="Courses Icon" style="width: 100px;"> -->
-                                    <div class="col-md-6 category-text">
+                                    <div class="category-text">
                                         <span class="number">{{ user.points }}</span>
                                         <br>
                                         Points
                                     </div>
-                                    <!-- <img src="../images/badges.png" alt="Badges Icon" style="width: 100px;"> -->
-                                    <div class="col-md-6 category-text" style="justify-content:center">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="category">
+                                    <div class="category-text">
                                         <span class="number">{{ user_badges.length }}</span>
                                         <br>
                                         Badges obtained
                                     </div>
                                 </div>
-                                
                             </div>
                         </div>
+                    </div>
                 </div>
+            </div>
+            <div id="reminder" class="col-md-5 col-sm-12 main">
 
-                <div id="reminder" class="col-md-5 col-sm-6 main">
                     <!-- Reminder Alert Box -->
                     <div class="container-fluid">
                         <div class="reminders">
