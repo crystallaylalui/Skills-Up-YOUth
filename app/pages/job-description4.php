@@ -71,12 +71,8 @@
                             <!-- more badges if needed -->
                         </div>
                         <hr>
-                        <?php     
-                            if ($id == "True"){
-                                echo '<button class="apply-button">Apply</button>';
-                            }
-                            ?>
-                        
+                        <button class="apply-button">Apply</button>
+
                         <!-- <button class="save-button">Save</button> -->
                     </div>
                 </div>
@@ -124,23 +120,22 @@
     <script>
         // Function to fetch job details from the API
         function fetchJobDetails(jobId) {
-    fetch('https://crystallaylalui.github.io/JSON-Data/db.json')
-        .then(response => response.json())
-        .then(data => {
-            const job = data.jobs.find(job => job.id === jobId);
-            if (job) {
-                updateJobDetails(job);
-            } else {
-
-            }
-        })
-        .catch(error => console.error('Error fetching job details:', error));
-}
-
-
+            fetch('https://crystallaylalui.github.io/JSON-Data/db.json')
+                .then(response => response.json())
+                .then(data => {
+                    const job = data.jobs.find(job => job.id === jobId);
+                    if (job) {
+                        console.log('Fetched job details:', job);
+                        updateJobDetails(job);
+                    } else {
+                        console.error('Job not found');
+                    }
+                })
+                .catch(error => console.error('Error fetching job details:', error));
+        }
 
         // Usage example
-        fetchJobDetails(4); 
+        fetchJobDetails(4); // Fetch details for job with id 1
 
 
         // Function to update the job details on the page
@@ -215,7 +210,7 @@
                 alert('Job applied!');
             });
         });
-        
+
 
         // Fetch job details when the page loads
         window.onload = fetchJobDetails;
